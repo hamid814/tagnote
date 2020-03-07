@@ -1,0 +1,16 @@
+.navbar {
+  background: #444e;
+  border-bottom: 1px solid #ccc;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.insert-button {
+  background: rgb(0, 150, 170);
+  border-radius: 9999px;
+  padding: 8px 24px;
+  color: #f4f4f4;
+}

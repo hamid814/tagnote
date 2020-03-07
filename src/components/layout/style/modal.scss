@@ -1,0 +1,54 @@
+.modal-container {
+  position: fixed;
+  background: #3333;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+
+  &.off {
+    display: none;
+
+    .modal-body {
+      animation: modalAnim 700ms ease-out;
+    }
+  }
+  
+  &.on {
+    display: flex;
+
+    .modal-body {
+      animation: modalAnim 700ms ease-out;
+    }
+  }
+  
+  .modal-body {
+    position: relative;
+    width: 80%;
+    height: 80%;
+    background: #f4f4f4;
+    border-radius: 20px;
+  
+    .close-modal-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 35px;
+      height: 35px;
+      background: saddlebrown;
+      border-radius: 9999px;
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes modalAnim {
+  0% {
+    margin-top: 30px;    
+    opacity: 0;
+  }
+  100% {
+    margin-top: 0px;    
+    opacity: 1;
+  }
+}
