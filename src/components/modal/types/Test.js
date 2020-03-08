@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Home = () => {
+const Test = () => {
   return (
     <div>
-      form Home js
+      from test
     </div>
   )
 }
 
-export default Home
+export default Test

@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { ModalContext } from '../../context/modal/ModalState';
 
+import QuickInsert from './types/QuickInsert';
+import Test from './types/Test';
+
 import './style/modal.scss';
 
 const Modal = () => {
-  const { modalStatus, setModal } = useContext(ModalContext)
+  const { modalStatus, modalType, setModal } = useContext(ModalContext)
   
   const [modalClass, setModalClass] = useState('off')
   
@@ -14,13 +17,15 @@ const Modal = () => {
 
       setTimeout(() => {
         setModalClass('off')
-      }, 700);
+      }, 680);
     } else if(modalStatus === 'on') {
       setModalClass('come')
 
       setTimeout(() => {
         setModalClass('on')
-      }, 700);
+      }, 680);
+    } else if(modalStatus === 'first-off') {
+      setModalClass('off')
     }
   }, [modalStatus])
 
@@ -29,18 +34,18 @@ const Modal = () => {
       closeModal()
     }
   }
-  
+
   const closeModal = () => {
-    console.log('close modal')
     setModal('off')
   }
   
   return (
-    <div className={`modal-container ${modalStatus}`} onClick={onClick}>
+    <div className={`modal-container ${modalClass}`} onClick={onClick}>
       <div className='modal-body'>
-        <div className='close-modal-btn'></div>
+        <div className='close-modal-btn' onClick={closeModal}></div>
         moda content
-        { modalClass }
+        { modalType === 'quick-insert' && <QuickInsert /> }
+        { modalType === 'test' && <Test /> }
       </div>
     </div>
   )

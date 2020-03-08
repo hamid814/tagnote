@@ -1,9 +1,12 @@
 export default (state, action) => {
   switch (action.type) {
-    case 'test':
+    case 'set-alert':
       return {
         ...state,
-        test: action.payload
+        alertStatus: action.payload.status,
+        alertMsg: action.payload.msg,
+        alertType: action.payload.type,
+        alertTime: action.payload.time,
       }
     default:
       return state;

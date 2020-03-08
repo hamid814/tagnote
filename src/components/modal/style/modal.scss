@@ -8,13 +8,22 @@
 
   &.off {
     display: none;
-
+    
+  }
+  
+  &.go {
+    display: flex;
+    
     .modal-body {
-      animation: modalAnim 700ms ease-out;
+      animation: modalAnim 700ms ease-out reverse;
     }
   }
   
   &.on {
+    display: flex;
+  }
+  
+  &.come {
     display: flex;
 
     .modal-body {
@@ -26,7 +35,7 @@
     position: relative;
     width: 80%;
     height: 80%;
-    background: #f4f4f4;
+    background: #444444;
     border-radius: 20px;
   
     .close-modal-btn {
@@ -35,7 +44,7 @@
       right: 5px;
       width: 35px;
       height: 35px;
-      background: saddlebrown;
+      background: rgb(168, 54, 54);
       border-radius: 9999px;
       cursor: pointer;
     }
@@ -44,7 +53,7 @@
 
 @keyframes modalAnim {
   0% {
-    margin-top: 30px;    
+    margin-top: 100px;    
     opacity: 0;
   }
   100% {

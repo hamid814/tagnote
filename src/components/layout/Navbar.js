@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 
-import Logo from './../logo/Logo';
+import Logo from './../utils/logo/Logo';
+import ThemeButton from '../utils/themebutton/ThemeButton';
 import { ModalContext } from '../../context/modal/ModalState';
 
 import './style/navbar.scss';
@@ -9,18 +10,19 @@ const Navbar = () => {
   const { setModal } = useContext(ModalContext)
   
   const onInsert = () => {
-    setModal('on', 'insert')
+    setModal('on', 'quick-insert')
   }
   
   return (
     <div className='navbar'>
       <div>
-        1
+        right / search
       </div>
       <div>
         <Logo />
       </div>
       <div>
+        <ThemeButton />
         <button className='insert-button' onClick={onInsert}>
           insert
         </button>

@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import ModalReducer from './ModalReducer';
 
 const initialState = {
-  modalStatus: 'off',
+  modalStatus: 'first-off',
   modalType: 'none',
 };
 
@@ -17,7 +17,7 @@ export const ModalProvider = ({ children }) => {
         type: 'set-modal',
         payload: {
           status,
-          type: 'none'
+          type: state.modalType
         }
       })
     } else if(status === 'on') {
