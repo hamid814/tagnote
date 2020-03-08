@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react'
 import { ModalContext } from '../../context/modal/ModalState';
 
 import QuickInsert from './types/QuickInsert';
-import Test from './types/Test';
 
 import './style/modal.scss';
 
@@ -45,7 +44,6 @@ const Modal = () => {
         <div className='close-modal-btn' onClick={closeModal}></div>
         moda content
         { modalType === 'quick-insert' && <QuickInsert /> }
-        { modalType === 'test' && <Test /> }
       </div>
     </div>
   )
