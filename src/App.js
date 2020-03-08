@@ -1,25 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import moment from 'moment';
 
 import Navbar from './components/layout/Navbar';
 import Modal from './components/modal/Modal';
 import Alert from './components/layout/Alert';
-import Home from './components/pages/Home';
-
-import { AlertContext } from './context/alert/AlertState';
+import Home from './components/pages/home/Home';
+import Statistics from './components/pages/statistics/Statistics';
+import Rules from './components/pages/rules/Rules';
+import CurrentTasks from './components/pages/currenttasks/CurrentTasks';
 
 function App() {
-  const { setAlert } = useContext(AlertContext)
-  
-  const onTest = () => {
-    setAlert('on', 'text', 'danger', 3000)
-  }
-  const onTest2 = () => {
-    setAlert('on', 'hey!', 'warning', 3000)
-  }
-  const onTest3 = () => {
-    setAlert('on', 'hey!', 'success', 3000)
-  }
+  console.log(moment.now())
   
   return (
     <Router>
@@ -29,17 +21,11 @@ function App() {
         <Navbar />
         <div className="container">
           from app.js
-          <button onClick={onTest}>
-            alert
-          </button>
-          <button onClick={onTest2}>
-            alert
-          </button>
-          <button onClick={onTest3}>
-            alert
-          </button>
           <Switch>
             <Route exact path='/' component={Home} />
+            <Route exact path='/statics' component={Statistics} />
+            <Route exact path='/rules' component={Rules} />
+            <Route exact path='/current-tasks' component={CurrentTasks} />
           </Switch>
         </div>
       </>
