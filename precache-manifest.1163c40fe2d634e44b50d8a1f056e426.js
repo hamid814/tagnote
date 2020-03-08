@@ -1,11 +1,11 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4538c5c5b65e845365cb5e354080e35f",
+    "revision": "321d73354eb5c5293b305fd21c51ede8",
     "url": "/hashnote/index.html"
   },
   {
-    "revision": "5a1ab95c45da8d981c2d",
-    "url": "/hashnote/static/css/main.4b90701c.chunk.css"
+    "revision": "3c112fbc5ab2ee65580b",
+    "url": "/hashnote/static/css/main.ab73e1a0.chunk.css"
   },
   {
     "revision": "0aef7c17234c3e1e7cc5",
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hashnote/static/js/2.ad2c3634.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5a1ab95c45da8d981c2d",
-    "url": "/hashnote/static/js/main.fc8f10f0.chunk.js"
+    "revision": "3c112fbc5ab2ee65580b",
+    "url": "/hashnote/static/js/main.7471db6d.chunk.js"
   },
   {
     "revision": "47b0790be9f147f925cf",
