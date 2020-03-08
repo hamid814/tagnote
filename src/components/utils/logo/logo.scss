@@ -15,18 +15,18 @@
       }
 
       .row-2 {
-        height: 57%;
+        height: 27%;
+      }
+      
+      .row-3 {
+        height: 27%;
       }
     }
     
     .col-2 {
       
-      .row-1 {
-        height: 47%;
-      }
-      
       .row-2 {
-        height: 17%;
+        height: 47%;
       }
       
       .row-3 {
@@ -61,6 +61,11 @@
     }
     
     .row-2 {
+      height: 0%;
+      background: rgb(255, 124, 84);
+    }
+    
+    .row-3 {
       height: 37%;
       background: rgb(4, 188, 164);
     }

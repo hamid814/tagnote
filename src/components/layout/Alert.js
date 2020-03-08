@@ -22,6 +22,8 @@ const Alert = () => {
       setTimeout(() => {
         setAlertClass('on')
       }, 480);
+    } else if(alertStatus === 'first-off') {
+      setAlertClass('off')
     }
     // eslint-disable-next-line
   }, [alertStatus])

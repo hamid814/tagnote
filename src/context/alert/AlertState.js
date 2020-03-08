@@ -2,7 +2,7 @@ import React, { createContext, useReducer } from 'react';
 import AlertReducer from './AlertReducer';
 
 const initialState = {
-  alertStatus: 'off',
+  alertStatus: 'first-off',
   alertMsg: 'alert text',
   alertType: 'success',
   alertTime: 1000

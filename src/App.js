@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import moment from 'moment';
 
 import Navbar from './components/layout/Navbar';
 import Modal from './components/modal/Modal';
@@ -10,9 +9,7 @@ import Statistics from './components/pages/statistics/Statistics';
 import Rules from './components/pages/rules/Rules';
 import CurrentTasks from './components/pages/currenttasks/CurrentTasks';
 
-function App() {
-  console.log(moment.now())
-  
+const App = () => {
   return (
     <Router>
       <>
