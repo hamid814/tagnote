@@ -1,32 +1,25 @@
-import React from 'react'
-import Note from '../../notes/Note';
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+import Notes from '../../notes/Notes';
 
 const Home = () => {
-  const note = {
-    id: 'note_id_1',
-    tags: {
-      first: {
-        id: 'tag_id_1',
-        name: 'story',
-        color: '#eeb82c'
-      },
-      other: [
-        {
-          id: 'tag_id_2',
-          name: 'techy',
-          color: '#04bca4'
-        },
-      ]
-    },
-    text: 'text',
-    date: 'date'
-  }
+  const [notes, setNotes] = useState([])
+
+  useEffect(() => {
+    try {
+      axios.get('/notes')
+        .then(res => setNotes(res.data))
+
+    } catch (error) {
+      console.log(error)
+    }
+    // eslint-disable-next-line
+  }, [])
   
   return (
     <div>
-      form Home js
       <br/>
-      <Note note={note} />
+      <Notes notes={notes} />
     </div>
   )
 }

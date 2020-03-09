@@ -2,17 +2,22 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 
-import './tag.scss';
+import Notes from '../../notes/Notes';
 
-const Tag = ({ match }) => {
+import './tagpage.scss';
+
+const TagPage = ({ match }) => {
   const { id } = match.params
 
   const [tag, setTag] = useState({})
+  const [notes, setNotes] = useState([])
   
   useEffect(() => {
-    axios.get(`/tag/${id}`)
+    axios.get(`/tags/${id}`)
       .then(res => setTag(res.data))
 
+    axios.get(`/notes/tag/${id}`)
+      .then(res => setNotes(res.data))
     // eslint-disable-next-line
   }, [])
   
@@ -29,8 +34,13 @@ const Tag = ({ match }) => {
       <h1 style={tagColor} className='tag-name'>
         #{ tag.name }
       </h1>
+
+      {
+        notes.length > 0 &&
+          <Notes notes={notes} />
+      }
     </div>
   )
 }
 
-export default Tag
+export default TagPage

@@ -1,9 +1,16 @@
 import React from 'react'
+import Note from './Note';
 
-const Notes = () => {
+import './style/notes.scss';
+
+const Notes = ({ notes }) => {
   return (
-    <div>
-      from notes
+    <div className='notes-container'>
+      {
+        notes.map(note => (
+          <Note key={note.id} note={note} />
+        ))
+      }
     </div>
   )
 }

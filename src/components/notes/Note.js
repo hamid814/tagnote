@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios';
 import Tag from './Tag';
 
 import './style/note.scss';
@@ -6,15 +7,25 @@ import './style/note.scss';
 const Note = ({ note }) => {
   const { tags } = note
   
-  console.log(note)
+  const [primaryTag, setPrimaryTag] = useState({})
+  
+  useEffect(() => {
+    try {
+      axios.get(`/tags/${tags.first.id}`)
+        .then(res => setPrimaryTag(res.data))
+    } catch (error) {
+      console.log(error)
+    }
+    // eslint-disable-next-line
+  }, [])
   
   const borderColor = {
-    borderColor: note.tags.first.color
+    borderColor: primaryTag.color
   }
   
   return (
     <div className='note' style={borderColor}>
-      from note
+      { note.text }
       <div className='note-footer'>
         <Tag tag={tags.first} />
         {
