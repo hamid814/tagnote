@@ -15,13 +15,18 @@ const Navbar = () => {
   
   return (
     <div className='navbar'>
-      <div>
-        right / search
+      <div className='navbar-left'>
+        <div>
+          right
+        </div>
+        <div>
+          search
+        </div>
       </div>
       <div>
         <Logo />
       </div>
-      <div>
+      <div className='navbar-right'>
         <ThemeButton />
         <button className='insert-button' onClick={onInsert}>
           insert
