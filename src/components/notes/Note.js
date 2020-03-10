@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import Tag from './Tag';
+import NoteHeader from './NoteHeader';
 
 import './style/note.scss';
 
@@ -11,7 +12,7 @@ const Note = ({ note }) => {
   
   useEffect(() => {
     try {
-      axios.get(`/tags/${tags.first.id}`)
+      axios.get(`/tags/${tags.primary}`)
         .then(res => setPrimaryTag(res.data))
     } catch (error) {
       console.log(error)
@@ -25,12 +26,15 @@ const Note = ({ note }) => {
   
   return (
     <div className='note' style={borderColor}>
+      <div className="note-header">
+        <NoteHeader tag={primaryTag} />
+      </div>
       { note.text }
       <div className='note-footer'>
-        <Tag tag={tags.first} />
+        {/* <Tag tag={tags.primary} /> */}
         {
           tags.other.map(tag => (
-            <Tag key={tag.id} tag={tag} />
+            <Tag key={tag} tag={tag} />
           ))
         }
       </div>

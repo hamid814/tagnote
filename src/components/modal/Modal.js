@@ -42,7 +42,6 @@ const Modal = () => {
     <div className={`modal-container ${modalClass}`} onClick={onClick}>
       <div className='modal-body'>
         <div className='close-modal-btn' onClick={closeModal}></div>
-        moda content
         { modalType === 'quick-insert' && <QuickInsert /> }
       </div>
     </div>

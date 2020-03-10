@@ -13,8 +13,13 @@ const TagPage = ({ match }) => {
   const [notes, setNotes] = useState([])
   
   useEffect(() => {
-    axios.get(`/tags/${id}`)
-      .then(res => setTag(res.data))
+    try {
+      axios.get(`/tags/${id}`)
+        .then(res => setTag(res.data))
+      
+    } catch (err) {
+      console.log(err)
+    }
 
     axios.get(`/notes/tag/${id}`)
       .then(res => setNotes(res.data))
@@ -36,8 +41,13 @@ const TagPage = ({ match }) => {
       </h1>
 
       {
-        notes.length > 0 &&
-          <Notes notes={notes} />
+        notes.primaryList && notes.primaryList.length > 0 &&
+          <Notes notes={notes.primaryList} />
+      }
+      other Notes
+      {
+        notes.otherList && notes.otherList.length > 0 &&
+          <Notes notes={notes.otherList} />
       }
     </div>
   )

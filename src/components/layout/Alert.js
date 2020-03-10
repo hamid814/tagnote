@@ -15,13 +15,13 @@ const Alert = () => {
 
       setTimeout(() => {
         setAlertClass('off')
-      }, 480);
+      }, 380);
     } else if(alertStatus === 'on') {
       setAlertClass('come')
 
       setTimeout(() => {
         setAlertClass('on')
-      }, 480);
+      }, 380);
     } else if(alertStatus === 'first-off') {
       setAlertClass('off')
     }

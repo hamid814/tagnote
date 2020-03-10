@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import './style/index.scss';
+import './style/media720.scss';
 import App from './App';
 import { GlobalProvider } from './context/GlobalState';
 import { AlertProvider } from './context/alert/AlertState'; 

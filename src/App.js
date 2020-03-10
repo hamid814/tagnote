@@ -18,6 +18,7 @@ const App = () => {
   
   console.log('how to relate tags to each other???')
   console.log('tag with no notes page')
+  console.log('tags to be pinned in homepage or made starred')
   
   return (
     <Router>

@@ -7,7 +7,7 @@ const Tag = ({tag}) => {
   
   useEffect(() => {
     try {
-      axios.get(`/tags/${tag.id}`)
+      axios.get(`/tags/${tag}`)
         .then(res => setTheTag(res.data))
     } catch (err) {
       console.log(err)
@@ -24,8 +24,8 @@ const Tag = ({tag}) => {
   }
   
   return (
-    <Link to={`${process.env.PUBLIC_URL}/tag/${tag.id}`} className='tag' style={background}>
-      #{tag.name}
+    <Link to={`${process.env.PUBLIC_URL}/tag/${tag}`} className='tag' style={background}>
+      #{theTag.name}
     </Link>
   )
 }

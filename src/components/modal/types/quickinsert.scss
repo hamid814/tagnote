@@ -1,0 +1,19 @@
+.quick-insert-modal {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px 20px 20px;
+
+  .insert-section {
+    border: 5px solid #666;
+    border-radius: 30px;
+    flex-basis: 48.5%;
+    padding: 10px;
+
+    .section-head {
+      text-align: center;
+      font-size: 160%;
+    }
+  }
+}

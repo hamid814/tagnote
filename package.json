@@ -18,6 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "publish": "gh-pages -d build",
     "deploy": "npm run build && gh-pages -d build"
   },
   "homepage": "https://hamid814.github.io/hashnote/",

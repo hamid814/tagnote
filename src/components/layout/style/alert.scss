@@ -13,7 +13,7 @@
   }
   
   &.go {
-    animation: alertAnim 500ms ease-out reverse;
+    animation: alertAnim 400ms ease-out reverse;
   }
   
   &.on {
@@ -21,7 +21,7 @@
   }
   
   &.come {
-    animation: alertAnim 500ms ease-in;
+    animation: alertAnim 400ms ease-in;
   }
   
   &-success {
@@ -44,9 +44,11 @@
   0% {
     right: -50px;
     opacity: 0;
+    transform: scale(0.75);
   }
   100% {
     right: 10px;
     opacity: 1;
+    transform: scale(1);
   }
 }
