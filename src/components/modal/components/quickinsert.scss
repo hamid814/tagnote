@@ -12,8 +12,16 @@
     padding: 10px;
 
     .section-head {
+      margin-bottom: 20px;
+      letter-spacing: 1.5px;
       text-align: center;
       font-size: 160%;
+    }
+
+    &.right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 }

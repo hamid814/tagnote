@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { ModalContext } from '../../context/modal/ModalState';
 
-import QuickInsert from './types/QuickInsert';
+import QuickInsert from './components/QuickInsert';
 
 import './style/modal.scss';
 

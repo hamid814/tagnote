@@ -21,7 +21,10 @@ const Note = ({ note }) => {
   }, [])
   
   const borderColor = {
-    borderColor: primaryTag.color
+    borderColor: primaryTag.color,
+    borderTopColor: primaryTag.color,
+    // borderRightColor: primaryTag.color,
+    borderLeftColor: primaryTag.color,
   }
   
   return (
