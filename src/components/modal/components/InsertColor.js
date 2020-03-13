@@ -17,11 +17,13 @@ const InsertColor = () => {
 
   const onSumbit = () => {
     axios.post('/colors', {
-      color: 'color'
+      color: hex
     })
 
     console.log('here')
   }
+
+  console.log('must have a place to enter colors name')
 
   const onToggle = () => {
     type === 'hex' ? setType('rgb') : setType('hex')
