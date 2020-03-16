@@ -1,0 +1,27 @@
+.insert-note {
+  display: flex;
+  flex-direction: column;
+
+  .insert-note-tag {
+    padding: 0.2em 0.9rem;
+    font-size: 1.7em;
+    margin-bottom: 0.5rem;
+    background: transparent;
+    border: 3px solid #ccc;
+    border-radius: 20px;
+    color: #ccc;
+  }
+
+  .insert-note-text {
+    padding: 0.5em;
+    font-size: 1.7em;
+    resize: none;
+    background: transparent;
+    border: 3px solid #ccc;
+    border-radius: 20px;
+    color: #ccc;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  }
+}

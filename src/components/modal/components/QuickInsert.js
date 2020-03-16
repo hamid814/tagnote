@@ -1,6 +1,7 @@
 import React from 'react';
-import InsertColor from './InsertColor';
+import InsertNote from './InsertNote';
 import InsertTag from './InsertTag';
+import InsertColor from './InsertColor';
 import './quickinsert.scss';
 
 const QuickInsert = () => {
@@ -9,6 +10,9 @@ const QuickInsert = () => {
       <div className='insert-section left'>
         <div className='section-head'>
           Note
+        </div>
+        <div className="section-body">
+          <InsertNote />
         </div>
       </div>
       <div className='insert-section right'>

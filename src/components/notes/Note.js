@@ -11,8 +11,9 @@ const Note = ({ note }) => {
   const [primaryTag, setPrimaryTag] = useState({})
   
   useEffect(() => {
+    console.log(tags.primary)
     try {
-      axios.get(`/tags/${tags.primary}`)
+      axios.get(`/tags/id/${tags.primary}`)
         .then(res => setPrimaryTag(res.data))
     } catch (error) {
       console.log(error)
@@ -29,7 +30,7 @@ const Note = ({ note }) => {
   
   return (
     <div className='note' style={borderColor}>
-      <div className="note-header">
+      <div className='note-header'>
         <NoteHeader tag={primaryTag} />
       </div>
       { note.text }

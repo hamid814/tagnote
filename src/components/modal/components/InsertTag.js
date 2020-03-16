@@ -10,6 +10,10 @@ const InsertTag = () => {
     setName(e.target.value)
   }
   
+  const onDescChange = e => {
+    setName(e.target.value)
+  }
+  
   const Textcolor = {
     color: `#${color}`
   }
@@ -29,7 +33,7 @@ const InsertTag = () => {
           onChange={onNameChange} />
       </div>
       <div className='insert-tag-desc'>
-        <textarea value={desc}>
+        <textarea value={desc} onChange={onDescChange}>
 
         </textarea>
       </div>
