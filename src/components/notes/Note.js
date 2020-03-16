@@ -11,7 +11,6 @@ const Note = ({ note }) => {
   const [primaryTag, setPrimaryTag] = useState({})
   
   useEffect(() => {
-    console.log(tags.primary)
     try {
       axios.get(`/tags/id/${tags.primary}`)
         .then(res => setPrimaryTag(res.data))

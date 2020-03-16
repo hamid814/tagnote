@@ -3,13 +3,47 @@
   flex-direction: column;
 
   .insert-note-tag {
+    position: relative;
     padding: 0.2em 0.9rem;
     font-size: 1.7em;
     margin-bottom: 0.5rem;
     background: transparent;
     border: 3px solid #ccc;
     border-radius: 20px;
-    color: #ccc;
+    
+    .insert-note-tag-sug {
+      position: absolute;
+      width: calc(100% + 6px);
+      padding: 0.1em 0.7rem;
+      top: calc(100% + 7px);
+      left: -3px;
+      border: 3px solid #ccc;
+      border-radius: 20px;
+      background-color: #555;
+      cursor: pointer;
+
+      &.show {
+        z-index: 0;
+      }
+      
+      &.hide {
+        z-index: -1;
+      }
+    }
+    
+    input {
+      margin-left: 0.5rem;
+      background: transparent;
+      color: #ccc;
+      width: 90%;
+    }
+
+    .tag-suggestion {
+      border-radius: 20px;
+      padding: 2px 15px;
+      margin: 3px;
+      display: inline-block;
+    }
   }
 
   .insert-note-text {
