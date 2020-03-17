@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios';
+import AddOther from './AddOther';
+import DisplayOther from './DisplayOther';
 import './insertnote.scss';
 
-import { AlertContext } from '../../../context/alert/AlertState';
+import { AlertContext } from '../../../../context/alert/AlertState';
 
 const InsertNote = () => {
   const { setAlert } = useContext(AlertContext)
@@ -13,6 +15,8 @@ const InsertNote = () => {
   const [addingTag, setAddingTag] = useState(false)
   const [selectedTag, setSelectedTag] = useState({})
   const [selectTagStep, setSelectTagStep] = useState(0)
+  const [otherTags, setOtherTags] = useState([])
+  const [otherTagsIds, setOtherTagsIds] = useState([])
   
   const onTextChange = e => {
     setText(e.target.value)
@@ -99,8 +103,16 @@ const InsertNote = () => {
           setSelectedTag(res.data)
         })
     } catch (err) {
-      
+      console.log(err)
     }
+  }
+
+  const setOther = tags => {
+    setOtherTags(tags)
+    
+    const ids = tags.map(tag => tag.id)
+    
+    console.log(ids)
   }
 
   const onAddNote = () => {
@@ -110,7 +122,7 @@ const InsertNote = () => {
           text,
           tags: {
             primary: selectedTag.id,
-            other: []
+            other: otherTagsIds
           },
           date: new Date()
         })
@@ -170,7 +182,8 @@ const InsertNote = () => {
         placeholder='Note...'
         rows='6'>
       </textarea>
-      /other hashtags
+      <AddOther setTags={setOther} tags={otherTags} />
+      <DisplayOther tags={otherTags} />
       <input type='submit' value='Add Note' className='insert-note-button' onClick={onAddNote}/>
     </div>
   )

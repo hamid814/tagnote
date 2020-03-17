@@ -18,7 +18,7 @@ const QuickInsert = () => {
       <div className='insert-section right'>
         <div>
           <div className='section-head'>
-            tag
+            Tag
           </div>
           <div className='section-body'>
             <InsertTag />
