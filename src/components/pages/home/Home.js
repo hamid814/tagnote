@@ -28,7 +28,7 @@ const Home = () => {
   }, [])
   
   return (
-    <div>
+    <div className='home-page'>
       <HomeTags tags={tags} />
       <br/>
       <Notes notes={notes} />

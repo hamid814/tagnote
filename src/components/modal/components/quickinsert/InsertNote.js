@@ -30,15 +30,17 @@ const InsertNote = () => {
       .then(res => {
         setTags(res.data)
         if(res.data.length === 1 && res.data[0]) {
+          // only one tag responsed
           if(res.data[0].name === value) {
-            setSelectedTag(res.data[0])
-            setAddingTag(false)
+            selectTag(res.data[0], true)
           } else {
             setSelectedTag({})
           }
         } else if(res.data.length > 1) {
+          // several tags responsed
           if(res.data.map(tag => tag.name).indexOf(value) !== -1) {
             if(res.data[res.data.map(tag => tag.name).indexOf(value)].name === value) {
+              // the text is exactly same as tags name
               selectTag(res.data[res.data.map(tag => tag.name).indexOf(value)])
             }
           } else {
@@ -74,22 +76,39 @@ const InsertNote = () => {
       // arrow up pushed
       selectTagStep !== 0
         && setSelectTagStep(selectTagStep - 1)
+    } else if(e.keyCode === 39) {
+      // arrow right pushed
+      if(tags.length === 1) {
+        selectTag(tags[0], true)
+      }
     } else if(e.keyCode === 13) {
       if(tags.length !== 0) {
         if(tags[selectTagStep - 1]) {
-          selectTag(tags[selectTagStep - 1])
+          selectTag(tags[selectTagStep - 1], true)
         }
       } else if(tags.length === 0 && tag !== '') {
         createTag()
       }
+      if(selectedTag.id) {
+        selectTag(selectedTag, true)
+      }
     }
   }
   
-  const selectTag = (tag, clearAddingTag) => {
+  const selectTag = (tag, clearAddingTag/* T or F */) => {
     setTag(tag.name)
     setSelectedTag(tag)
     clearAddingTag && setAddingTag(false)
     setSelectTagStep(0)
+
+    if(otherTagsIds.indexOf(tag.id) !== -1) {
+      // the tag is in other Tags list so delete it...
+      const newList = otherTags.filter(t => {
+        return t.id !== tag.id
+      })
+
+      setOther(newList)
+    }
   }
 
   const createTag = () => {
@@ -110,9 +129,9 @@ const InsertNote = () => {
   const setOther = tags => {
     setOtherTags(tags)
     
-    const ids = tags.map(tag => tag.id)
+    const ids = tags.map(t => t.id)
     
-    console.log(ids)
+    setOtherTagsIds(ids)
   }
 
   const onAddNote = () => {
@@ -131,6 +150,8 @@ const InsertNote = () => {
             setText('')
             setSelectedTag({})
             setTags([])
+            setOtherTags([])
+            setOtherTagsIds([])
             setAlert('on', 'Note added', 'success', 3500)
           })
       } catch (err) {
@@ -182,8 +203,8 @@ const InsertNote = () => {
         placeholder='Note...'
         rows='6'>
       </textarea>
-      <AddOther setTags={setOther} tags={otherTags} />
-      <DisplayOther tags={otherTags} />
+      <AddOther setTags={setOther} tags={otherTags} primaryTagId={selectedTag.id} />
+      <DisplayOther setTags={setOther} tags={otherTags} />
       <input type='submit' value='Add Note' className='insert-note-button' onClick={onAddNote}/>
     </div>
   )

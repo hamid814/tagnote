@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const HomeTags = ({ tags }) => {
   return (
-    <div>
+    <div className='home-tags-container'>
       {
         tags.map(tag => (
           <Tag key={tag.id} tag={tag} />
