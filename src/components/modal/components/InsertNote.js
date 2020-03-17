@@ -32,7 +32,15 @@ const InsertNote = () => {
           } else {
             setSelectedTag({})
           }
-        } else {
+        } else if(res.data.length > 1) {
+          if(res.data.map(tag => tag.name).indexOf(value) !== -1) {
+            if(res.data[res.data.map(tag => tag.name).indexOf(value)].name === value) {
+              selectTag(res.data[res.data.map(tag => tag.name).indexOf(value)])
+            }
+          } else {
+            setSelectedTag({})
+          }
+        } else if(res.data.length === 0) {
           setSelectedTag({})
         }
       })
@@ -56,7 +64,7 @@ const InsertNote = () => {
     e.preventDefault()
     if(e.keyCode === 40) {
       // arrow down pushed
-      selectTagStep !== tags.length
+      selectTagStep < tags.length
         && setSelectTagStep(selectTagStep + 1)
     } else if(e.keyCode === 38) {
       // arrow up pushed
@@ -68,15 +76,15 @@ const InsertNote = () => {
           selectTag(tags[selectTagStep - 1])
         }
       } else if(tags.length === 0 && tag !== '') {
-        console.log('here')
+        createTag()
       }
     }
   }
   
-  const selectTag = tag => {
+  const selectTag = (tag, clearAddingTag) => {
     setTag(tag.name)
     setSelectedTag(tag)
-    setAddingTag(false)
+    clearAddingTag && setAddingTag(false)
     setSelectTagStep(0)
   }
 
@@ -150,7 +158,7 @@ const InsertNote = () => {
               && <TagsDisplayer step={selectTagStep} tags={tags} select={selectTag} />
           }
           {
-            tag !== ''
+            tag !== '' && tags.map(tag => tag.name).indexOf(tag) === -1
               && <AddTag createTag={createTag} text={tag} />
           }
         </div>
@@ -170,7 +178,7 @@ const InsertNote = () => {
 
 const TagsDisplayer = ({ tags, step, select }) => {
   const onClick = tag => {
-    select(tag)
+    select(tag, true)
   }
   
   return (
