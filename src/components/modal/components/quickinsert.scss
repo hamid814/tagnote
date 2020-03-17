@@ -9,12 +9,18 @@
     border-radius: 30px;
     flex-basis: 48.5%;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
 
     .section-head {
       margin-bottom: 20px;
       letter-spacing: 1.5px;
       text-align: center;
       font-size: 160%;
+    }
+
+    .section-body {
+      flex-grow: 1;
     }
 
     &.right {
