@@ -23,9 +23,19 @@ export const AlertProvider = ({ children }) => {
         status,
         msg: theMsg,
         type: theType,
-        time
       }
     })
+
+    setTimeout(() => {
+      dispatch({
+        type: 'set-alert',
+        payload: {
+          status: 'off',
+          msg: theMsg,
+          type: theType,
+        }
+      })
+    }, time);
   }
 
   return (

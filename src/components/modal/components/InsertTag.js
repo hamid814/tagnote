@@ -4,7 +4,7 @@ import './inserttag.scss';
 const InsertTag = () => {
   const [name, setName] = useState('')
   const [desc, setDesc] = useState('')
-  const [color, setColor] = useState('6c9')
+  const [color, setColor] = useState('')
   
   const onNameChange = e => {
     setName(e.target.value)
@@ -18,12 +18,8 @@ const InsertTag = () => {
     color: `#${color}`
   }
 
-  const borderColor = {
-    borderColor: `#${color}`
-  }
-  
   return (
-    <div className='insert-tag-section' style={borderColor}>
+    <div className='insert-tag-section'>
       <div className='insert-tag-name' style={Textcolor}>
         #<input
           type='text'
@@ -32,11 +28,9 @@ const InsertTag = () => {
           value={name}
           onChange={onNameChange} />
       </div>
-      <div className='insert-tag-desc'>
-        <textarea value={desc} onChange={onDescChange}>
+      <textarea placeholder='tag descriptin' className='insert-tag-desc' value={desc} onChange={onDescChange}>
 
-        </textarea>
-      </div>
+      </textarea>
     </div>
   )
 }

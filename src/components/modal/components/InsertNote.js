@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import axios from 'axios';
 import './insertnote.scss';
 
+import { AlertContext } from '../../../context/alert/AlertState';
+
 const InsertNote = () => {
+  const { setAlert } = useContext(AlertContext)
+  
   const [text, setText] = useState('')
   const [tag, setTag] = useState('')
   const [tags, setTags] = useState([])
@@ -59,7 +63,13 @@ const InsertNote = () => {
       selectTagStep !== 0
         && setSelectTagStep(selectTagStep - 1)
     } else if(e.keyCode === 13) {
-      selectTag(tags[selectTagStep - 1])
+      if(tags.length !== 0) {
+        if(tags[selectTagStep - 1]) {
+          selectTag(tags[selectTagStep - 1])
+        }
+      } else if(tags.length === 0 && tag !== '') {
+        console.log('here')
+      }
     }
   }
   
@@ -70,16 +80,49 @@ const InsertNote = () => {
     setSelectTagStep(0)
   }
 
+  const createTag = () => {
+    try {
+      axios.post('/tags', {
+        name: tag
+      })
+        .then(res => {
+          setAlert('on', `tag ${res.data.name} created`, 'success', 2500)
+          setAddingTag(false)
+          setSelectedTag(res.data)
+        })
+    } catch (err) {
+      
+    }
+  }
+
   const onAddNote = () => {
-    axios.post('/notes', {
-      text,
-      tags: {
-        primary: selectedTag.id,
-        other: []
-      },
-      date: new Date()
-    })
-      .then(res => console.log(res.data))
+    if(selectedTag.id && text) {
+      try {
+        axios.post('/notes', {
+          text,
+          tags: {
+            primary: selectedTag.id,
+            other: []
+          },
+          date: new Date()
+        })
+          .then(res => {
+            setTag('')
+            setText('')
+            setSelectedTag({})
+            setTags([])
+            setAlert('on', 'Note added', 'success', 3500)
+          })
+      } catch (err) {
+        console.log(err)
+      }
+    } else {
+      if(text === '') {
+        setAlert('on', 'note text is required', 'warning', 2500)
+      } else if(!selectedTag.id) {
+        setAlert('on', 'you must select or create a tag', 'warning', 2500)
+      }
+    }
   }
 
   const tagBorderColor = {
@@ -103,17 +146,12 @@ const InsertNote = () => {
           onChange={onTagChange}/>
         <div className={`insert-note-tag-sug ${addingTag ? 'show' : 'hide'}`}>
           {
-            // tags.length !== 0 && tags.map(tag => (
-              // <TagDisplayer key={tag.id} tag={tag} select={selectTag} />
-            // ))
-          }
-          {
             tags.length !== 0
               && <TagsDisplayer step={selectTagStep} tags={tags} select={selectTag} />
           }
           {
-            tags.length === 0 && tag !== ''
-              && <AddTag text={tag} />
+            tag !== ''
+              && <AddTag createTag={createTag} text={tag} />
           }
         </div>
       </div>
@@ -126,22 +164,6 @@ const InsertNote = () => {
       </textarea>
       /other hashtags
       <input type='submit' value='Add Note' className='insert-note-button' onClick={onAddNote}/>
-    </div>
-  )
-}
-
-const TagDisplayer = ({ tag, select }) => {
-  const onClick = () => {
-    select(tag)
-  }
-  
-  const bg = {
-    background: tag.color
-  }
-  
-  return (
-    <div onClick={onClick} style={bg} className='tag-suggestion'>
-      { tag.name }
     </div>
   )
 }
@@ -168,10 +190,10 @@ const TagsDisplayer = ({ tags, step, select }) => {
   )
 }
 
-const AddTag = ({ text }) => {
+const AddTag = ({ text, createTag }) => {
   return (
     <div>
-      create <div className='tag-suggestion create-tag'>{ text }</div>
+      create <div onClick={() => createTag()} className='tag-suggestion create-tag'>{ text }</div>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 .alert {
-  position: absolute;
+  position: fixed;
   right: 10px;
   top: 10px;
   width: 300px;
@@ -25,7 +25,7 @@
   }
   
   &-success {
-    background: rgba(21, 255, 99, 0.85);
+    background: rgba(0, 202, 67, 0.85);
     border: 1px solid rgb(0, 146, 49);
   }
   
@@ -35,7 +35,7 @@
   }
   
   &-warning {
-    background: rgba(255, 220, 21, 0.85);
+    background: rgba(158, 134, 0, 0.85);
     border: 1px solid rgb(110, 71, 0);
   }
 }
