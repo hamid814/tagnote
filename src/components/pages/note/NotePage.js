@@ -15,7 +15,7 @@ const NotePage = ({ match }) => {
     // eslint-disable-next-line
   }, [])
   
-  return (
+  return ( 
     <>
       <Link to={`${process.env.PUBLIC_URL}/`}>
         go to Home
