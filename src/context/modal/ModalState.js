@@ -2,8 +2,8 @@ import React, { createContext, useReducer } from 'react';
 import ModalReducer from './ModalReducer';
 
 const initialState = {
-  modalStatus: 'on',
-  modalType: 'quick-insert',
+  modalStatus: 'first-off', // values: on, off, first-off
+  modalType: 'none',
 };
 
 export const ModalContext = createContext(initialState);

@@ -6,7 +6,7 @@ import NoteHeader from './NoteHeader';
 import './style/note.scss';
 
 const Note = ({ note }) => {
-  const { tags } = note
+  const { tags, id } = note
   
   const [primaryTag, setPrimaryTag] = useState({})
   
@@ -22,19 +22,16 @@ const Note = ({ note }) => {
   
   const borderColor = {
     borderColor: primaryTag.color,
-    borderTopColor: primaryTag.color,
-    // borderRightColor: primaryTag.color,
-    borderLeftColor: primaryTag.color,
+    borderRadius: 0
   }
   
   return (
     <div className='note' style={borderColor}>
       <div className='note-header'>
-        <NoteHeader tag={primaryTag} />
+        <NoteHeader tag={primaryTag} id={id} />
       </div>
       { note.text }
       <div className='note-footer'>
-        {/* <Tag tag={tags.primary} /> */}
         {
           tags.other.map(tag => (
             <Tag key={tag} tag={tag} />

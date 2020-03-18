@@ -26,7 +26,7 @@ const QuickInsert = () => {
         </div>
         <div>
           <div className='section-head'>
-            color
+            Color
           </div>
           <div className='section-body'>
             <InsertColor />

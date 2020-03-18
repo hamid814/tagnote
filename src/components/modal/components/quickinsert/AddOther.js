@@ -17,15 +17,6 @@ const AddOther = ({ tags, primaryTagId, setTags }) => {
             setTag(res.data[0])
           } else {
             // several tags responsed => get the one with exact same name
-            // if(res.data.map(t=>t.name).indexOf(value) !== -1) {
-              // setTag(res.data[res.data.map(t=>t.name).indexOf(value)])
-            // } else {
-              // serveral tags responsed & no exact same name => choose one
-              // if(tags.map(t=>t.id).indexOf(res.data[0].id) === -1) {
-                // setTag(res.data[0])
-              // } else {
-                // setTag(res.data[1])
-              // }
             let index = 0;
             while(res.data[index] && tags.map(t=>t.id).indexOf(res.data[index].id) === -1) {
               setTag(res.data[index])

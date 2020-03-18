@@ -3,14 +3,42 @@
   border: 3px solid;
   display: inline-block;
   // width: 260px;
+  color: var(--text-color);
   width: 100%;
   border-radius: 20px;
   padding: 12px;
   padding-left: 17px;
+  overflow: hidden;
 
+  &:hover {
+    
+    .note-header {
+      
+      .note-header-button {
+        opacity: 1;
+        transform: scale(1) translateX(0);
+      }
+    }
+  }
+  
   .note-header {
-    font-size: 170%;
     margin-bottom: 7px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .note-header-tag {
+      font-size: 170%;
+    }
+
+    .note-header-button {
+      border-radius: 2px;
+      width: 20px;
+      height: 20px;
+      opacity: 0;
+      transition: 0.5s;
+      transform: translateX(20px);
+    }
   }
   
   .note-footer {
