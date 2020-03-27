@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import axios from 'axios';
 import Tag from './Tag';
 import NoteHeader from './NoteHeader';
@@ -7,6 +7,8 @@ import './style/note.scss';
 
 const Note = ({ note }) => {
   const { tags, id } = note
+  
+  const noteElem = useRef('')
   
   const [primaryTag, setPrimaryTag] = useState({})
   
@@ -21,12 +23,14 @@ const Note = ({ note }) => {
   }, [])
   
   const borderColor = {
-    borderColor: primaryTag.color,
-    borderRadius: 0
+    // borderColor: primaryTag.color,
+    // borderRadius: 0,
   }
-  
+
+  noteElem.current && noteElem.current.style.setProperty('--c', primaryTag.color)
+    
   return (
-    <div className='note' style={borderColor}>
+    <div ref={noteElem} className='note' style={borderColor}>
       <div className='note-header'>
         <NoteHeader tag={primaryTag} id={id} />
       </div>
