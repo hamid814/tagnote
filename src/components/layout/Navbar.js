@@ -29,7 +29,7 @@ const Navbar = () => {
       <div className='navbar-right'>
         <ThemeButton />
         <button className='insert-button' onClick={onInsert}>
-          insert
+          Insert
         </button>
       </div>
     </div>
