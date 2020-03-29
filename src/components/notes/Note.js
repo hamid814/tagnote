@@ -6,7 +6,7 @@ import NoteHeader from './NoteHeader';
 import './style/note.scss';
 
 const Note = ({ note }) => {
-  const { tags, id } = note
+  const { tags, _id } = note
   
   const noteElem = useRef('')
   
@@ -14,8 +14,8 @@ const Note = ({ note }) => {
   
   useEffect(() => {
     try {
-      axios.get(`/tags/id/${tags.primary}`)
-        .then(res => setPrimaryTag(res.data))
+      axios.get(`/api/v1/tags/${tags.primary}`)
+        .then(res => setPrimaryTag(res.data.data))
     } catch (error) {
       console.log(error)
     }
@@ -32,9 +32,9 @@ const Note = ({ note }) => {
   return (
     <div ref={noteElem} className='note' style={borderColor}>
       <div className='note-header'>
-        <NoteHeader tag={primaryTag} id={id} />
+        <NoteHeader tag={primaryTag} id={_id} />
       </div>
-      { note.text }
+      { note.body }
       <div className='note-footer'>
         {
           tags.other.map(tag => (

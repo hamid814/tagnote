@@ -113,8 +113,9 @@ const InsertNote = () => {
 
   const createTag = () => {
     try {
-      axios.post('/tags', {
-        name: tag
+      axios.post('/api/v1/tags', {
+        name: tag,
+        description: 'fast added tag'
       })
         .then(res => {
           setAlert('on', `tag ${res.data.name} created`, 'success', 2500)

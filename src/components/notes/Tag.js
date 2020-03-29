@@ -7,8 +7,8 @@ const Tag = ({tag}) => {
   
   useEffect(() => {
     try {
-      axios.get(`/tags/id/${tag}`)
-        .then(res => setTheTag(res.data))
+      axios.get(`/api/v1/tags/${tag}`)
+        .then(res => setTheTag(res.data.data))
     } catch (err) {
       console.log(err)
     }

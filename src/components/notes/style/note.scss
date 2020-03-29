@@ -15,22 +15,30 @@
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    border: 9px solid var(--c);
-    border-bottom-color: transparent;
-    border-right-color: transparent;
-    background-color: transparent;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    // border: 9px solid var(--c);
+    // border-bottom-color: transparent;
+    // border-right-color: transparent;
+    background-color: var(--c);
+    clip-path: polygon(0 0px, 15px 0, 30px 15px, 30px 30px);
+    transform: translate(0, 0);
+    transition: clip-path 0.3s ease, transform 0.3s ease;
   }
   
   &:hover {
     
+    &::after {
+      clip-path: polygon(5px 5px, 25px 5px, 25px 25px, 5px 25px);
+      transform: translate(-5px, 5px);
+    }
+    
     .note-header {
       
       .note-header-button {
-        opacity: 1;
-        transform: translateX(0);
+        opacity: 0;
+        margin-right: 0;
       }
     }
   }
@@ -51,7 +59,7 @@
       height: 20px;
       opacity: 0;
       transition: 0.5s;
-      transform: translateX(20px);
+      margin-right: -20px;
     }
   }
   

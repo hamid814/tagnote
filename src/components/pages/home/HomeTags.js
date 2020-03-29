@@ -6,7 +6,7 @@ const HomeTags = ({ tags }) => {
     <div className='home-tags-container'>
       {
         tags.map(tag => (
-          <Tag key={tag.id} tag={tag} />
+          <Tag key={tag._id} tag={tag} />
         ))
       }
     </div>
@@ -15,7 +15,7 @@ const HomeTags = ({ tags }) => {
 
 const Tag = ({ tag }) => {
   const getLink = () => {
-    return `${process.env.PUBLIC_URL}/tag/${tag.id}`
+    return `${process.env.PUBLIC_URL}/tag/${tag._id}`
   }
   
   const style = {

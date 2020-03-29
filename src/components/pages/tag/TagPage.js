@@ -14,8 +14,8 @@ const TagPage = ({ match }) => {
   
   useEffect(() => {
     try {
-      axios.get(`/tags/id/${id}`)
-        .then(res => setTag(res.data))
+      axios.get(`/api/v1/tags/${id}`)
+        .then(res => setTag(res.data.data))
       
     } catch (err) {
       console.log(err)

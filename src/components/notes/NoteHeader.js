@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const NoteHeader = ({ tag, id }) => {
+const NoteHeader = ({ tag, _id }) => {
   const getLink = () => {
-    const tagLink = `${process.env.PUBLIC_URL}/tag/${tag.id}`
-    const noteLink = `${process.env.PUBLIC_URL}/note/${id}`
+    const tagLink = `${process.env.PUBLIC_URL}/tag/${tag._id}`
+    const noteLink = `${process.env.PUBLIC_URL}/note/${_id}`
     
     return {
       tag: tagLink,

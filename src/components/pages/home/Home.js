@@ -11,16 +11,16 @@ const Home = () => {
 
   useEffect(() => {
     try {
-      axios.get('/notes')
-        .then(res => setNotes(res.data))
+      axios.get('/api/v1/notes')
+        .then(res => setNotes(res.data.data))
 
     } catch (error) {
       console.log(error)
     }
 
     try {
-      axios.get('/tags')
-        .then(res => setTags(res.data))
+      axios.get('/api/v1/tags')
+        .then(res => setTags(res.data.data))
     } catch (err) {
       console.log(err)
     }
