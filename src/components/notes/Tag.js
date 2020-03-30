@@ -20,12 +20,12 @@ const Tag = ({tag}) => {
   }
 
   const background = {
-    background: getTagColor()
+    background: theTag ? theTag.color : 'initial'
   }
   
   return (
     <Link to={`${process.env.PUBLIC_URL}/tag/${tag}`} className='tag' style={background}>
-      #{theTag.name}
+      #{theTag && theTag.name}
     </Link>
   )
 }

@@ -27,7 +27,7 @@ const Note = ({ note }) => {
     // borderRadius: 0,
   }
 
-  noteElem.current && noteElem.current.style.setProperty('--c', primaryTag.color)
+  noteElem.current && primaryTag && noteElem.current.style.setProperty('--c', primaryTag.color)
     
   return (
     <div ref={noteElem} className='note' style={borderColor}>
