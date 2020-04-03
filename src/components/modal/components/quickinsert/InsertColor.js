@@ -53,9 +53,9 @@ const InsertColor = () => {
       </div>
       <div className={`insert-color-input ${type}`}>
         <div className='insert-color-rgb'>
-          <input type='number' min='0' max='255' step='1' placeholder='red' />
-          <input type='number' min='0' max='255' step='1' placeholder='green' />
-          <input type='number' min='0' max='255' step='1' placeholder='blue' />
+          <input type='number' min='0' max='255' step='1' placeholder='red' onChange={onRGBChange} />
+          <input type='number' min='0' max='255' step='1' placeholder='green' onChange={onRGBChange} />
+          <input type='number' min='0' max='255' step='1' placeholder='blue' onChange={onRGBChange} />
         </div>
         <div className='insert-color-hex'>
           #<input type='text' value={hex} onChange={onHexChange} />

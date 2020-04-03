@@ -3,7 +3,9 @@ import './inserttag.scss';
 
 const InsertTag = () => {
   const [name, setName] = useState('')
+  // eslint-disable-next-line
   const [desc, setDesc] = useState('')
+  // eslint-disable-next-line
   const [color, setColor] = useState('')
   
   const onNameChange = e => {

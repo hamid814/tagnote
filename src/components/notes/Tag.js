@@ -15,10 +15,6 @@ const Tag = ({tag}) => {
     // eslint-disable-next-line
   }, [])
   
-  const getTagColor = () => {
-    return theTag.color
-  }
-
   const background = {
     background: theTag ? theTag.color : 'initial'
   }
