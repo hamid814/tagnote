@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NoteHeader = ({ tag, _id }) => {
   const getLink = () => {
-    const tagLink = `${process.env.PUBLIC_URL}/tag/${tag && tag._id}`
+    const tagLink = `${process.env.PUBLIC_URL}/tag/${tag._id}`
     const noteLink = `${process.env.PUBLIC_URL}/note/${_id}`
     
     return {
@@ -13,17 +13,17 @@ const NoteHeader = ({ tag, _id }) => {
   }
   
   const headerStyle = {
-    color: tag && tag.color
+    color: tag.color
   }
 
   const buttonStyle = {
-    background: tag && tag.color
+    background: tag.color
   }
   
   return (
     <>
       <Link to={getLink().tag} className='note-header-tag' style={headerStyle}>
-        #{ tag && tag.name }
+        #{ tag.name }
       </Link>
       <Link to={getLink().note} className='note-header-button' style={buttonStyle}>
         

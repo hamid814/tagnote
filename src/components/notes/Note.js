@@ -1,44 +1,28 @@
-import React, { useState, useEffect, useRef } from 'react'
-import axios from 'axios';
+import React, { useRef } from 'react'
 import Tag from './Tag';
 import NoteHeader from './NoteHeader';
 
 import './style/note.scss';
 
 const Note = ({ note }) => {
-  const { tags, _id } = note
+  const { _id, tag, otherTags } = note
   
   const noteElem = useRef('')
   
-  const [primaryTag, setPrimaryTag] = useState({})
-  
-  useEffect(() => {
-    try {
-      axios.get(`/api/v1/tags/${tags.primary}`)
-        .then(res => setPrimaryTag(res.data.data))
-    } catch (error) {
-      console.log(error)
-    }
-    // eslint-disable-next-line
-  }, [])
-  
-  const borderColor = {
-    // borderColor: primaryTag.color,
-    // borderRadius: 0,
-  }
+  setTimeout(() => {
+    noteElem.current.style.setProperty('--c', tag.color)
+  }, 1);
 
-  noteElem.current && primaryTag && noteElem.current.style.setProperty('--c', primaryTag.color)
-    
   return (
-    <div ref={noteElem} className='note' style={borderColor}>
+    <div ref={noteElem} className='note'>
       <div className='note-header'>
-        <NoteHeader tag={primaryTag} id={_id} />
+        <NoteHeader tag={tag} _id={_id} />
       </div>
       { note.body }
       <div className='note-footer'>
         {
-          tags.other.map(tag => (
-            <Tag key={tag} tag={tag} />
+          otherTags.map(tag => (
+            <Tag key={tag._id} tag={tag} />
           ))
         }
       </div>
