@@ -23,7 +23,7 @@ const Navbar = () => {
           search
         </div>
       </div>
-      <div>
+      <div className='navbar-logo'>
         <Logo />
       </div>
       <div className='navbar-right'>

@@ -118,9 +118,9 @@ const InsertNote = () => {
         description: 'fast added tag'
       })
         .then(res => {
-          setAlert('on', `tag ${res.data.name} created`, 'success', 2500)
+          setAlert('on', `tag ${res.data.data.name} created`, 'success', 2500)
           setAddingTag(false)
-          setSelectedTag(res.data)
+          setSelectedTag(res.data.data)
         })
     } catch (err) {
       console.log(err)
@@ -136,14 +136,12 @@ const InsertNote = () => {
   }
 
   const onAddNote = () => {
-    if(selectedTag.id && text) {
+    if(selectedTag._id && text) {
       try {
-        axios.post('/notes', {
-          text,
-          tags: {
-            primary: selectedTag.id,
-            other: otherTagsIds
-          },
+        axios.post('/api/v1/notes', {
+          body: text,
+          tag: selectedTag._id,
+          otherTags: otherTagsIds,
           date: new Date()
         })
           .then(res => {
@@ -161,7 +159,7 @@ const InsertNote = () => {
     } else {
       if(text === '') {
         setAlert('on', 'note text is required', 'warning', 2500)
-      } else if(!selectedTag.id) {
+      } else if(!selectedTag._id) {
         setAlert('on', 'you must select or create a tag', 'warning', 2500)
       }
     }
