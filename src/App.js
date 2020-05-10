@@ -5,17 +5,17 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './sotre/store';
 
-import Navbar from './components/layout/Navbar';
-import Modal from './components/modal/Modal';
-import Alert from './components/layout/Alert';
+import Navbar from 'components/layout/Navbar';
+import Modal from 'components/modal/Modal';
+import Alert from 'components/layout/Alert';
 // pages
-import Home from './components/pages/home/Home';
-import TagPage from './components/pages/tag/TagPage';
-import Tags from './components/pages/tags/Tags';
-import NotePage from './components/pages/note/NotePage';
-import Statistics from './components/pages/statistics/Statistics';
-import Rules from './components/pages/rules/Rules';
-import CurrentTasks from './components/pages/currenttasks/CurrentTasks';
+import Home from 'components/pages/home/Home';
+import TagPage from 'components/pages/tag/TagPage';
+import Tags from 'components/pages/tags/Tags';
+import NotePage from 'components/pages/note/NotePage';
+import Statistics from 'components/pages/statistics/Statistics';
+import Rules from 'components/pages/rules/Rules';
+import CurrentTasks from 'components/pages/currenttasks/CurrentTasks';
 
 const App = () => {
   const publicUrl = process.env.PUBLIC_URL;

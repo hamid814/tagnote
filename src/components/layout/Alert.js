@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-import { setAlert } from '../../sotre/actions/alert';
+import { setAlert } from 'sotre/actions/alert';
 
 import './style/alert.scss';
 
