@@ -1,42 +1,55 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-import { AlertContext } from '../../context/alert/AlertState';
+import { connect } from 'react-redux';
+
+import { setAlert } from '../../sotre/actions/alert';
 
 import './style/alert.scss';
 
-const Alert = () => {
-  const { alertStatus, alertMsg, alertType, setAlert} = useContext(AlertContext)
+const Alert = ({ alertState }) => {
+  console.log(alertState);
 
-  const [alertClass, setAlertClass] = useState('off')
-  
+  const { alertStatus, alertType, alertMsg } = alertState;
+
+  const [alertClass, setAlertClass] = useState('off');
+
   useEffect(() => {
-    if(alertStatus === 'off') {
-      setAlertClass('go')
+    if (alertStatus === 'off') {
+      setAlertClass('go');
 
       setTimeout(() => {
-        setAlertClass('off')
+        setAlertClass('off');
       }, 380);
-    } else if(alertStatus === 'on') {
-      setAlertClass('come')
+    } else if (alertStatus === 'on') {
+      setAlertClass('come');
 
       setTimeout(() => {
-        setAlertClass('on')
+        setAlertClass('on');
       }, 380);
-    } else if(alertStatus === 'first-off') {
-      setAlertClass('off')
+    } else if (alertStatus === 'first-off') {
+      setAlertClass('off');
     }
     // eslint-disable-next-line
-  }, [alertStatus])
+  }, [alertStatus]);
 
   const onClick = () => {
-    setAlert('off')
-  }
-  
+    setAlert('off');
+  };
+
   return (
     <div className={`alert ${alertClass} alert-${alertType}`} onClick={onClick}>
-      { alertMsg }
+      {alertMsg}
     </div>
-  )
-}
+  );
+};
 
-export default Alert
+Alert.propTypes = {
+  alertState: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  alertState: state.alert,
+});
+
+export default connect(mapStateToProps)(Alert);
