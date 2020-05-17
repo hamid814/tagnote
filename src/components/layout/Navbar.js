@@ -1,14 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Logo from 'components/utils/logo/Logo';
 import ThemeButton from 'components/utils/themebutton/ThemeButton';
-import { ModalContext } from 'context/modal/ModalState';
+import { setModal } from '../../store/actions/modal';
 
 import './style/navbar.scss';
 
-const Navbar = () => {
-  const { setModal } = useContext(ModalContext);
-
+const Navbar = ({ setModal }) => {
   const onInsert = () => {
     setModal('on', 'quick-insert');
   };
@@ -32,4 +32,8 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+Navbar.propTypes = {
+  setModal: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setModal })(Navbar);

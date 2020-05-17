@@ -1,13 +1,14 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { ModalContext } from 'context/modal/ModalState';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
+import { setModal } from 'store/actions/modal';
 
 import QuickInsert from './components/quickinsert/QuickInsert';
 
 import './style/modal.scss';
 
-const Modal = () => {
-  const { modalStatus, modalType, setModal } = useContext(ModalContext);
-
+const Modal = ({ modalStatus, modalType, setModal }) => {
   const [modalClass, setModalClass] = useState('off');
 
   useEffect(() => {
@@ -48,4 +49,15 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+Modal.propTypes = {
+  modalStatus: PropTypes.string.isRequired,
+  modalType: PropTypes.string.isRequired,
+  setModal: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  modalStatus: state.modal.modalStatus,
+  modalType: state.modal.modalType,
+});
+
+export default connect(mapStateToProps, { setModal })(Modal);

@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 
-import { setAlert } from 'sotre/actions/alert';
+import { setAlert } from 'store/actions/alert';
 
 import './style/alert.scss';
 
 const Alert = ({ alertState }) => {
-  console.log(alertState);
-
   const { alertStatus, alertType, alertMsg } = alertState;
 
   const [alertClass, setAlertClass] = useState('off');

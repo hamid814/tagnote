@@ -6,7 +6,7 @@ import AddOther from './AddOther';
 import DisplayOther from './DisplayOther';
 import './insertnote.scss';
 
-import { setAlert } from '../../../../sotre/actions/alert';
+import { setAlert } from 'store/actions/alert';
 
 const InsertNote = ({ setAlert }) => {
   const [text, setText] = useState('');

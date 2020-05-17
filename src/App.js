@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 // redux
 import { Provider } from 'react-redux';
-import store from './sotre/store';
+import store from './store/store';
 
 import Navbar from 'components/layout/Navbar';
 import Modal from 'components/modal/Modal';

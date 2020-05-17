@@ -3,7 +3,7 @@ import './logo.scss';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { setAlert } from '../../../sotre/actions/alert';
+import { setAlert } from 'store/actions/alert';
 
 const Logo = ({ setAlert }) => {
   const alert = () => {

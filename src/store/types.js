@@ -6,5 +6,8 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAIL = 'LOGIN_FAIL';
 
-// alert typs
+// alert types
 export const SET_ALERT = 'SET_ALERT';
+
+// modal types
+export const SET_MODAL = 'SET_MODAL';
