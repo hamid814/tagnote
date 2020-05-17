@@ -11,3 +11,6 @@ export const SET_ALERT = 'SET_ALERT';
 
 // modal types
 export const SET_MODAL = 'SET_MODAL';
+
+// note types
+export const SET_NOTES = 'SET_NOTES';
