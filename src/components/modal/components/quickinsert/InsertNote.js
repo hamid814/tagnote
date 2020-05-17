@@ -22,38 +22,39 @@ const InsertNote = ({ setAlert }) => {
     setText(e.target.value);
   };
 
-  const onTagChange = (e) => {
+  const onTagChange = async (e) => {
     const value = e.target.value;
 
     setTag(e.target.value);
-    axios.get(`/tags/search?text=${e.target.value}`).then((res) => {
-      setTags(res.data);
-      if (res.data.length === 1 && res.data[0]) {
-        // only one tag responsed
-        if (res.data[0].name === value) {
-          selectTag(res.data[0], true);
-        } else {
-          setSelectedTag({});
-        }
-      } else if (res.data.length > 1) {
-        // several tags responsed
-        if (res.data.map((tag) => tag.name).indexOf(value) !== -1) {
-          if (
-            res.data[res.data.map((tag) => tag.name).indexOf(value)].name ===
-            value
-          ) {
-            // the text is exactly same as tags name
-            selectTag(res.data[res.data.map((tag) => tag.name).indexOf(value)]);
-          }
-        } else {
-          setSelectedTag({});
-        }
-      } else if (res.data.length === 0) {
+    const res = await axios.get(`/api/v1/tags/?find=${e.target.value}`);
+
+    const resData = res.data.data;
+
+    setTags(resData);
+    if (resData.length === 1 && resData[0]) {
+      // only one tag responsed
+      if (resData[0].name === value) {
+        selectTag(resData[0], true);
+      } else {
         setSelectedTag({});
       }
-    });
+    } else if (resData.length > 1) {
+      // several tags responsed
+      if (resData.map((tag) => tag.name).indexOf(value) !== -1) {
+        if (
+          resData[resData.map((tag) => tag.name).indexOf(value)].name === value
+        ) {
+          // the text is exactly same as tags name
+          selectTag(resData[resData.map((tag) => tag.name).indexOf(value)]);
+        }
+      } else {
+        setSelectedTag({});
+      }
+    } else if (resData.length === 0) {
+      setSelectedTag({});
+    }
 
-    e.target.value !== '' && setAddingTag(true);
+    value !== '' && setAddingTag(true);
 
     setSelectTagStep(0);
   };
@@ -89,7 +90,7 @@ const InsertNote = ({ setAlert }) => {
       } else if (tags.length === 0 && tag !== '') {
         createTag();
       }
-      if (selectedTag.id) {
+      if (selectedTag._id) {
         selectTag(selectedTag, true);
       }
     }
@@ -101,10 +102,10 @@ const InsertNote = ({ setAlert }) => {
     clearAddingTag && setAddingTag(false);
     setSelectTagStep(0);
 
-    if (otherTagsIds.indexOf(tag.id) !== -1) {
+    if (otherTagsIds.indexOf(tag._id) !== -1) {
       // the tag is in other Tags list so delete it...
       const newList = otherTags.filter((t) => {
-        return t.id !== tag.id;
+        return t._id !== tag._id;
       });
 
       setOther(newList);
@@ -131,7 +132,7 @@ const InsertNote = ({ setAlert }) => {
   const setOther = (tags) => {
     setOtherTags(tags);
 
-    const ids = tags.map((t) => t.id);
+    const ids = tags.map((t) => t._id);
 
     setOtherTagsIds(ids);
   };
@@ -216,7 +217,7 @@ const InsertNote = ({ setAlert }) => {
       <AddOther
         setTags={setOther}
         tags={otherTags}
-        primaryTagId={selectedTag.id}
+        primaryTagId={selectedTag._id}
       />
       <DisplayOther setTags={setOther} tags={otherTags} />
       <input
@@ -238,7 +239,7 @@ const TagsDisplayer = ({ tags, step, select }) => {
     <>
       {tags.map((tag, index) => (
         <div
-          key={tag.id}
+          key={tag._id}
           className={`tag-suggestion ${index + 1 === step && 'active'}`}
           onClick={() => onClick(tag)}
           style={{ background: tag.color }}
