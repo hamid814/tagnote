@@ -18,3 +18,6 @@ export const ADD_NOTE = 'ADD_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
 export const SELECT_NOTE = 'SELECT_NOTE';
 export const SET_LOADING = 'SET_LOADING(note)';
+
+// tag types
+export const GET_TAG = 'GET_TAG';

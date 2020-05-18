@@ -35,11 +35,11 @@ const App = () => {
             <Switch>
               <Route exact path={`${publicUrl}/`} component={Home} />
               <Route exact path={`${publicUrl}/hashnote`} component={Home} />
-              <Route exact path={`${publicUrl}/tag/:id`} component={TagPage} />
               <Route exact path={`${publicUrl}/tags`} component={Tags} />
+              <Route exact path={`${publicUrl}/tags/:id`} component={TagPage} />
               <Route
                 exact
-                path={`${publicUrl}/note/:id`}
+                path={`${publicUrl}/notes/:id`}
                 component={NotePage}
               />
               <Route
