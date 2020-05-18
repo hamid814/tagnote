@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
+import { connect } from 'react-redux';
 import Tag from './Tag';
 import NoteHeader from './NoteHeader';
 
+import { deleteNote } from 'store/actions/note';
+
 import './style/note.scss';
 
-const Note = ({ note }) => {
+const Note = ({ note, deleteNote }) => {
   const { _id, tag, otherTags } = note;
 
   const noteElem = useRef('');
@@ -23,9 +26,12 @@ const Note = ({ note }) => {
         {otherTags.map((tag) => (
           <Tag key={tag._id} tag={tag} />
         ))}
+        <span onClick={() => deleteNote(_id)} className="delete-note-btn">
+          &times;
+        </span>
       </div>
     </div>
   );
 };
 
-export default Note;
+export default connect(null, { deleteNote })(Note);

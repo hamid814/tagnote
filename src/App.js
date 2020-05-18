@@ -21,7 +21,6 @@ const App = () => {
   const publicUrl = process.env.PUBLIC_URL;
 
   console.log('how to relate tags to each other???');
-  console.log('tag with no notes page');
   console.log('tags to be pinned in homepage or made starred');
   console.log('add flag in tag page if tag has no color or desc');
 

@@ -1,52 +1,46 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const NotePage = ({ match }) => {
-  const [loading, setLoading] = useState(true)
-  const [note, setNote] = useState({})
+import { selectNote } from 'store/actions/note';
+
+const NotePage = ({ match, selectNote, note, loading }) => {
+  console.log(loading);
 
   useEffect(() => {
-    try {
-      axios.get(`/api/v1/notes/${match.params.id}`)
-        .then(res => {
-          setNote(res.data.data)
-          setLoading(false)
-        })
-    } catch (err) {
-      console.log(err)
-    }
+    selectNote(match.params.id);
     // eslint-disable-next-line
-  }, [])
-  
-  if(loading) {
-    return (
-      <>
-        loading
-      </>
-    )
+  }, []);
+
+  if (loading) {
+    return <>loading</>;
   } else {
     return (
       <>
-        <Link to={`${process.env.PUBLIC_URL}/`}>
-          go to Home
-        </Link>
-        <br/>
-        {
-          note.body
-        }
-        <br/>
-        {
-          note.otherTags.map(tag => (
-            tag.name
-          ))
-        }
-        {
-          console.log(note)
-        }
+        <Link to={`${process.env.PUBLIC_URL}/`}>go to Home</Link>
+        <br />
+        <span style={{ color: note.tag.color }}>#{note.tag.name}</span>
+        <br />
+        {note.body}
+        <br />
+        {note.otherTags.map((tag) => (
+          <span style={{ color: tag.color }}>{tag.name}</span>
+        ))}
       </>
-    )
+    );
   }
-}
+};
 
-export default NotePage
+NotePage.proptypes = {
+  note: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  selectNote: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  note: state.note.note,
+  loading: state.note.loading,
+});
+
+export default connect(mapStateToProps, { selectNote })(NotePage);

@@ -6,6 +6,7 @@
   // width: 260px;
   color: var(--text-color);
   width: 100%;
+  font-weight: 100;
   padding: 12px;
   padding-left: 17px;
   overflow: hidden;
@@ -23,26 +24,31 @@
     border-right-color: transparent;
     background-color: transparent;
   }
-  
+
   &:hover {
-    
     .note-header {
-      
       .note-header-button {
         opacity: 1;
         margin-right: 0;
       }
     }
+
+    .note-footer {
+      .delete-note-btn {
+        opacity: 1;
+      }
+    }
   }
-  
+
   .note-header {
     margin-bottom: 7px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    font-weight: 100;
 
     .note-header-tag {
-      font-size: 170%;
+      font-size: 28px;
     }
 
     .note-header-button {
@@ -54,9 +60,24 @@
       margin-right: -20px;
     }
   }
-  
+
   .note-footer {
     margin-top: 15px;
+
+    .delete-note-btn {
+      float: right;
+      font-size: 20px;
+      padding-bottom: 5px;
+      cursor: pointer;
+      border-radius: 55555px;
+      opacity: 0;
+      background-color: rgb(252, 74, 74);
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 
@@ -67,15 +88,16 @@
   padding: 2px 10px;
   cursor: pointer;
   color: #222;
+  font-weight: 400;
 
   &:hover {
     filter: brightness(110%);
   }
-  
+
   &:first-child {
     margin-left: 0;
   }
-  
+
   &:last-child {
     margin-right: 0;
   }

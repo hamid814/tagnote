@@ -7,8 +7,9 @@ import DisplayOther from './DisplayOther';
 import './insertnote.scss';
 
 import { setAlert } from 'store/actions/alert';
+import { addNote } from 'store/actions/note';
 
-const InsertNote = ({ setAlert }) => {
+const InsertNote = ({ setAlert, addNote }) => {
   const [text, setText] = useState('');
   const [tag, setTag] = useState('');
   const [tags, setTags] = useState([]);
@@ -137,28 +138,22 @@ const InsertNote = ({ setAlert }) => {
     setOtherTagsIds(ids);
   };
 
-  const onAddNote = () => {
+  const onAddNote = async () => {
     if (selectedTag._id && text) {
-      try {
-        axios
-          .post('/api/v1/notes', {
-            body: text,
-            tag: selectedTag._id,
-            otherTags: otherTagsIds,
-            date: new Date(),
-          })
-          .then((res) => {
-            setTag('');
-            setText('');
-            setSelectedTag({});
-            setTags([]);
-            setOtherTags([]);
-            setOtherTagsIds([]);
-            setAlert('on', 'Note added', 'success', 3500);
-          });
-      } catch (err) {
-        console.log(err);
-      }
+      const formData = {
+        body: text,
+        tag: selectedTag._id,
+        otherTags: otherTagsIds,
+        date: new Date(),
+      };
+      await addNote(formData);
+      setTag('');
+      setText('');
+      setSelectedTag({});
+      setTags([]);
+      setOtherTags([]);
+      setOtherTagsIds([]);
+      setAlert('on', 'Note added', 'success', 3500);
     } else {
       if (text === '') {
         setAlert('on', 'note text is required', 'warning', 2500);
@@ -266,4 +261,4 @@ InsertNote.propTypes = {
   setAlert: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(InsertNote);
+export default connect(null, { setAlert, addNote })(InsertNote);
