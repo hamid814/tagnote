@@ -36,4 +36,6 @@ const Note = ({ note, deleteNote, showDelete }) => {
   );
 };
 
+console.log('porptypes');
+
 export default connect(null, { deleteNote })(Note);

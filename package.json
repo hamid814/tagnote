@@ -1,5 +1,5 @@
 {
-  "name": "hashnote-client",
+  "name": "tagnote-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -25,7 +25,7 @@
     "publish": "gh-pages -d build",
     "deploy": "npm run build && gh-pages -d build"
   },
-  "homepage": "https://hamid814.github.io/hashnote/",
+  "homepage": "https://hamid814.github.io/tagnote/",
   "eslintConfig": {
     "extends": "react-app"
   },

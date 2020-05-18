@@ -14,7 +14,7 @@ const TagPage = ({ match, tag, notes, otherNotes, getTag, loading }) => {
   useEffect(() => {
     getTag(id);
     // eslint-disable-next-line
-  }, []);
+  }, [id]);
 
   const tagColor = {
     color: tag.color,
@@ -29,9 +29,17 @@ const TagPage = ({ match, tag, notes, otherNotes, getTag, loading }) => {
         <h1 style={tagColor} className="tag-name">
           #{tag.name}
         </h1>
-        <Notes notes={notes} />
-        other Notes
-        <Notes notes={otherNotes} />
+        <Notes notes={notes} showDelete={false} />
+        {otherNotes.length > 0 && (
+          <>
+            <div
+              className="others-line"
+              style={{ background: tag.color }}
+            ></div>
+            <h3 className="other-tags-title">Related Notes</h3>
+            <Notes notes={otherNotes} showDelete={false} />
+          </>
+        )}
       </div>
     );
 };

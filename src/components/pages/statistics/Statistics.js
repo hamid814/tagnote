@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
 
 const Statics = () => {
   return (
     <div>
-      from stats
+      <div>from stats</div>
+      <div>tags only been in other tags</div>
     </div>
-  )
-}
+  );
+};
 
-export default Statics
+export default Statics;
