@@ -6,3 +6,11 @@
     height: 36px;
   }
 }
+
+@media (max-width: 720px) {
+  .home-page {
+    .home-tags-container {
+      display: none;
+    }
+  }
+}
