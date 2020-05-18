@@ -15,6 +15,8 @@ export default function (state = initialState, action) {
       return {
         ...state,
         tag: payload.tag,
+        notes: payload.notes,
+        otherNotes: payload.otherNotes,
         loading: false,
       };
     default:

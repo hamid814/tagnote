@@ -7,7 +7,7 @@ import { deleteNote } from 'store/actions/note';
 
 import './style/note.scss';
 
-const Note = ({ note, deleteNote }) => {
+const Note = ({ note, deleteNote, showDelete }) => {
   const { _id, tag, otherTags } = note;
 
   const noteElem = useRef('');
@@ -26,9 +26,11 @@ const Note = ({ note, deleteNote }) => {
         {otherTags.map((tag) => (
           <Tag key={tag._id} tag={tag} />
         ))}
-        <span onClick={() => deleteNote(_id)} className="delete-note-btn">
-          &times;
-        </span>
+        {showDelete && (
+          <span onClick={() => deleteNote(_id)} className="delete-note-btn">
+            &times;
+          </span>
+        )}
       </div>
     </div>
   );

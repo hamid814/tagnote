@@ -1,23 +1,21 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 const HomeTags = ({ tags }) => {
   return (
-    <div className='home-tags-container'>
-      {
-        tags.map(tag => (
-          <Tag key={tag._id} tag={tag} />
-        ))
-      }
+    <div className="home-tags-container">
+      {tags.map((tag) => (
+        <Tag key={tag._id} tag={tag} />
+      ))}
     </div>
-  )
-}
+  );
+};
 
 const Tag = ({ tag }) => {
   const getLink = () => {
-    return `${process.env.PUBLIC_URL}/tag/${tag._id}`
-  }
-  
+    return `${process.env.PUBLIC_URL}/tags/${tag._id}`;
+  };
+
   const style = {
     background: tag.color,
     fontSize: '130%',
@@ -25,13 +23,13 @@ const Tag = ({ tag }) => {
     padding: '4px 12px',
     borderRadius: 9999,
     color: '#333',
-  }
-  
+  };
+
   return (
     <Link to={getLink} style={style}>
-      #{ tag.name }
+      #{tag.name}
     </Link>
-  )
-}
+  );
+};
 
-export default HomeTags
+export default HomeTags;

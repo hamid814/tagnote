@@ -8,7 +8,7 @@ import Notes from '../../notes/Notes';
 
 import './tagpage.scss';
 
-const TagPage = ({ match, tag, notes, getTag, loading }) => {
+const TagPage = ({ match, tag, notes, otherNotes, getTag, loading }) => {
   const { id } = match.params;
 
   useEffect(() => {
@@ -29,13 +29,9 @@ const TagPage = ({ match, tag, notes, getTag, loading }) => {
         <h1 style={tagColor} className="tag-name">
           #{tag.name}
         </h1>
-        {notes.primaryList && notes.primaryList.length > 0 && (
-          <Notes notes={notes.primaryList} />
-        )}
+        <Notes notes={notes} />
         other Notes
-        {notes.otherList && notes.otherList.length > 0 && (
-          <Notes notes={notes.otherList} />
-        )}
+        <Notes notes={otherNotes} />
       </div>
     );
 };
@@ -45,7 +41,7 @@ console.log('proptypes');
 const mapStateToProps = (state) => ({
   tag: state.tag.tag,
   notes: state.tag.notes,
-  relatedNotes: state.tag.relatedNotes,
+  otherNotes: state.tag.otherNotes,
   loading: state.tag.loading,
 });
 
