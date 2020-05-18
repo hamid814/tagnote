@@ -153,7 +153,6 @@ const InsertNote = ({ setAlert, addNote }) => {
       setTags([]);
       setOtherTags([]);
       setOtherTagsIds([]);
-      setAlert('on', 'Note added', 'success', 3500);
     } else {
       if (text === '') {
         setAlert('on', 'note text is required', 'warning', 2500);

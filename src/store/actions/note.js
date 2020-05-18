@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { setAlert } from './alert';
 
 import {
   GET_NOTES,
@@ -17,7 +18,7 @@ export const getNotes = () => async (dispatch) => {
       payload: res.data.data,
     });
   } catch (err) {
-    console.log(err);
+    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
   }
 };
 
@@ -35,8 +36,9 @@ export const addNote = (formData) => async (dispatch) => {
       type: ADD_NOTE,
       payload: res.data.data,
     });
+    dispatch(setAlert('on', 'Note added', 'success', 3500));
   } catch (err) {
-    console.log(err);
+    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
   }
 };
 
@@ -49,7 +51,7 @@ export const deleteNote = (id) => async (dispatch) => {
       payload: id,
     });
   } catch (err) {
-    console.log(err);
+    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
   }
 };
 
@@ -63,7 +65,7 @@ export const selectNote = (id) => async (dispatch) => {
       payload: res.data.data,
     });
   } catch (err) {
-    console.log(err);
+    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
   }
 };
 

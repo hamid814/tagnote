@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom';
 import { selectNote } from 'store/actions/note';
 
 const NotePage = ({ match, selectNote, note, loading }) => {
-  console.log(loading);
-
   useEffect(() => {
     selectNote(match.params.id);
     // eslint-disable-next-line
