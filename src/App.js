@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/store';
 
+// layout
 import Navbar from 'components/layout/Navbar';
 import Modal from 'components/modal/Modal';
 import Alert from 'components/layout/Alert';
@@ -16,6 +17,7 @@ import NotePage from 'components/pages/note/NotePage';
 import Statistics from 'components/pages/statistics/Statistics';
 import Rules from 'components/pages/rules/Rules';
 import CurrentTasks from 'components/pages/currenttasks/CurrentTasks';
+import Loading from 'components/utils/loading/Loading';
 
 const App = () => {
   const publicUrl = process.env.PUBLIC_URL;
@@ -34,6 +36,7 @@ const App = () => {
           <div className="container">
             <Switch>
               <Route exact path={`${publicUrl}/`} component={Home} />
+              <Route exact path={`${publicUrl}/loading`} component={Loading} />
               <Route exact path={`${publicUrl}/tagnote`} component={Home} />
               <Route exact path={`${publicUrl}/tags`} component={Tags} />
               <Route exact path={`${publicUrl}/tags/:id`} component={TagPage} />
