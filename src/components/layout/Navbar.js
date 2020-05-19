@@ -25,6 +25,9 @@ const Navbar = ({ setModal }) => {
       <div className="navbar-right">
         <ThemeButton />
         <button className="insert-button" onClick={onInsert}>
+          <span role="img" aria-label="note">
+            📝
+          </span>
           Insert
         </button>
       </div>

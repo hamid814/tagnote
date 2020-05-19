@@ -42,7 +42,11 @@ const Modal = ({ modalStatus, modalType, setModal }) => {
   return (
     <div className={`modal-container ${modalClass}`} onClick={onClick}>
       <div className="modal-body">
-        <div className="close-modal-btn" onClick={closeModal}></div>
+        <div className="close-modal-btn" onClick={closeModal}>
+          <span role="img" aria-label="x-mark">
+            ✖️
+          </span>
+        </div>
         {modalType === 'quick-insert' && <QuickInsert />}
       </div>
     </div>

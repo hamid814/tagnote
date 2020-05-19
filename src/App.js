@@ -34,7 +34,7 @@ const App = () => {
           <div className="container">
             <Switch>
               <Route exact path={`${publicUrl}/`} component={Home} />
-              <Route exact path={`${publicUrl}/hashnote`} component={Home} />
+              <Route exact path={`${publicUrl}/tagnote`} component={Home} />
               <Route exact path={`${publicUrl}/tags`} component={Tags} />
               <Route exact path={`${publicUrl}/tags/:id`} component={TagPage} />
               <Route

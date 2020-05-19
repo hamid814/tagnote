@@ -5,6 +5,8 @@ import NoNotes from './NoNotes';
 import './style/notes.scss';
 
 const Notes = ({ notes, showDelete }) => {
+  console.log(notes);
+
   if (notes.length === 0) {
     return <NoNotes />;
   } else {

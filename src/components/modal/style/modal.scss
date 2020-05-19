@@ -12,21 +12,20 @@
 
   &.off {
     display: none;
-    
   }
-  
+
   &.go {
     display: flex;
-    
+
     .modal-body {
       animation: modalAnim 500ms ease-out reverse;
     }
   }
-  
+
   &.on {
     display: flex;
   }
-  
+
   &.come {
     display: flex;
 
@@ -34,22 +33,25 @@
       animation: modalAnim 500ms ease-out;
     }
   }
-  
+
   .modal-body {
     position: relative;
     width: 86%;
     height: 80%;
     background: #444444;
-    border-radius: 20px;
-  
+    border-radius: 10px;
+
     .close-modal-btn {
       position: absolute;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       top: 5px;
       right: 5px;
-      width: 35px;
-      height: 35px;
+      width: 30px;
+      height: 30px;
       background: rgb(168, 54, 54);
-      border-radius: 9999px;
+      border-radius: 7px;
       cursor: pointer;
     }
   }
@@ -57,11 +59,11 @@
 
 @keyframes modalAnim {
   0% {
-    margin-top: 100px;    
+    margin-top: 100px;
     opacity: 0;
   }
   100% {
-    margin-top: 0px;    
+    margin-top: 0px;
     opacity: 1;
   }
 }

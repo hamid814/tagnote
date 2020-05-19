@@ -3,28 +3,29 @@
   top: 0;
   left: 0;
   right: 0;
-  background: #555e;
+  background: #555c;
   border-bottom: 1px solid #ccc;
   height: 55px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
-  
+
   .navbar-left {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  
+
   .navbar-logo {
     position: absolute;
+    left: 0;
     width: 100%;
     display: flex;
     justify-content: center;
     z-index: -1;
   }
-  
+
   .navbar-right {
     display: flex;
     align-items: center;
@@ -34,7 +35,7 @@
 
 .insert-button {
   background: rgb(0, 150, 170);
-  border-radius: 9999px;
-  padding: 8px 24px;
+  border-radius: 7px;
+  padding: 8px 12px;
   color: #f4f4f4;
 }

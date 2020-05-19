@@ -1,0 +1,51 @@
+.note-page {
+  display: flex;
+  justify-content: space-between;
+
+  .note-page-note {
+    flex-basis: 48%;
+    background-color: #222228;
+    padding: 35px 20px;
+    border-radius: 7px;
+
+    .note-header {
+      display: flex;
+      justify-content: space-between;
+
+      .note-header-tag {
+        font-size: 22px;
+        font-weight: 100;
+      }
+
+      .note-header-date {
+        color: #888d;
+        font-size: 14px;
+      }
+    }
+
+    .note-body {
+      padding: 10px 10px 20px 0;
+      font-size: 17px;
+      letter-spacing: 0.3px;
+    }
+
+    .note-footer {
+      .note-other-notes {
+        float: right;
+        font-size: 13px;
+      }
+    }
+  }
+
+  .note-page-panel {
+    border: 1px solid red;
+    flex-basis: 48%;
+  }
+
+  .dev-link {
+    color: blue;
+    text-decoration: underline;
+    position: absolute;
+    right: 0;
+  }
+}

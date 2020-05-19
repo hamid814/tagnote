@@ -24,10 +24,10 @@ const InsertNote = ({ setAlert, addNote }) => {
   };
 
   const onTagChange = async (e) => {
-    const value = e.target.value;
+    const value = e.target.value.toLowerCase();
 
     setTag(e.target.value);
-    const res = await axios.get(`/api/v1/tags/?find=${e.target.value}`);
+    const res = await axios.get(`/api/v1/tags/?find=${value}`);
 
     const resData = res.data.data;
 
@@ -216,7 +216,7 @@ const InsertNote = ({ setAlert, addNote }) => {
       <DisplayOther setTags={setOther} tags={otherTags} />
       <input
         type="submit"
-        value="Add Note"
+        value="➕ Add Note"
         className="insert-note-button"
         onClick={onAddNote}
       />

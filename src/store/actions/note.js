@@ -18,7 +18,9 @@ export const getNotes = () => async (dispatch) => {
       payload: res.data.data,
     });
   } catch (err) {
-    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
+    err.response &&
+      err.response.data &&
+      dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
   }
 };
 
@@ -65,7 +67,9 @@ export const selectNote = (id) => async (dispatch) => {
       payload: res.data.data,
     });
   } catch (err) {
-    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
+    err.response &&
+      err.response.data &&
+      dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
   }
 };
 
