@@ -7,7 +7,7 @@ import { setAlert } from 'store/actions/alert';
 
 import './style/alert.scss';
 
-const Alert = ({ alertState }) => {
+const Alert = ({ alertState, setAlert }) => {
   const { alertStatus, alertType, alertMsg } = alertState;
 
   const [alertClass, setAlertClass] = useState('off');
@@ -44,10 +44,11 @@ const Alert = ({ alertState }) => {
 
 Alert.propTypes = {
   alertState: PropTypes.object.isRequired,
+  setAlert: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   alertState: state.alert,
 });
 
-export default connect(mapStateToProps)(Alert);
+export default connect(mapStateToProps, { setAlert })(Alert);

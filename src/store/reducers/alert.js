@@ -4,7 +4,6 @@ const initialState = {
   alertStatus: 'first-off',
   alertMsg: 'alert text',
   alertType: 'success',
-  alertTime: 1000,
 };
 
 export default function (state = initialState, action) {
@@ -17,7 +16,6 @@ export default function (state = initialState, action) {
         alertStatus: payload.status,
         alertMsg: payload.msg,
         alertType: payload.type,
-        alertTime: payload.time,
       };
     default:
       return state;

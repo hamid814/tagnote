@@ -6,6 +6,7 @@ import {
   ADD_NOTE,
   SELECT_NOTE,
   SET_LOADING,
+  UPDATE_NOTE,
   DELETE_NOTE,
 } from '../types';
 
@@ -54,6 +55,27 @@ export const deleteNote = (id) => async (dispatch) => {
     });
 
     dispatch(setAlert('on', 'Note Was Deleted', 'info', 3500));
+  } catch (err) {
+    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
+  }
+};
+
+export const updateNote = (id, formData) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await axios.put(`/api/v1/notes/${id}`, formData, config);
+
+    dispatch({
+      type: UPDATE_NOTE,
+      payload: res.data.data,
+    });
+
+    dispatch(setAlert('on', 'Note was edited', 'success', 3500));
   } catch (err) {
     dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
   }

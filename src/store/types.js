@@ -15,9 +15,11 @@ export const SET_MODAL = 'SET_MODAL';
 // note types
 export const GET_NOTES = 'GET_NOTES';
 export const ADD_NOTE = 'ADD_NOTE';
+export const UPDATE_NOTE = 'UPDATE_NOTE';
 export const DELETE_NOTE = 'DELETE_NOTE';
 export const SELECT_NOTE = 'SELECT_NOTE';
 export const SET_LOADING = 'SET_LOADING(note)';
 
 // tag types
 export const GET_TAG = 'GET_TAG';
+export const ADD_TAG = 'ADD_TAG';

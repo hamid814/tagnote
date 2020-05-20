@@ -1,16 +1,16 @@
 import { SET_ALERT } from '../types';
 
-export const setAlert = (status, msg, type, time) => (dispatch) => {
+export const setAlert = (status, msg, type, time) => (dispatch, getState) => {
   dispatch({
     type: SET_ALERT,
     payload: {
       status,
-      msg,
-      type,
+      msg: msg || getState().alert.alertMsg,
+      type: type || getState().alert.alertType,
     },
   });
 
-  setTimeout(() => {
+  const deldeteAlert = setTimeout(() => {
     dispatch({
       type: SET_ALERT,
       payload: {
@@ -19,5 +19,7 @@ export const setAlert = (status, msg, type, time) => (dispatch) => {
         type,
       },
     });
-  }, time);
+  }, time || 3000);
+
+  status === 'off' && clearTimeout(deldeteAlert);
 };

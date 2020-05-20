@@ -25,6 +25,7 @@ const App = () => {
   console.log('how to relate tags to each other???');
   console.log('tags to be pinned in homepage or made starred');
   console.log('add flag in tag page if tag has no color or desc');
+  console.log('add headers: content-type in axios interceptors');
 
   return (
     <Provider store={store}>

@@ -1,6 +1,7 @@
 import {
   GET_NOTES,
   ADD_NOTE,
+  UPDATE_NOTE,
   DELETE_NOTE,
   SELECT_NOTE,
   SET_LOADING,
@@ -26,6 +27,14 @@ export default function (state = initialState, action) {
       return {
         ...state,
         notes: [payload, ...state.notes],
+      };
+    case UPDATE_NOTE:
+      return {
+        ...state,
+        notes: state.notes.map((note) =>
+          note._id === payload._id ? payload : note
+        ),
+        note: state.note._id === payload._id ? payload : state.note,
       };
     case DELETE_NOTE:
       return {
