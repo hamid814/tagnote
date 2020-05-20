@@ -30,12 +30,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    .insert-button {
+      background: rgb(0, 150, 170);
+      border-radius: 7px;
+      padding: 8px 12px;
+      color: #f4f4f4;
+    }
   }
 }
 
-.insert-button {
-  background: rgb(0, 150, 170);
-  border-radius: 7px;
-  padding: 8px 12px;
-  color: #f4f4f4;
+@media (max-width: 720px) {
+  .navbar {
+    padding: 0 10px;
+  }
 }

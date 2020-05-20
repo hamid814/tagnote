@@ -35,12 +35,22 @@ const Modal = ({ modalStatus, modalType, setModal }) => {
     }
   };
 
+  const onKeyUp = (e) => {
+    if (e.keyCode === 27) {
+      closeModal();
+    }
+  };
+
   const closeModal = () => {
     setModal('off');
   };
 
   return (
-    <div className={`modal-container ${modalClass}`} onClick={onClick}>
+    <div
+      className={`modal-container ${modalClass}`}
+      onClick={onClick}
+      onKeyUp={onKeyUp}
+    >
       <div className="modal-body">
         <div className="close-modal-btn" onClick={closeModal}>
           <span role="img" aria-label="x-mark">

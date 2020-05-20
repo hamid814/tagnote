@@ -1,12 +1,18 @@
+// modules
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import moment from 'moment';
 
+// redux
 import { selectNote } from 'store/actions/note';
 
-import './notePage.scss';
+// components
+import BigNote from './BigNote';
+import NotePanel from './NotePanel';
+
+// style
+import './style/notePage.scss';
 
 const NotePage = ({ match, selectNote, note, loading }) => {
   useEffect(() => {
@@ -17,35 +23,17 @@ const NotePage = ({ match, selectNote, note, loading }) => {
   if (loading) {
     return <>loading</>;
   } else {
-    const date = moment(note.date, 'YYYY-MM-DD/hh:mm:ss');
     return (
       <div className="note-page">
         <Link className="dev-link" to={`${process.env.PUBLIC_URL}/`}>
           Home
         </Link>
-        <div className="note-page-note">
-          <div className="note-header">
-            <div className="note-header-tag" style={{ color: note.tag.color }}>
-              #{note.tag.name}
-            </div>
-            <div className="note-header-date">{date.format('YY / MM')}</div>
-          </div>
-          <div className="note-body">{note.body}</div>
-          <div className="note-footer">
-            <div className="note-other-notes">
-              {note.otherTags.map((tag) => (
-                <Link
-                  to={process.env.PUBLIC_URL + '/tags/' + tag._id}
-                  key={tag._id}
-                  style={{ color: tag.color }}
-                >
-                  #{tag.name}{' '}
-                </Link>
-              ))}
-            </div>
-          </div>
+        <div className="note-page-note-wrapper">
+          <BigNote note={note} />
         </div>
-        <div className="note-page-panel">panel</div>
+        <div className="note-page-panel-wrapper">
+          <NotePanel />
+        </div>
       </div>
     );
   }

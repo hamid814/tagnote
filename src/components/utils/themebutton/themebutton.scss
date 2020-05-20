@@ -1,0 +1,10 @@
+.tagnote-theme-changer-btn {
+  margin-right: 22px;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+
+  &.dark {
+    margin-right: 12px;
+  }
+}
