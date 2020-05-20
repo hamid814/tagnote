@@ -38,6 +38,11 @@
     background: rgba(158, 134, 0, 0.9);
     border: 1px solid rgb(110, 71, 0);
   }
+
+  &-info {
+    background: rgba(0, 146, 165, 0.95);
+    border: 1px solid rgba(0, 80, 90, 0.95);
+  }
 }
 
 @keyframes alertAnim {

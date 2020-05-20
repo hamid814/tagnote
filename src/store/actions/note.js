@@ -52,6 +52,8 @@ export const deleteNote = (id) => async (dispatch) => {
       type: DELETE_NOTE,
       payload: id,
     });
+
+    dispatch(setAlert('on', 'Note Was Deleted', 'info', 3500));
   } catch (err) {
     dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
   }

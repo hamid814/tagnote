@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import { setModal } from 'store/actions/modal';
 
 import QuickInsert from './components/quickinsert/QuickInsert';
+import AskModal from './components/askModal/AskModal';
 
 import './style/modal.scss';
 
-const Modal = ({ modalStatus, modalType, setModal }) => {
+const Modal = ({ modalStatus, modalType, modalData, setModal }) => {
   const [modalClass, setModalClass] = useState('off');
 
   useEffect(() => {
@@ -17,13 +18,13 @@ const Modal = ({ modalStatus, modalType, setModal }) => {
 
       setTimeout(() => {
         setModalClass('off');
-      }, 480);
+      }, 290);
     } else if (modalStatus === 'on') {
       setModalClass('come');
 
       setTimeout(() => {
         setModalClass('on');
-      }, 480);
+      }, 290);
     } else if (modalStatus === 'first-off') {
       setModalClass('off');
     }
@@ -45,19 +46,34 @@ const Modal = ({ modalStatus, modalType, setModal }) => {
     setModal('off');
   };
 
+  const getModalSize = () => {
+    let size = 'wide';
+
+    switch (modalType) {
+      case 'ask-modal':
+        size = 'narrow';
+        break;
+      default:
+        size = 'wide';
+    }
+
+    return size;
+  };
+
   return (
     <div
       className={`modal-container ${modalClass}`}
       onClick={onClick}
       onKeyUp={onKeyUp}
     >
-      <div className="modal-body">
+      <div className={`modal-body ${getModalSize()}`}>
         <div className="close-modal-btn" onClick={closeModal}>
           <span role="img" aria-label="x-mark">
             ✖️
           </span>
         </div>
         {modalType === 'quick-insert' && <QuickInsert />}
+        {modalType === 'ask-modal' && <AskModal data={modalData} />}
       </div>
     </div>
   );
@@ -66,12 +82,14 @@ const Modal = ({ modalStatus, modalType, setModal }) => {
 Modal.propTypes = {
   modalStatus: PropTypes.string.isRequired,
   modalType: PropTypes.string.isRequired,
+  modalData: PropTypes.object.isRequired,
   setModal: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   modalStatus: state.modal.modalStatus,
   modalType: state.modal.modalType,
+  modalData: state.modal.modalData,
 });
 
 export default connect(mapStateToProps, { setModal })(Modal);

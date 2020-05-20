@@ -3,6 +3,7 @@ import { SET_MODAL } from '../types';
 const initialState = {
   modalStatus: 'first-off', // values: on, off, first-off
   modalType: 'none',
+  modalData: {},
 };
 
 export default function (state = initialState, action) {
@@ -13,6 +14,7 @@ export default function (state = initialState, action) {
       return {
         modalStatus: payload.status,
         modalType: payload.type,
+        modalData: payload.data,
       };
     default:
       return {

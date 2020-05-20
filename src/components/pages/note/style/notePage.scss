@@ -5,6 +5,23 @@
 
   .note-page-note-wrapper {
     flex-basis: 48%;
+    position: relative;
+
+    .edit-note-button {
+      display: none;
+      position: absolute;
+      padding: 7px 10px;
+      background-color: #36c;
+      border-radius: 7px;
+      bottom: -60px;
+      right: 20px;
+      color: var(--text-color);
+      cursor: pointer;
+
+      &:active {
+        filter: brightness(150%);
+      }
+    }
   }
 
   .note-page-note {
@@ -46,13 +63,51 @@
     flex-basis: 48%;
     height: 100%;
     overflow-x: auto;
-    overflow-y: hidden;
+    overflow-x: hidden;
   }
+}
 
-  .dev-link {
-    color: blue;
-    text-decoration: underline;
-    position: absolute;
-    right: 0;
+@media (max-width: 720px) {
+  .note-page {
+    display: block;
+    position: relative;
+    height: 100%;
+
+    &.edit {
+      .note-page-note-wrapper {
+        opacity: 0;
+        z-index: 1;
+      }
+      .note-page-panel-wrapper {
+        opacity: 1;
+        z-index: 2;
+      }
+    }
+
+    .note-page-note-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 2;
+      opacity: 1;
+      transition: 0.5s;
+
+      .edit-note-button {
+        display: inline-block;
+      }
+    }
+
+    .note-page-panel-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 1;
+      opacity: 0;
+      transition: 0.5s;
+    }
   }
 }

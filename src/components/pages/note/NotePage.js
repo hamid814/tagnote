@@ -1,8 +1,10 @@
 // modules
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+
+// compnents
+import Loading from 'components/utils/loading/Loading';
 
 // redux
 import { selectNote } from 'store/actions/note';
@@ -15,24 +17,27 @@ import NotePanel from './NotePanel';
 import './style/notePage.scss';
 
 const NotePage = ({ match, selectNote, note, loading }) => {
+  const [pageState, setPageState] = useState('edit'); // val: display, edit
+
   useEffect(() => {
     selectNote(match.params.id);
     // eslint-disable-next-line
   }, []);
 
+  const toggleEdit = () => {
+    pageState === 'edit' ? setPageState('display') : setPageState('edit');
+  };
+
   if (loading) {
-    return <>loading</>;
+    return <Loading />;
   } else {
     return (
-      <div className="note-page">
-        <Link className="dev-link" to={`${process.env.PUBLIC_URL}/`}>
-          Home
-        </Link>
+      <div className={`note-page ${pageState}`}>
         <div className="note-page-note-wrapper">
-          <BigNote note={note} />
+          <BigNote goToEdit={toggleEdit} note={note} />
         </div>
         <div className="note-page-panel-wrapper">
-          <NotePanel />
+          <NotePanel goToDisplay={toggleEdit} note={note} />
         </div>
       </div>
     );

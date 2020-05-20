@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 
-const BigNote = ({ note: { body, tag, date, otherTags } }) => {
+const BigNote = ({ note: { body, tag, date, otherTags }, goToEdit }) => {
   const formattedDate = moment(date, 'YYYY-MM-DD/hh:mm:ss').format('YY/MM');
 
   return (
@@ -29,6 +29,12 @@ const BigNote = ({ note: { body, tag, date, otherTags } }) => {
           ))}
         </div>
       </div>
+      <input
+        type="button"
+        value="✍️ Edit"
+        className="edit-note-button"
+        onClick={goToEdit}
+      />
     </div>
   );
 };
