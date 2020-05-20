@@ -15,7 +15,9 @@ const NotePanel = ({ note, goToDisplay, setModal, deleteNote, history }) => {
 
   const onTagTextChange = (e) => setTagText(e.target.value);
 
-  const onSave = () => goToDisplay();
+  const onSave = () => {
+    goToDisplay();
+  };
 
   const goToHome = () => history.push('/tagnote');
 
@@ -36,7 +38,7 @@ const NotePanel = ({ note, goToDisplay, setModal, deleteNote, history }) => {
         },
         {
           text: 'No',
-          color: '#22e',
+          color: '#88d',
           action: setModal,
           actionArg: 'off',
         },

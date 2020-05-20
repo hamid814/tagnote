@@ -3,24 +3,36 @@ import React from 'react';
 // style
 import './askmodal.scss';
 
-const AskModal = ({ data: { title, text, buttons } }) => {
+const AskModal = ({ data: { title, text, buttons }, closeModal }) => {
   return (
     <div className="ask-modal-container">
       <div className="ask-modal-title">{title}</div>
       <div className="ask-modal-text">{text}</div>
       <div className="ask-modal-buttons">
-        {buttons.map((btn) => (
+        {buttons && buttons.length !== 0 ? (
+          buttons.map((btn) => (
+            <button
+              key={btn.text}
+              onClick={() => btn.action(btn.actionArg)}
+              style={{
+                color: btn.color,
+                flexBasis: `${100 / buttons.length}%`,
+              }}
+            >
+              {btn.text}
+            </button>
+          ))
+        ) : (
           <button
-            key={btn.text}
-            onClick={() => btn.action(btn.actionArg)}
+            onClick={closeModal}
             style={{
-              color: btn.color,
-              flexBasis: `${94 / buttons.length}%`,
+              color: '#2a4',
+              flexBasis: `100%`,
             }}
           >
-            {btn.text}
+            Close
           </button>
-        ))}
+        )}
       </div>
     </div>
   );

@@ -73,7 +73,9 @@ const Modal = ({ modalStatus, modalType, modalData, setModal }) => {
           </span>
         </div>
         {modalType === 'quick-insert' && <QuickInsert />}
-        {modalType === 'ask-modal' && <AskModal data={modalData} />}
+        {modalType === 'ask-modal' && (
+          <AskModal closeModal={closeModal} data={modalData} />
+        )}
       </div>
     </div>
   );
