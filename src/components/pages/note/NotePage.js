@@ -28,7 +28,7 @@ const NotePage = ({ match, selectNote, note, loading }) => {
     pageState === 'edit' ? setPageState('display') : setPageState('edit');
   };
 
-  if (loading) {
+  if (loading || !note.body) {
     return <Loading />;
   } else {
     return (

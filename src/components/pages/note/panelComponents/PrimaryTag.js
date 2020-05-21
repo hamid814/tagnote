@@ -30,7 +30,7 @@ const PrimaryTag = ({ edit, updateTag, tag, addTag }) => {
   const selectTag = (tag) => {
     setNewTag(tag);
     setText(tag.name);
-    edit({ tag: tag._id });
+    edit({ tag });
   };
 
   const onCreateTag = async () => {
@@ -39,7 +39,13 @@ const PrimaryTag = ({ edit, updateTag, tag, addTag }) => {
       description: 'fast added tag',
     });
 
-    updateTag(fastAddedTag);
+    selectTag(fastAddedTag);
+
+    setSugs([fastAddedTag]);
+  };
+
+  const onCheckbtnCLick = () => {
+    updateTag(newTag);
   };
 
   const tagColor = {
@@ -57,7 +63,7 @@ const PrimaryTag = ({ edit, updateTag, tag, addTag }) => {
           onFocus={onFocus}
           onChange={onChange}
         />
-        <input type="button" value="✔️" onClick={() => updateTag(newTag)} />
+        <input type="button" value="✔️" onClick={onCheckbtnCLick} />
       </div>
       <div className="note-panel-tag-suggestions" tabIndex="0">
         {sugs.map((tag) => (

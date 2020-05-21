@@ -30,8 +30,15 @@ const NotePanel = ({
 
   const onSave = async () => {
     if (isEdited) {
-      await delete newNote._id;
-      await updateNote(note._id, newNote);
+      const noteToSentToServer = {
+        ...newNote,
+        tag: newNote.tag._id,
+        otherTags: newNote.otherTags
+          .map((tag) => tag._id)
+          .filter((tag) => tag !== newNote.tag._id),
+        _id: undefined,
+      };
+      await updateNote(note._id, noteToSentToServer);
       goToDisplay();
       setIsEdited(false);
     } else {
@@ -48,8 +55,8 @@ const NotePanel = ({
     setIsEdited(true);
   };
 
-  const updateNoteWithTag = async (tag) => {
-    updateLocalNote(tag);
+  const updateNoteWithTag = (tag) => {
+    updateLocalNote({ tag });
     onSave();
   };
 

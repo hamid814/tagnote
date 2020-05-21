@@ -7,8 +7,8 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
-    "gh-pages": "^2.2.0",
     "moment": "^2.25.3",
+    "node-sass": "^4.14.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
@@ -26,7 +26,6 @@
     "publish": "gh-pages -d build",
     "deploy": "npm run build && gh-pages -d build"
   },
-  "homepage": "https://hamid814.github.io/tagnote/",
   "eslintConfig": {
     "extends": "react-app"
   },
