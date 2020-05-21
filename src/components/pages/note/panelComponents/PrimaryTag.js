@@ -36,11 +36,10 @@ const PrimaryTag = ({ edit, updateTag, tag, addTag }) => {
   const onCreateTag = async () => {
     const fastAddedTag = await addTag({
       name: text,
+      description: 'fast added tag',
     });
 
-    selectTag(fastAddedTag);
-
-    updateTag(newTag);
+    updateTag(fastAddedTag);
   };
 
   const tagColor = {

@@ -30,7 +30,7 @@ const NotePanel = ({
 
   const onSave = async () => {
     if (isEdited) {
-      await delete newNote.I_id;
+      await delete newNote._id;
       await updateNote(note._id, newNote);
       goToDisplay();
       setIsEdited(false);
@@ -48,7 +48,7 @@ const NotePanel = ({
     setIsEdited(true);
   };
 
-  const updateNoteWithTag = (tag) => {
+  const updateNoteWithTag = async (tag) => {
     updateLocalNote(tag);
     onSave();
   };

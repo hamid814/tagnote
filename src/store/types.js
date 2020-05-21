@@ -21,5 +21,7 @@ export const SELECT_NOTE = 'SELECT_NOTE';
 export const SET_LOADING = 'SET_LOADING(note)';
 
 // tag types
+export const GET_TAGS = 'GET_TAGS';
 export const GET_TAG = 'GET_TAG';
 export const ADD_TAG = 'ADD_TAG';
+export const DELETE_TAG = 'DELETE_TAG';
