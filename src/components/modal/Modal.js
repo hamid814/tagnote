@@ -18,13 +18,13 @@ const Modal = ({ modalStatus, modalType, modalData, setModal }) => {
 
       setTimeout(() => {
         setModalClass('off');
-      }, 290);
+      }, 285);
     } else if (modalStatus === 'on') {
       setModalClass('come');
 
       setTimeout(() => {
         setModalClass('on');
-      }, 290);
+      }, 285);
     } else if (modalStatus === 'first-off') {
       setModalClass('off');
     }

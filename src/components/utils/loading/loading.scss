@@ -25,19 +25,19 @@
           top: 42.8%;
           left: 37.5%;
           z-index: 4;
-          animation: topFirstAnim 1.3s ease infinite reverse;
+          animation: topFirstAnim 750ms ease infinite reverse;
         }
 
         &.second {
           top: 35.6%;
           left: 50%;
-          animation: topSecondAnim 1.3s ease infinite reverse;
+          animation: topSecondAnim 750ms ease infinite reverse;
         }
 
         &.third {
           top: 42.8%;
           left: 62.5%;
-          animation: topThirdAnim 1.3s ease infinite reverse;
+          animation: topThirdAnim 750ms ease infinite reverse;
           z-index: 3;
         }
       }
@@ -45,7 +45,7 @@
       &.center {
         top: 50%;
         left: 50%;
-        animation: centerAnimation 1.3s ease infinite reverse;
+        animation: centerAnimation 750ms ease infinite reverse;
         z-index: 5;
       }
 
@@ -54,20 +54,20 @@
           top: 57.3%;
           left: 37.5%;
           z-index: 3;
-          animation: bottomFirstAnim 1.3s ease infinite reverse;
+          animation: bottomFirstAnim 750ms ease infinite reverse;
         }
 
         &.second {
           top: 64.5%;
           left: 50%;
-          animation: bottomSecondAnim 1.3s ease infinite reverse;
+          animation: bottomSecondAnim 750ms ease infinite reverse;
           z-index: 4;
         }
 
         &.third {
           top: 57.3%;
           left: 62.5%;
-          animation: bottomThirdAnim 1.3s ease infinite reverse;
+          animation: bottomThirdAnim 750ms ease infinite reverse;
           z-index: 2;
         }
       }

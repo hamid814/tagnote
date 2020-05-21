@@ -59,7 +59,7 @@ export const deleteTag = (id, tagName) => async (dispatch) => {
       payload: id,
     });
 
-    dispatch(setAlert('on', `Tag ${tagName} deleted`, 'danger', 3500));
+    dispatch(setAlert('on', `Tag ${tagName} deleted`, 'info', 3500));
   } catch (err) {
     dispatch(setAlert('on', err.response.data.error, 'danger', 3500));
   }

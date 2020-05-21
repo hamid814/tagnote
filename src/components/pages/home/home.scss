@@ -6,7 +6,21 @@
     overflow: hidden;
     overflow-x: auto;
     padding-top: 5px;
-    height: 36px;
+    height: 37px;
+
+    &::-webkit-scrollbar {
+      height: 0;
+    }
+
+    .delete-tag-btn {
+      background-color: #555;
+      height: 80%;
+      padding: 0 5px;
+      margin-left: 5px;
+      border-radius: 7px;
+      color: #e34;
+      cursor: pointer;
+    }
   }
 }
 
