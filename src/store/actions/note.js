@@ -75,7 +75,7 @@ export const updateNote = (id, formData) => async (dispatch) => {
       payload: res.data.data,
     });
 
-    dispatch(setAlert('on', 'Note was edited', 'success', 3500));
+    dispatch(setAlert('on', 'Note was updated', 'success', 3500));
   } catch (err) {
     dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
   }
