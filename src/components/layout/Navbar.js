@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Logo from 'components/utils/logo/Logo';
@@ -16,7 +17,7 @@ const Navbar = ({ setModal }) => {
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <div>right</div>
+        <Link to={process.env.PUBLIC_URL + '/auth/login'}>login</Link>
         <div>search</div>
       </div>
       <div className="navbar-logo">

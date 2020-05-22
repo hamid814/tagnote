@@ -17,7 +17,7 @@ import NotePage from 'components/pages/note/NotePage';
 import Statistics from 'components/pages/statistics/Statistics';
 import Rules from 'components/pages/rules/Rules';
 import CurrentTasks from 'components/pages/currenttasks/CurrentTasks';
-import Loading from 'components/utils/loading/Loading';
+import LoginPage from 'components/pages/login/LoginPage';
 
 const App = () => {
   const publicUrl = process.env.PUBLIC_URL;
@@ -37,7 +37,6 @@ const App = () => {
           <div className="container">
             <Switch>
               <Route exact path={`${publicUrl}/`} component={Home} />
-              <Route exact path={`${publicUrl}/loading`} component={Loading} />
               <Route exact path={`${publicUrl}/tagnote`} component={Home} />
               <Route exact path={`${publicUrl}/tags`} component={Tags} />
               <Route exact path={`${publicUrl}/tags/:id`} component={TagPage} />
@@ -56,6 +55,11 @@ const App = () => {
                 exact
                 path={`${publicUrl}/current-tasks`}
                 component={CurrentTasks}
+              />
+              <Route
+                exact
+                path={`${publicUrl}/auth/login`}
+                component={LoginPage}
               />
             </Switch>
           </div>
