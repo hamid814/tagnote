@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Logo from 'components/utils/logo/Logo';
@@ -14,11 +13,20 @@ const Navbar = ({ setModal }) => {
     setModal('on', 'quick-insert');
   };
 
+  const onLoginClick = () => {
+    setModal('on', 'login-modal');
+  };
+
   return (
     <div className="navbar">
       <div className="navbar-left">
-        <Link to={process.env.PUBLIC_URL + '/auth/login'}>login</Link>
-        <div>search</div>
+        <div className="login-btn" onClick={onLoginClick}>
+          <span role="img" aria-label="note">
+            🔮
+          </span>
+          login
+        </div>
+        <div className="search">search</div>
       </div>
       <div className="navbar-logo">
         <Logo />

@@ -123,3 +123,10 @@
     cursor: pointer;
   }
 }
+
+@media (max-width: 720px) {
+  .note-page-panel {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+}

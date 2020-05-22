@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 
 import { setModal } from 'store/actions/modal';
 
+// modal componentss
 import QuickInsert from './components/quickinsert/QuickInsert';
 import AskModal from './components/askModal/AskModal';
+import LoginModal from './components/loginModal/LoginModal';
 
 import './style/modal.scss';
 
@@ -47,14 +49,17 @@ const Modal = ({ modalStatus, modalType, modalData, setModal }) => {
   };
 
   const getModalSize = () => {
-    let size = 'wide';
+    let size = 'width-normal';
 
     switch (modalType) {
       case 'ask-modal':
-        size = 'narrow';
+        size = 'width-narrow';
+        break;
+      case 'quick-insert':
+        size = 'width-wide';
         break;
       default:
-        size = 'wide';
+        size = 'width-normal';
     }
 
     return size;
@@ -73,6 +78,7 @@ const Modal = ({ modalStatus, modalType, modalData, setModal }) => {
           </span>
         </div>
         {modalType === 'quick-insert' && <QuickInsert />}
+        {modalType === 'login-modal' && <LoginModal />}
         {modalType === 'ask-modal' && (
           <AskModal closeModal={closeModal} data={modalData} />
         )}
@@ -84,7 +90,7 @@ const Modal = ({ modalStatus, modalType, modalData, setModal }) => {
 Modal.propTypes = {
   modalStatus: PropTypes.string.isRequired,
   modalType: PropTypes.string.isRequired,
-  modalData: PropTypes.object.isRequired,
+  modalData: PropTypes.object,
   setModal: PropTypes.func.isRequired,
 };
 

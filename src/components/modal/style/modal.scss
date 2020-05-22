@@ -38,13 +38,20 @@
     position: relative;
     background: #444444;
     border-radius: 10px;
+    overflow: hidden;
 
-    &.wide {
+    &.width-wide {
       width: 86%;
       height: 80%;
     }
 
-    &.narrow {
+    &.width-normal {
+      width: 400px;
+      max-width: 90%;
+      height: 400px;
+    }
+
+    &.width-narrow {
       width: 320px;
       height: 200px;
     }
