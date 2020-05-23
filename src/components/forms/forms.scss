@@ -6,19 +6,21 @@ form.tagnote-form {
 
   .form-group {
     width: 100%;
-    margin-top: 25px;
+    margin-top: 30px;
     position: relative;
     height: 40px;
 
-    &:last-child {
+    &.last {
+      margin-top: 15px;
       height: 35px;
     }
 
     &:focus-within {
       label {
-        top: -20px;
-        left: 0;
-        font-size: 14px;
+        // top: -20px;
+        // font-size: 14px;
+        // left: 0px;
+        opacity: 0;
       }
     }
 
@@ -29,23 +31,41 @@ form.tagnote-form {
       z-index: 2;
       color: var(--text-color);
       font-size: 18px;
+      color: #ccc;
+      z-index: 1;
     }
 
     input {
+      border-bottom: 2px solid #999;
       position: absolute;
       width: 100%;
       height: 100%;
       z-index: 1;
       background-color: #777;
-      color: var(--text-color);
+      background-color: transparent;
+      color: #ccc;
       padding: 8px;
-      border-radius: 7px;
+      // border-radius: 7px;
+      z-index: 2;
+
+      &[type='submit'] {
+        background-color: #288;
+        border-radius: 7px;
+        border: none;
+      }
 
       &:not([value='']) + label {
         top: -20px;
-        left: 0;
         font-size: 14px;
+        left: 0px;
       }
     }
+  }
+
+  .form-message {
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    color: #cd3;
   }
 }

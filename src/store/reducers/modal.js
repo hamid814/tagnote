@@ -1,8 +1,8 @@
 import { SET_MODAL } from '../types';
 
 const initialState = {
-  modalStatus: 'on', // values: on, off, first-off
-  modalType: 'login-modal',
+  modalStatus: 'first-off', // values: on, off, first-off
+  modalType: 'null',
   modalData: {},
 };
 

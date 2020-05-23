@@ -55,8 +55,12 @@ export const deleteNote = (id) => async (dispatch) => {
     });
 
     dispatch(setAlert('on', 'Note Was Deleted', 'info', 3500));
+
+    return true;
   } catch (err) {
     dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
+
+    return false;
   }
 };
 

@@ -14,7 +14,11 @@ const LoginForm = ({ action, message }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    action(formData);
+    try {
+      action(formData);
+    } catch (err) {
+      console.log('catch');
+    }
   };
 
   const onLabelClick = (e) => {
@@ -31,7 +35,7 @@ const LoginForm = ({ action, message }) => {
             value={formData.email}
             onChange={onChange}
           />
-          <label onClick={onLabelClick}>Email:</label>
+          <label onClick={onLabelClick}>Email</label>
         </div>
         <div className="form-group">
           <input
@@ -40,11 +44,12 @@ const LoginForm = ({ action, message }) => {
             value={formData.password}
             onChange={onChange}
           />
-          <label onClick={onLabelClick}>Password:</label>
+          <label onClick={onLabelClick}>Password</label>
         </div>
       </div>
       <div className="form-bottom">
-        <div className="form-group">
+        <div className="form-message">{message}</div>
+        <div className="form-group last">
           <input type="submit" value="🔐Login" />
         </div>
       </div>

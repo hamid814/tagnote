@@ -8,6 +8,7 @@ import {
   AUTH_FAIL,
   LOAD_USER,
   LOGOUT,
+  CLEAR_ERROR,
 } from '../types.js';
 
 export const loadUser = () => async (dispatch) => {
@@ -27,8 +28,12 @@ export const loadUser = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: AUTH_FAIL,
-      payload: err.response.error,
+      payload: err.response.data.error,
     });
+
+    setTimeout(() => {
+      dispatch(clearError());
+    }, 4000);
   }
 };
 
@@ -49,12 +54,16 @@ export const register = (formData) => async (dispatch) => {
       });
     }
 
-    loadUser();
+    dispatch(loadUser());
   } catch (err) {
     dispatch({
       type: REGISTER_FAIL,
-      payload: err.response.error,
+      payload: err.response.data.error,
     });
+
+    setTimeout(() => {
+      dispatch(clearError());
+    }, 4000);
   }
 };
 
@@ -75,17 +84,32 @@ export const login = (formData) => async (dispatch) => {
       });
     }
 
-    loadUser();
+    dispatch(loadUser());
+
+    return true;
   } catch (err) {
     dispatch({
       type: LOGIN_FAIL,
-      payload: err.response.error,
+      payload: err.response.data.error,
     });
+
+    setTimeout(() => {
+      dispatch(clearError());
+    }, 4000);
+
+    return false;
   }
 };
 
 export const logout = (formData) => async (dispatch) => {
   dispatch({
     type: LOGOUT,
+    payload: null,
+  });
+};
+
+export const clearError = () => (dispatch) => {
+  dispatch({
+    type: CLEAR_ERROR,
   });
 };

@@ -6,6 +6,7 @@ import {
   AUTH_FAIL,
   LOAD_USER,
   LOGOUT,
+  CLEAR_ERROR,
 } from '../types.js';
 
 const initialState = {
@@ -57,6 +58,11 @@ export default function (state = initialState, action) {
         token: null,
         isAuthenticated: false,
         error: payload,
+      };
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        error: null,
       };
     default:
       return {

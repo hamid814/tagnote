@@ -71,8 +71,8 @@ const NotePanel = ({
           text: 'Delete',
           color: '#c32',
           action: async (id) => {
-            await deleteNote(id);
-            goToHome();
+            const success = await deleteNote(id);
+            success && goToHome();
             setModal('off');
           },
           actionArg: note._id,
