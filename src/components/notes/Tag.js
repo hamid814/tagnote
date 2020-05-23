@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Tag = ({ tag }) => {
   const background = {
-    background: tag.color,
+    color: tag.color,
   };
 
   return (

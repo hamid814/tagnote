@@ -83,9 +83,11 @@
 
 .tag {
   display: inline-block;
-  border-radius: 9999px;
-  margin: 5px;
-  padding: 2px 10px;
+  border-radius: 5px;
+  margin: 0 5px;
+  border: 1px solid #888;
+  font-size: 13px;
+  padding: 2px 5px;
   cursor: pointer;
   color: #222;
   font-weight: 400;

@@ -10,6 +10,7 @@ import {
   LOGOUT,
   CLEAR_ERROR,
 } from '../types.js';
+import { setAlert } from './alert';
 
 export const loadUser = () => async (dispatch) => {
   const token = localStorage.getItem('tagnote-auth-token');
@@ -45,6 +46,8 @@ export const register = (formData) => async (dispatch) => {
       },
     };
 
+    formData.email = formData.email.toLowerCase();
+
     const res = await axios.post('/api/v1/auth/register', formData, config);
 
     if (res.data.success) {
@@ -55,6 +58,8 @@ export const register = (formData) => async (dispatch) => {
     }
 
     dispatch(loadUser());
+
+    dispatch(setAlert('on', 'account succcessfully created', 'success', 3000));
   } catch (err) {
     dispatch({
       type: REGISTER_FAIL,
@@ -75,6 +80,8 @@ export const login = (formData) => async (dispatch) => {
       },
     };
 
+    formData.email = formData.email.toLowerCase();
+
     const res = await axios.post('/api/v1/auth/login', formData, config);
 
     if (res.data.success) {
@@ -85,6 +92,8 @@ export const login = (formData) => async (dispatch) => {
     }
 
     dispatch(loadUser());
+
+    dispatch(setAlert('on', "You're logged in", 'success', 3000));
 
     return true;
   } catch (err) {
@@ -106,6 +115,10 @@ export const logout = (formData) => async (dispatch) => {
     type: LOGOUT,
     payload: null,
   });
+
+  dispatch(loadUser());
+
+  dispatch(setAlert('on', 'logged out', 'info', 3000));
 };
 
 export const clearError = () => (dispatch) => {

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import checkValidation from 'utils/checkValidation';
+
 import '../forms.scss';
 
 const LoginForm = ({ action, message }) => {
@@ -8,17 +10,44 @@ const LoginForm = ({ action, message }) => {
     password: '',
   });
 
-  const onChange = (e) =>
+  const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    const elem = e.target;
+
+    const validation = checkValidation(
+      e.target.dataset.validateType,
+      e.target.name,
+      e.target.value
+    );
+
+    if (e.target.value !== '') {
+      if (validation.success) {
+        elem.parentElement.classList.add('valid');
+        elem.parentElement.classList.remove('invalid');
+        elem.parentElement.classList.remove('empty');
+
+        elem.parentElement.lastElementChild.innerText = validation.message;
+      } else {
+        elem.parentElement.classList.add('invalid');
+        elem.parentElement.classList.remove('valid');
+        elem.parentElement.classList.remove('empty');
+
+        elem.parentElement.lastElementChild.innerText = validation.message;
+      }
+    } else {
+      elem.parentElement.classList.add('empty');
+      elem.parentElement.classList.remove('valid');
+      elem.parentElement.classList.remove('invalid');
+
+      elem.parentElement.lastElementChild.innerText = '';
+    }
+  };
 
   const onSubmit = (e) => {
     e.preventDefault();
 
-    try {
-      action(formData);
-    } catch (err) {
-      console.log('catch');
-    }
+    action(formData);
   };
 
   const onLabelClick = (e) => {
@@ -32,19 +61,43 @@ const LoginForm = ({ action, message }) => {
           <input
             name="email"
             type="text"
+            data-validate-type="email"
             value={formData.email}
             onChange={onChange}
           />
           <label onClick={onLabelClick}>Email</label>
+          <div className="validation-success-emoji">
+            <span role="img" aria-label="thumbs-up">
+              👍
+            </span>
+          </div>
+          <div className="validation-fail-emoji">
+            <span role="img" aria-label="thumbs-down">
+              👎
+            </span>
+          </div>
+          <div className="form-group-message"></div>
         </div>
         <div className="form-group">
           <input
             name="password"
+            data-validate-type="length-min-6"
             type="text"
             value={formData.password}
             onChange={onChange}
           />
           <label onClick={onLabelClick}>Password</label>
+          <div className="validation-success-emoji">
+            <span role="img" aria-label="thumbs-up">
+              👍
+            </span>
+          </div>
+          <div className="validation-fail-emoji">
+            <span role="img" aria-label="thumbs-down">
+              👎
+            </span>
+          </div>
+          <div className="form-group-message"></div>
         </div>
       </div>
       <div className="form-bottom">
