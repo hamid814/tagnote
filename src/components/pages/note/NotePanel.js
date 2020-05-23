@@ -105,7 +105,11 @@ const NotePanel = ({
         <NoteBody edit={updateLocalNote} body={newNote.body} />
       </div>
       <div className="note-panel-other-tags-wrapper">
-        <OtherTags edit={updateLocalNote} tags={newNote.otherTags} />
+        <OtherTags
+          edit={updateLocalNote}
+          tags={newNote.otherTags}
+          primaryTag={newNote.tag}
+        />
       </div>
       <div style={{ display: 'flex' }}>
         <div
@@ -116,7 +120,7 @@ const NotePanel = ({
           <span role="img" aria-label="floppy">
             💾
           </span>{' '}
-          Save changes
+          test button
         </div>
         <div
           className="note-panel-delete-note-wrapper"

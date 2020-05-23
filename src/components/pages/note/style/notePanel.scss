@@ -121,6 +121,7 @@
       margin-top: 7px;
       background-color: #444;
       padding: 7px;
+      padding-top: 0;
       border-radius: 7px;
       width: 100%;
       line-height: 20px;
@@ -129,18 +130,11 @@
 
       .note-panel-other-tag-item {
         padding: 4px 7px;
-        margin: 0 5px;
+        margin: 7px 10px 0 0;
         border-radius: 7px;
         background-color: #222;
         cursor: default;
-
-        &:first-child {
-          margin-left: 0;
-        }
-
-        &:last-of-type {
-          margin-right: 10px;
-        }
+        animation: otherTagAnim 0.2s ease;
 
         .other-tag-item-delete-btn {
           margin-left: 5px;
@@ -156,11 +150,23 @@
       }
     }
 
-    input.other-tags-input {
-      background-color: transparent;
+    .note-panel-add-other-tag {
+      margin-top: 7px;
+      display: flex;
+      justify-content: space-between;
       color: var(--text-color);
-      padding: 2px;
-      border: 1px solid red;
+
+      input.other-tags-input {
+        background-color: transparent;
+        color: var(--text-color);
+        padding: 2px;
+      }
+
+      .other-tag-sug {
+        border: 1px solid #ccc;
+        padding: 2px 7px;
+        border-radius: 7px;
+      }
     }
   }
 
@@ -178,5 +184,16 @@
   .note-page-panel {
     padding-right: 12px;
     padding-left: 12px;
+  }
+}
+
+@keyframes otherTagAnim {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
   }
 }

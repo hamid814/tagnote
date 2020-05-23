@@ -22,7 +22,7 @@ const Navbar = ({ setModal, isAuthenticated, logout, user }) => {
       buttons: [
         {
           text: 'Logout',
-          color: '#c96',
+          color: 'var(--yellow-color)',
           action: () => {
             logout();
             setModal('off');
@@ -30,7 +30,7 @@ const Navbar = ({ setModal, isAuthenticated, logout, user }) => {
         },
         {
           text: 'No',
-          color: '#69c',
+          color: 'var(--blue-color)',
           action: setModal,
           actionArg: 'off',
         },
