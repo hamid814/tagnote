@@ -58,6 +58,7 @@ export default function (state = initialState, action) {
         token: null,
         isAuthenticated: false,
         error: payload,
+        user: {},
       };
     case CLEAR_ERROR:
       return {

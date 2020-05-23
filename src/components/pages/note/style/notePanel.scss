@@ -114,6 +114,56 @@
     }
   }
 
+  .note-panel-other-tags-wrapper {
+    margin-top: 20px;
+
+    .note-panel-other-tags {
+      margin-top: 7px;
+      background-color: #444;
+      padding: 7px;
+      border-radius: 7px;
+      width: 100%;
+      line-height: 20px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .note-panel-other-tag-item {
+        padding: 4px 7px;
+        margin: 0 5px;
+        border-radius: 7px;
+        background-color: #222;
+        cursor: default;
+
+        &:first-child {
+          margin-left: 0;
+        }
+
+        &:last-of-type {
+          margin-right: 10px;
+        }
+
+        .other-tag-item-delete-btn {
+          margin-left: 5px;
+          color: #ddd !important;
+          border-radius: 999px;
+          padding: 0 5px 1px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: brown;
+          }
+        }
+      }
+    }
+
+    input.other-tags-input {
+      background-color: transparent;
+      color: var(--text-color);
+      padding: 2px;
+      border: 1px solid red;
+    }
+  }
+
   .note-panel-delete-note-wrapper {
     color: #d55;
     margin-top: 20px;

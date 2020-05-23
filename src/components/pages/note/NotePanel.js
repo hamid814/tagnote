@@ -10,8 +10,9 @@ import { updateNote } from 'store/actions/note';
 import { setAlert } from 'store/actions/alert';
 
 // components
-import NoteBody from './panelComponents/NoteBody';
 import PrimaryTag from './panelComponents/PrimaryTag';
+import NoteBody from './panelComponents/NoteBody';
+import OtherTags from './panelComponents/OtherTags';
 
 // style
 import './style/notePanel.scss';
@@ -69,7 +70,7 @@ const NotePanel = ({
       buttons: [
         {
           text: 'Delete',
-          color: '#c32',
+          color: '#c69',
           action: async (id) => {
             const success = await deleteNote(id);
             success && goToHome();
@@ -79,7 +80,7 @@ const NotePanel = ({
         },
         {
           text: 'No',
-          color: '#88d',
+          color: '#69c',
           action: setModal,
           actionArg: 'off',
         },
@@ -96,18 +97,36 @@ const NotePanel = ({
       <div className="note-panel-primary-tag-wrapper">
         <PrimaryTag
           edit={updateLocalNote}
-          tag={note.tag}
+          tag={newNote.tag}
           updateTag={updateNoteWithTag}
         />
       </div>
       <div className="note-panel-note-body-wrapper">
-        <NoteBody edit={updateLocalNote} body={note.body} />
+        <NoteBody edit={updateLocalNote} body={newNote.body} />
       </div>
-      <div className="note-panel-delete-note-wrapper" onClick={onDeleteClicked}>
-        <span role="img" aria-label="x-mark-red">
-          ❌
-        </span>{' '}
-        Delete Note
+      <div className="note-panel-other-tags-wrapper">
+        <OtherTags edit={updateLocalNote} tags={newNote.otherTags} />
+      </div>
+      <div style={{ display: 'flex' }}>
+        <div
+          className="note-panel-delete-note-wrapper"
+          onClick={onDeleteClicked}
+          style={{ color: '#6c9' }}
+        >
+          <span role="img" aria-label="floppy">
+            💾
+          </span>{' '}
+          Save changes
+        </div>
+        <div
+          className="note-panel-delete-note-wrapper"
+          onClick={onDeleteClicked}
+        >
+          <span role="img" aria-label="x-mark-red">
+            ❌
+          </span>{' '}
+          Delete Note
+        </div>
       </div>
     </div>
   );

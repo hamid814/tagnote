@@ -10,13 +10,33 @@ import { logout } from 'store/actions/auth';
 
 import './style/navbar.scss';
 
-const Navbar = ({ setModal, isAuthenticated, logout }) => {
+const Navbar = ({ setModal, isAuthenticated, logout, user }) => {
   const onLoginClick = () => {
     setModal('on', 'login-modal');
   };
 
   const onLogoutClick = () => {
-    logout();
+    setModal('on', 'ask-modal', {
+      title: 'Log Out?',
+      text: 'log out from your account?',
+      buttons: [
+        {
+          text: 'Logout',
+          color: '#c96',
+          action: () => {
+            logout();
+            setModal('off');
+          },
+        },
+        {
+          text: 'No',
+          color: '#69c',
+          action: setModal,
+          actionArg: 'off',
+        },
+      ],
+    });
+    // logout();
   };
 
   const authButton = !isAuthenticated ? (
@@ -43,6 +63,7 @@ const Navbar = ({ setModal, isAuthenticated, logout }) => {
     <div className="navbar">
       <div className="navbar-left">
         {authButton}
+        {isAuthenticated && <span>{user.name}</span>}
         <div className="search">search</div>
       </div>
       <div className="navbar-logo">
@@ -63,10 +84,12 @@ const Navbar = ({ setModal, isAuthenticated, logout }) => {
 
 Navbar.propTypes = {
   setModal: PropTypes.func.isRequired,
+  user: PropTypes.object,
 };
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  user: state.auth.user,
 });
 
 export default connect(mapStateToProps, { setModal, logout })(Navbar);
