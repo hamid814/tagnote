@@ -70,7 +70,7 @@ const NotePanel = ({
       buttons: [
         {
           text: 'Delete',
-          color: '#c69',
+          color: 'var(--red-color)',
           action: async (id) => {
             const success = await deleteNote(id);
             success && goToHome();
@@ -80,7 +80,7 @@ const NotePanel = ({
         },
         {
           text: 'No',
-          color: '#69c',
+          color: 'var(--blue-color)',
           action: setModal,
           actionArg: 'off',
         },

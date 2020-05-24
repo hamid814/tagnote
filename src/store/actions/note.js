@@ -46,6 +46,7 @@ export const addNote = (formData) => async (dispatch) => {
 };
 
 export const deleteNote = (id) => async (dispatch) => {
+  console.log('delete note');
   try {
     await axios.delete(`/api/v1/notes/${id}`);
 

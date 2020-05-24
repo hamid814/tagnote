@@ -29,7 +29,7 @@ const TagPage = ({ match, tag, notes, otherNotes, getTag, loading }) => {
         <h1 style={tagColor} className="tag-name">
           #{tag.name}
         </h1>
-        <Notes notes={notes} showDelete={false} />
+        <Notes notes={notes} />
         {otherNotes.length > 0 && (
           <>
             <div
@@ -37,7 +37,7 @@ const TagPage = ({ match, tag, notes, otherNotes, getTag, loading }) => {
               style={{ background: tag.color }}
             ></div>
             <h3 className="other-tags-title">Related Notes</h3>
-            <Notes notes={otherNotes} showDelete={false} />
+            <Notes notes={otherNotes} />
           </>
         )}
       </div>

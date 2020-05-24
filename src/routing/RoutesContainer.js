@@ -15,6 +15,7 @@ import Statistics from 'components/pages/statistics/Statistics';
 import Rules from 'components/pages/rules/Rules';
 import CurrentTasks from 'components/pages/currenttasks/CurrentTasks';
 import LoginPage from 'components/pages/login/LoginPage';
+import SearchPage from 'components/pages/search/SearchPage';
 
 const RoutesContainer = ({ loadUser }) => {
   const publicUrl = process.env.PUBLIC_URL;
@@ -32,6 +33,7 @@ const RoutesContainer = ({ loadUser }) => {
       <Route exact path={`${publicUrl}/notes/:id`} component={NotePage} />
       <Route exact path={`${publicUrl}/statics`} component={Statistics} />
       <Route exact path={`${publicUrl}/rules`} component={Rules} />
+      <Route exact path={`${publicUrl}/search`} component={SearchPage} />
       <Route
         exact
         path={`${publicUrl}/current-tasks`}

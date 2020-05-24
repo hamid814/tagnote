@@ -4,22 +4,18 @@ import NoNotes from './NoNotes';
 
 import './style/notes.scss';
 
-const Notes = ({ notes, showDelete }) => {
+const Notes = ({ notes }) => {
   if (notes.length === 0) {
     return <NoNotes />;
   } else {
     return (
       <div className="notes-container">
         {notes.map((note) => (
-          <Note key={note._id} note={note} showDelete={showDelete} />
+          <Note key={note._id} note={note} />
         ))}
       </div>
     );
   }
-};
-
-Note.defaultProps = {
-  showDelete: true,
 };
 
 export default Notes;
