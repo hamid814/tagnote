@@ -7,6 +7,7 @@ import {
   SET_LOADING,
   SELECT_NOTE,
   UNSELECT_NOTE,
+  UNSELECT_ALL,
 } from '../types';
 
 const initialState = {
@@ -64,6 +65,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         selected: state.selected.filter((id) => id !== payload),
+      };
+    case UNSELECT_ALL:
+      return {
+        ...state,
+        selected: [],
       };
     default:
       return {

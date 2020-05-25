@@ -23,6 +23,7 @@ export const GET_NOTE = 'GET_NOTE';
 export const SET_LOADING = 'SET_LOADING(note)';
 export const SELECT_NOTE = 'SELECT_NOTE';
 export const UNSELECT_NOTE = 'UNSELECT_NOTE';
+export const UNSELECT_ALL = 'UNSELECT_ALL';
 
 // tag types
 export const GET_TAGS = 'GET_TAGS';

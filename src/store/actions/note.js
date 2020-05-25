@@ -10,6 +10,7 @@ import {
   DELETE_NOTE,
   SELECT_NOTE,
   UNSELECT_NOTE,
+  UNSELECT_ALL,
 } from '../types';
 
 export const getNotes = () => async (dispatch) => {
@@ -114,6 +115,14 @@ export const unSelectNote = (id) => (dispatch) => {
   dispatch({
     type: UNSELECT_NOTE,
     payload: id,
+  });
+};
+
+export const unSelecteAll = (id) => (dispatch) => {
+  console.log('here');
+
+  dispatch({
+    type: UNSELECT_ALL,
   });
 };
 

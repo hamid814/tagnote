@@ -75,15 +75,15 @@ const Note = ({
       onContextMenu={rightClick}
       className={`note-wrapper ${selected && 'selected'}`}
     >
-      <div className="note" style={{ minHeight: '100%' }}>
+      <div className="note">
         <div className="note-header">
-          <NoteHeader tag={tag} _id={_id} />
+          <NoteHeader tag={tag} _id={_id} selecting={selecting} />
         </div>
         <p className="note-body">{body}</p>
         <div className="note-footer">
           <div>
             {otherTags.slice(0, 3).map((tag) => (
-              <Tag key={tag._id} tag={tag} />
+              <Tag key={tag._id} tag={tag} selecting={selecting} />
             ))}
             {otherTags.length > 3 && '...'}
           </div>

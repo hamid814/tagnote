@@ -34,6 +34,27 @@ const options = {
       },
     ],
   },
+  selectedNotes: {
+    title: 'notes',
+    list: [
+      {
+        text: 'test',
+        action: () => console.log('test'),
+      },
+      {
+        text: 'test',
+        action: () => console.log('test'),
+      },
+      {
+        text: 'test',
+        action: () => console.log('test'),
+      },
+      {
+        text: 'test',
+        action: () => console.log('test'),
+      },
+    ],
+  },
 };
 
 export default options;

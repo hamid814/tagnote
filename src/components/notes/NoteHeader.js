@@ -2,26 +2,26 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const NoteHeader = ({ tag, _id }) => {
+const NoteHeader = ({ tag, selecting }) => {
   const getLink = () => {
-    const tagLink = `${process.env.PUBLIC_URL}/tags/${tag._id}`;
-    const noteLink = `${process.env.PUBLIC_URL}/notes/${_id}`;
-
-    return {
-      tag: tagLink,
-      note: noteLink,
-    };
+    return `${process.env.PUBLIC_URL}/tags/${tag._id}`;
   };
 
-  const headerStyle = {
+  const headerColor = {
     color: tag.color,
   };
 
   return (
     <>
-      <Link to={getLink().tag} className="note-header-tag" style={headerStyle}>
-        #{tag.name}
-      </Link>
+      {selecting ? (
+        <div className="note-header-tag" style={headerColor}>
+          #{tag.name}
+        </div>
+      ) : (
+        <Link to={getLink()} className="note-header-tag" style={headerColor}>
+          #{tag.name}
+        </Link>
+      )}
     </>
   );
 };
