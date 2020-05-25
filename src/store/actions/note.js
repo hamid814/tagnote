@@ -4,10 +4,12 @@ import { setAlert } from './alert';
 import {
   GET_NOTES,
   ADD_NOTE,
-  SELECT_NOTE,
+  GET_NOTE,
   SET_LOADING,
   UPDATE_NOTE,
   DELETE_NOTE,
+  SELECT_NOTE,
+  UNSELECT_NOTE,
 } from '../types';
 
 export const getNotes = () => async (dispatch) => {
@@ -46,7 +48,6 @@ export const addNote = (formData) => async (dispatch) => {
 };
 
 export const deleteNote = (id) => async (dispatch) => {
-  console.log('delete note');
   try {
     await axios.delete(`/api/v1/notes/${id}`);
 
@@ -86,13 +87,13 @@ export const updateNote = (id, formData) => async (dispatch) => {
   }
 };
 
-export const selectNote = (id) => async (dispatch) => {
+export const getNote = (id) => async (dispatch) => {
   setLoading(dispatch);
   try {
     const res = await axios.get(`/api/v1/notes/${id}`);
 
     dispatch({
-      type: SELECT_NOTE,
+      type: GET_NOTE,
       payload: res.data.data,
     });
   } catch (err) {
@@ -100,6 +101,20 @@ export const selectNote = (id) => async (dispatch) => {
       err.response.data &&
       dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
   }
+};
+
+export const selectNote = (id) => (dispatch) => {
+  dispatch({
+    type: SELECT_NOTE,
+    payload: id,
+  });
+};
+
+export const unSelectNote = (id) => (dispatch) => {
+  dispatch({
+    type: UNSELECT_NOTE,
+    payload: id,
+  });
 };
 
 const setLoading = (dispatch) => {

@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import Loading from 'components/utils/loading/Loading';
 
 // redux
-import { selectNote } from 'store/actions/note';
+import { getNote } from 'store/actions/note';
 
 // components
 import BigNote from './BigNote';
@@ -16,11 +16,11 @@ import NotePanel from './NotePanel';
 // style
 import './style/notePage.scss';
 
-const NotePage = ({ match, selectNote, note, loading }) => {
+const NotePage = ({ match, getNote, note, loading }) => {
   const [pageState, setPageState] = useState('edit'); // val: display, edit
 
   useEffect(() => {
-    selectNote(match.params.id);
+    getNote(match.params.id);
     // eslint-disable-next-line
   }, []);
 
@@ -55,4 +55,4 @@ const mapStateToProps = (state) => ({
   loading: state.note.loading,
 });
 
-export default connect(mapStateToProps, { selectNote })(NotePage);
+export default connect(mapStateToProps, { getNote })(NotePage);

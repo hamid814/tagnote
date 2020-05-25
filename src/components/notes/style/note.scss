@@ -1,54 +1,84 @@
-.note {
-  position: relative;
-  margin-bottom: 15px;
-  background-color: #4449;
-  display: inline-block;
-  // width: 260px;
-  color: var(--text-color);
-  width: 100%;
-  font-weight: 100;
-  padding: 12px 12px 12px 17px;
-  overflow: hidden;
-  border-radius: 4px;
+.note-wrapper {
+  &.selected {
+    position: relative;
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 22px;
-    left: 0;
-    width: 0px;
-    height: 0px;
-    border: 7px solid var(--c);
-    border-bottom-color: transparent;
-    border-right-color: transparent;
-    border-top-color: transparent;
-    background-color: transparent;
-  }
-
-  .note-header {
-    margin-bottom: 7px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    font-weight: 100;
-
-    .note-header-tag {
-      font-size: 28px;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: inset 0 0 0 1px var(--blue-color);
+      background-color: transparentize($color: #6c9, $amount: 0.75);
+      opacity: 0.4;
+      z-index: 2;
+      border-radius: 7px;
+      animation: noteSelectAnim 200ms ease-in-out;
     }
   }
 
-  .note-footer {
-    margin-top: 10px;
-    padding-top: 5px;
-    border-top: 1px solid #666;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    font-size: 12px;
+  .note {
+    position: relative;
+    background-color: #4449;
+    display: inline-block;
+    color: var(--text-color);
+    width: 100%;
+    font-weight: 100;
+    padding: 12px 12px 3px 17px;
+    overflow: hidden;
+    border-radius: 7px;
 
-    .note-date {
-      // color: red;
-      color: #999 !important;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0px;
+      left: 18px;
+      width: 0px;
+      height: 0px;
+      border: 6px solid var(--c);
+      border-bottom-color: transparent;
+      border-right-color: transparent;
+      border-left-color: transparent;
+      background-color: transparent;
+    }
+
+    .note-header {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font-weight: 100;
+      user-select: none;
+
+      .note-header-tag {
+        font-size: 22px;
+      }
+    }
+
+    .note-body {
+      margin-top: 7px;
+      font-family: inherit;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      width: 100%;
+      user-select: none;
+    }
+
+    .note-footer {
+      margin-top: 15px;
+      padding-top: 5px;
+      border-top: 1px solid #666;
+      display: flex;
+      justify-content: space-between;
+      // align-items: flex-end;
+      font-size: 12px;
+      user-select: none;
+
+      .note-date {
+        color: #999 !important;
+      }
     }
   }
 }
@@ -73,5 +103,14 @@
 
   &:last-child {
     margin-right: 0;
+  }
+}
+
+@keyframes noteSelectAnim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.4;
   }
 }

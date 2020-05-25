@@ -30,7 +30,7 @@ const options = {
     list: [
       {
         text: '⬆️ Open Note',
-        action: () => console.log('open note'),
+        action: 'openNote',
       },
     ],
   },

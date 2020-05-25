@@ -5,9 +5,12 @@
   .options-title {
     color: #aaa;
     padding: 10px;
+    text-align: center;
   }
 
   .options-list {
+    list-style-type: none;
+
     .option-item {
       padding: 15px;
       cursor: pointer;

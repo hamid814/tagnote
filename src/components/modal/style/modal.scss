@@ -21,7 +21,7 @@
       animation: modalAnim 300ms ease-out reverse;
 
       &.options-width {
-        animation: optionsModaAnim 300ms ease reverse;
+        animation: optionsModalAnim 300ms ease reverse;
       }
     }
   }
@@ -37,7 +37,7 @@
       animation: modalAnim 300ms ease-out;
 
       &.options-width {
-        animation: optionsModaAnim 300ms ease-in-out;
+        animation: optionsModalAnim 230ms ease-in-out;
       }
     }
   }
@@ -89,6 +89,28 @@
   }
 }
 
+@keyframes modalAnim {
+  0% {
+    transform: scale(1.06);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes optionsModalAnim {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
 @media (max-width: 460px) {
   .modal-container {
     .modal-body {
@@ -101,28 +123,13 @@
       }
     }
   }
-}
 
-@keyframes modalAnim {
-  0% {
-    transform: scale(1.06);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes optionsModaAnim {
-  0% {
-    // transform: translateY(50px);
-    transform: translateY(100%);
-    // opacity: 0;
-  }
-  100% {
-    // transform: translateY(0px);
-    transform: translateY(0%);
-    // opacity: 1;
+  @keyframes optionsModalAnim {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
   }
 }

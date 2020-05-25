@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const NoteHeader = ({ tag, _id }) => {
@@ -16,22 +17,18 @@ const NoteHeader = ({ tag, _id }) => {
     color: tag.color,
   };
 
-  const buttonStyle = {
-    background: tag.color,
-  };
-
   return (
     <>
       <Link to={getLink().tag} className="note-header-tag" style={headerStyle}>
         #{tag.name}
       </Link>
-      <Link
-        to={getLink().note}
-        className="note-header-button"
-        style={buttonStyle}
-      ></Link>
     </>
   );
+};
+
+NoteHeader.propTypes = {
+  tag: PropTypes.object.isRequired,
+  _id: PropTypes.string.isRequired,
 };
 
 export default NoteHeader;

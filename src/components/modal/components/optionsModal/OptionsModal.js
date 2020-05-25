@@ -7,9 +7,24 @@ import options from './options';
 import './optionsModal.scss';
 
 const OptionsModal = ({ data }) => {
-  const { subject, note, setModal, deleteNote } = data;
+  const {
+    subject,
+    note,
+    setModal,
+    deleteNote,
+    selectNote,
+    openNotePage,
+  } = data;
+
+  const onOpenNote = () => {
+    openNotePage();
+  };
 
   const copyText = () => {};
+
+  const functions = {
+    openNote: openNotePage,
+  };
 
   const onDeleteClick = () => {
     setModal('on', 'ask-modal', {
@@ -35,6 +50,11 @@ const OptionsModal = ({ data }) => {
     });
   };
 
+  const onSelectNote = () => {
+    selectNote(note._id);
+    setModal('off');
+  };
+
   const { title, list } = options[subject];
 
   return (
@@ -42,13 +62,17 @@ const OptionsModal = ({ data }) => {
       <div className="options-title">{title}</div>
       <ul className="options-list">
         {list.map((item) => (
-          <li key={item.text} onClick={item.action} className="option-item">
+          <li
+            key={item.text}
+            onClick={functions[item.action]}
+            className="option-item"
+          >
             {item.text}
           </li>
         ))}
         {subject === 'note' && (
           <>
-            <li className="option-item">
+            <li className="option-item" onClick={copyText}>
               <span role="img" aria-label="copy">
                 ➿
               </span>{' '}
@@ -60,7 +84,7 @@ const OptionsModal = ({ data }) => {
               </span>{' '}
               Get Share Link
             </li>
-            <li className="option-item">
+            <li className="option-item" onClick={onSelectNote}>
               <span role="img" aria-label="copy">
                 🔘
               </span>{' '}

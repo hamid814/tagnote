@@ -15,7 +15,7 @@ const BigNote = ({ note: { body, tag, date, otherTags }, goToEdit }) => {
         </div>
         <div className="note-header-date">{formattedDate}</div>
       </div>
-      <div className="note-body">{body}</div>
+      <pre className="note-body">{body}</pre>
       <div className="note-footer">
         <div className="note-other-notes">
           {otherTags.map((tag) => (

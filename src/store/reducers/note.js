@@ -3,14 +3,17 @@ import {
   ADD_NOTE,
   UPDATE_NOTE,
   DELETE_NOTE,
-  SELECT_NOTE,
+  GET_NOTE,
   SET_LOADING,
+  SELECT_NOTE,
+  UNSELECT_NOTE,
 } from '../types';
 
 const initialState = {
   notes: [],
   note: {},
   loading: true,
+  selected: [],
 };
 
 export default function (state = initialState, action) {
@@ -41,7 +44,7 @@ export default function (state = initialState, action) {
         ...state,
         notes: state.notes.filter((note) => note._id !== payload),
       };
-    case SELECT_NOTE:
+    case GET_NOTE:
       return {
         ...state,
         note: payload,
@@ -51,6 +54,16 @@ export default function (state = initialState, action) {
       return {
         ...state,
         loading: true,
+      };
+    case SELECT_NOTE:
+      return {
+        ...state,
+        selected: [...state.selected, payload],
+      };
+    case UNSELECT_NOTE:
+      return {
+        ...state,
+        selected: state.selected.filter((id) => id !== payload),
       };
     default:
       return {
