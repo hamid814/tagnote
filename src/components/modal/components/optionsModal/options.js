@@ -7,7 +7,7 @@ const options = {
       {
         text: (
           <>
-            <i class="icon icon-logo-radius"></i> Home
+            <i className="icon icon-logo-radius"></i> Home
           </>
         ),
         action: () => window.open(process.env.PUBLIC_URL + '/tagnote', '_self'),
@@ -44,7 +44,12 @@ const options = {
     title: 'notes',
     list: [
       {
-        text: '📦 merge notes',
+        text: (
+          <>
+            <i className="icon icon-options-merge"></i>
+            merge notes
+          </>
+        ),
         action: () => console.log('test'),
       },
       {

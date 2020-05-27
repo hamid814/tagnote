@@ -39,6 +39,8 @@ export const addNote = (formData) => async (dispatch) => {
 
     const res = await axios.post('/api/v1/notes', formData, config);
 
+    console.log(res.data.data);
+
     dispatch({
       type: ADD_NOTE,
       payload: res.data.data,

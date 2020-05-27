@@ -85,10 +85,7 @@ const OptionsModal = ({ data }) => {
               Get Share Link
             </li>
             <li className="option-item" onClick={onSelectNote}>
-              <span role="img" aria-label="copy">
-                🔘
-              </span>{' '}
-              Select
+              <i className="icon icon-options-select"></i> Select
             </li>
             <li className="option-item">
               <span role="img" aria-label="pin">

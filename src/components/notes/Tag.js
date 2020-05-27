@@ -6,22 +6,17 @@ const Tag = ({ tag, selecting }) => {
     color: tag.color,
   };
 
+  const onClick = (e) => selecting && e.preventDefault();
+
   return (
-    <>
-      {selecting ? (
-        <div className="tag" style={background}>
-          #{tag.name}
-        </div>
-      ) : (
-        <Link
-          to={`${process.env.PUBLIC_URL}/tags/${tag._id}`}
-          className="tag"
-          style={background}
-        >
-          #{tag.name}
-        </Link>
-      )}
-    </>
+    <Link
+      onClick={onClick}
+      to={`${process.env.PUBLIC_URL}/tags/${tag._id}`}
+      className="tag"
+      style={background}
+    >
+      #{tag.name}
+    </Link>
   );
 };
 

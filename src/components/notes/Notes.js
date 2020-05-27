@@ -29,7 +29,7 @@ const Notes = ({ notes, selected }) => {
 
     item.style.gridRowEnd = 'span ' + rowSpan;
 
-    item.querySelector('.note').style.height = rowSpan * 10 + 'px';
+    item.querySelector('.note').style.height = rowSpan * 1 + 'px';
   };
 
   const resizeAllItems = (items) => {
@@ -41,7 +41,7 @@ const Notes = ({ notes, selected }) => {
   window.addEventListener('load', () => {
     setTimeout(() => {
       resizeAllItems(container.current.children);
-    }, 1000);
+    }, 3000);
   });
 
   window.addEventListener('resize', () => {
