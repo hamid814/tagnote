@@ -13,6 +13,9 @@ import Alert from 'components/layout/Alert';
 // routes
 import RoutesContainer from 'routing/RoutesContainer';
 
+// web fonts (icon)
+import './icon/css/tagnote-test-embedded.css';
+
 const App = () => {
   console.log('how to relate tags to each other???');
   console.log('tags to be pinned in homepage or made starred');

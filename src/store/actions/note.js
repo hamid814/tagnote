@@ -11,6 +11,7 @@ import {
   SELECT_NOTE,
   UNSELECT_NOTE,
   UNSELECT_ALL,
+  DELETE_SELECTED_NOTES,
 } from '../types';
 
 export const getNotes = () => async (dispatch) => {
@@ -48,22 +49,19 @@ export const addNote = (formData) => async (dispatch) => {
   }
 };
 
-export const deleteNote = (id) => async (dispatch) => {
+export const getNote = (id) => async (dispatch) => {
+  setLoading(dispatch);
   try {
-    await axios.delete(`/api/v1/notes/${id}`);
+    const res = await axios.get(`/api/v1/notes/${id}`);
 
     dispatch({
-      type: DELETE_NOTE,
-      payload: id,
+      type: GET_NOTE,
+      payload: res.data.data,
     });
-
-    dispatch(setAlert('on', 'Note Was Deleted', 'info', 3500));
-
-    return true;
   } catch (err) {
-    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
-
-    return false;
+    err.response &&
+      err.response.data &&
+      dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
   }
 };
 
@@ -88,19 +86,56 @@ export const updateNote = (id, formData) => async (dispatch) => {
   }
 };
 
-export const getNote = (id) => async (dispatch) => {
-  setLoading(dispatch);
+export const deleteNote = (id) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/v1/notes/${id}`);
+    const res = await axios.delete(`/api/v1/notes/${id}`);
 
-    dispatch({
-      type: GET_NOTE,
-      payload: res.data.data,
-    });
+    if (res.data.success) {
+      dispatch({
+        type: DELETE_NOTE,
+        payload: id,
+      });
+    }
+
+    dispatch(setAlert('on', 'Note Was Deleted', 'info', 3500));
+
+    return true;
   } catch (err) {
-    err.response &&
-      err.response.data &&
-      dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
+    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
+
+    return false;
+  }
+};
+
+export const deleteSelectedNotes = () => async (dispatch, getState) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await axios.delete('/api/v1/notes/deletemany', {
+      config,
+      data: {
+        ids: getState().note.selected,
+      },
+    });
+
+    if (res.data.success) {
+      dispatch({
+        type: DELETE_SELECTED_NOTES,
+        payload: res.data.data,
+      });
+    }
+
+    dispatch(setAlert('on', 'Notes Were Deleted', 'info', 3500));
+
+    return true;
+  } catch (err) {
+    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
+
+    return false;
   }
 };
 
@@ -119,8 +154,6 @@ export const unSelectNote = (id) => (dispatch) => {
 };
 
 export const unSelecteAll = (id) => (dispatch) => {
-  console.log('here');
-
   dispatch({
     type: UNSELECT_ALL,
   });

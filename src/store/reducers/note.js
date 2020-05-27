@@ -8,6 +8,7 @@ import {
   SELECT_NOTE,
   UNSELECT_NOTE,
   UNSELECT_ALL,
+  DELETE_SELECTED_NOTES,
 } from '../types';
 
 const initialState = {
@@ -60,6 +61,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         selected: [...state.selected, payload],
+      };
+    case DELETE_SELECTED_NOTES:
+      return {
+        ...state,
+        selected: [],
+        notes: state.notes.filter((note) => payload.indexOf(note._id) === -1),
       };
     case UNSELECT_NOTE:
       return {

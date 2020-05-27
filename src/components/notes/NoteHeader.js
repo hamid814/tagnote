@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom';
 
 const NoteHeader = ({ tag, selecting }) => {
   const getLink = () => {
-    return `${process.env.PUBLIC_URL}/tags/${tag._id}`;
+    return `${process.env.PUBLIC_URL}/tags/${tag.slug}`;
   };
+
+  const onClick = (e) => e.stopPropagation();
 
   const headerColor = {
     color: tag.color,
@@ -18,7 +20,12 @@ const NoteHeader = ({ tag, selecting }) => {
           #{tag.name}
         </div>
       ) : (
-        <Link to={getLink()} className="note-header-tag" style={headerColor}>
+        <Link
+          to={getLink()}
+          onClick={onClick}
+          className="note-header-tag"
+          style={headerColor}
+        >
           #{tag.name}
         </Link>
       )}

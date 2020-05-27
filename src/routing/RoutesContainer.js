@@ -29,7 +29,7 @@ const RoutesContainer = ({ loadUser }) => {
       <Route exact path={`${publicUrl}/`} component={Home} />
       <Route exact path={`${publicUrl}/tagnote`} component={Home} />
       <Route exact path={`${publicUrl}/tags`} component={Tags} />
-      <Route exact path={`${publicUrl}/tags/:id`} component={TagPage} />
+      <Route exact path={`${publicUrl}/tags/:slug`} component={TagPage} />
       <Route exact path={`${publicUrl}/notes/:id`} component={NotePage} />
       <Route exact path={`${publicUrl}/statics`} component={Statistics} />
       <Route exact path={`${publicUrl}/rules`} component={Rules} />

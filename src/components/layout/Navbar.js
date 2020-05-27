@@ -8,6 +8,7 @@ import ThemeButton from 'components/utils/themebutton/ThemeButton';
 import { setModal } from 'store/actions/modal';
 import { logout } from 'store/actions/auth';
 import { unSelecteAll } from 'store/actions/note';
+import { deleteSelectedNotes } from 'store/actions/note';
 
 import './style/navbar.scss';
 
@@ -18,6 +19,7 @@ const Navbar = ({
   user,
   selected,
   unSelecteAll,
+  deleteSelectedNotes,
 }) => {
   const onLoginClick = () => {
     setModal('on', 'login-modal');
@@ -48,17 +50,17 @@ const Navbar = ({
 
   const authButton = !isAuthenticated ? (
     <div className="login-btn" onClick={onLoginClick}>
-      <span role="img" aria-label="note">
+      <span role="img" aria-label="orb">
         🔮
-      </span>
+      </span>{' '}
       login
     </div>
   ) : (
     <div className="login-btn" onClick={onLogoutClick}>
-      <span role="img" aria-label="note">
-        🔮
-      </span>
-      logout
+      <span role="img" aria-label="orb">
+        🚧
+      </span>{' '}
+      {user.name}
     </div>
   );
 
@@ -74,7 +76,10 @@ const Navbar = ({
         {
           text: 'Delete',
           color: 'var(--red-color)',
-          action: () => console.log('delete all selected'),
+          action: async () => {
+            await deleteSelectedNotes();
+            setModal('off');
+          },
         },
         {
           text: 'No',
@@ -112,7 +117,6 @@ const Navbar = ({
       )}
       <div className="navbar-left">
         {authButton}
-        {isAuthenticated && <span>{user.name}</span>}
         <div className="search">search</div>
       </div>
       <div className="navbar-logo">
@@ -136,6 +140,7 @@ Navbar.propTypes = {
   user: PropTypes.object,
   selected: PropTypes.array,
   unSelecteAll: PropTypes.func.isRequired,
+  deleteSelectedNotes: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -144,6 +149,9 @@ const mapStateToProps = (state) => ({
   selected: state.note.selected,
 });
 
-export default connect(mapStateToProps, { setModal, logout, unSelecteAll })(
-  Navbar
-);
+export default connect(mapStateToProps, {
+  setModal,
+  logout,
+  unSelecteAll,
+  deleteSelectedNotes,
+})(Navbar);

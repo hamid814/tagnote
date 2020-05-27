@@ -6,10 +6,9 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
-  
+
   &:hover {
     .col-1 {
-      
       .row-1 {
         height: 27%;
       }
@@ -17,24 +16,23 @@
       .row-2 {
         height: 37%;
       }
-      
+
       .row-3 {
         height: 27%;
       }
     }
-    
+
     .col-2 {
-      
       .row-2 {
         height: 47%;
       }
-      
+
       .row-3 {
         height: 27%;
       }
     }
   }
-  
+
   .col {
     width: 47%;
     height: 100%;
@@ -46,43 +44,41 @@
   .row {
     width: 100%;
     border-radius: 3px;
-    transition-timing-function: cubic-bezier(1,1,1,1);
+    transition-timing-function: cubic-bezier(1, 1, 1, 1);
 
     &:hover {
       filter: brightness(110%);
     }
   }
-  
+
   .col-1 {
-    
     .row-1 {
       height: 57%;
       background: rgb(238, 184, 44);
     }
-    
+
     .row-2 {
       height: 0%;
       background: rgb(255, 124, 84);
     }
-    
+
     .row-3 {
       height: 37%;
       background: rgb(4, 188, 164);
     }
   }
-  
+
   .col-2 {
-    
     .row-1 {
       height: 17%;
       background: rgb(236, 132, 252);
     }
-    
+
     .row-2 {
       height: 17%;
       background: rgb(144, 145, 145);
     }
-    
+
     .row-3 {
       height: 57%;
       background: rgb(208, 175, 142);

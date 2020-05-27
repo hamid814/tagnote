@@ -1,9 +1,15 @@
+import React from 'react';
+
 const options = {
   logo: {
     title: 'browse Tagnote',
     list: [
       {
-        text: '🏡 Home',
+        text: (
+          <>
+            <i class="icon icon-logo-radius"></i> Home
+          </>
+        ),
         action: () => window.open(process.env.PUBLIC_URL + '/tagnote', '_self'),
       },
       {
@@ -38,19 +44,19 @@ const options = {
     title: 'notes',
     list: [
       {
-        text: 'test',
+        text: '📦 merge notes',
         action: () => console.log('test'),
       },
       {
-        text: 'test',
+        text: '💩 test',
         action: () => console.log('test'),
       },
       {
-        text: 'test',
+        text: '💩 test1',
         action: () => console.log('test'),
       },
       {
-        text: 'test',
+        text: '💩 test2',
         action: () => console.log('test'),
       },
     ],

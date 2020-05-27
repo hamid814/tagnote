@@ -16,9 +16,9 @@ export const getTags = () => async (dispatch) => {
   }
 };
 
-export const getTag = (id) => async (dispatch) => {
+export const getTagWithNotes = (slug) => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/v1/tags/${id}/notes`);
+    const res = await axios.get(`/api/v1/tags/${slug}/notes`);
 
     dispatch({
       type: GET_TAG,

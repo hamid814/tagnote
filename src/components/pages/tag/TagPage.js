@@ -2,19 +2,26 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getTag } from 'store/actions/tag';
+import { getTagWithNotes } from 'store/actions/tag';
 
 import Notes from '../../notes/Notes';
 
 import './tagpage.scss';
 
-const TagPage = ({ match, tag, notes, otherNotes, getTag, loading }) => {
-  const { id } = match.params;
+const TagPage = ({
+  match,
+  tag,
+  notes,
+  otherNotes,
+  getTagWithNotes,
+  loading,
+}) => {
+  const { slug } = match.params;
 
   useEffect(() => {
-    getTag(id);
+    getTagWithNotes(slug);
     // eslint-disable-next-line
-  }, [id]);
+  }, [slug]);
 
   const tagColor = {
     color: tag.color,
@@ -53,4 +60,4 @@ const mapStateToProps = (state) => ({
   loading: state.tag.loading,
 });
 
-export default connect(mapStateToProps, { getTag })(TagPage);
+export default connect(mapStateToProps, { getTagWithNotes })(TagPage);

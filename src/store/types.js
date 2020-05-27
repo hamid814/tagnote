@@ -24,6 +24,7 @@ export const SET_LOADING = 'SET_LOADING(note)';
 export const SELECT_NOTE = 'SELECT_NOTE';
 export const UNSELECT_NOTE = 'UNSELECT_NOTE';
 export const UNSELECT_ALL = 'UNSELECT_ALL';
+export const DELETE_SELECTED_NOTES = 'DELETE_SELECTED_NOTES';
 
 // tag types
 export const GET_TAGS = 'GET_TAGS';
