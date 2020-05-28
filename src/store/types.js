@@ -31,3 +31,7 @@ export const GET_TAGS = 'GET_TAGS';
 export const GET_TAG = 'GET_TAG';
 export const ADD_TAG = 'ADD_TAG';
 export const DELETE_TAG = 'DELETE_TAG';
+
+// options types
+export const OPEN_OPTIONS = 'OPEN_OPTIONS';
+export const CLOSE_OPTIONS = 'CLOSE_OPTIONS';

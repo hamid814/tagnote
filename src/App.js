@@ -9,6 +9,7 @@ import store from './store/store';
 import Navbar from 'components/layout/Navbar';
 import Modal from 'components/modal/Modal';
 import Alert from 'components/layout/Alert';
+import Options from 'components/options/Options';
 
 // routes
 import RoutesContainer from 'routing/RoutesContainer';
@@ -29,6 +30,7 @@ const App = () => {
           <Modal />
           <Alert />
           <Navbar />
+          <Options />
           <div className="container">
             <RoutesContainer />
           </div>

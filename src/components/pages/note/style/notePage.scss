@@ -4,8 +4,8 @@
   height: 100%;
 
   .note-page-note-wrapper {
-    flex-basis: 48%;
     position: relative;
+    flex-basis: 48%;
 
     .edit-note-button {
       display: none;
@@ -50,6 +50,8 @@
       padding: 10px 10px 20px 0;
       font-size: 17px;
       letter-spacing: 0.3px;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
 
     .note-footer {

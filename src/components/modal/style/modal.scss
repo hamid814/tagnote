@@ -19,10 +19,6 @@
 
     .modal-body {
       animation: modalAnim 300ms ease-out reverse;
-
-      &.options-width {
-        animation: optionsModalAnim 300ms ease reverse;
-      }
     }
   }
 
@@ -35,10 +31,6 @@
 
     .modal-body {
       animation: modalAnim 300ms ease-out;
-
-      &.options-width {
-        animation: optionsModalAnim 230ms ease-in-out;
-      }
     }
   }
 
@@ -62,15 +54,6 @@
     &.width-narrow {
       width: 320px;
       height: 200px;
-    }
-
-    &.options-width {
-      background: transparent;
-      width: 400px;
-
-      .close-modal-btn {
-        display: none;
-      }
     }
 
     .close-modal-btn {
@@ -97,39 +80,5 @@
   100% {
     transform: scale(1);
     opacity: 1;
-  }
-}
-
-@keyframes optionsModalAnim {
-  0% {
-    transform: translateY(50px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0%);
-    opacity: 1;
-  }
-}
-
-@media (max-width: 460px) {
-  .modal-container {
-    .modal-body {
-      &.options-width {
-        position: fixed;
-        width: 100%;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      }
-    }
-  }
-
-  @keyframes optionsModalAnim {
-    0% {
-      transform: translateY(100%);
-    }
-    100% {
-      transform: translateY(0%);
-    }
   }
 }

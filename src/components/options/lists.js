@@ -1,9 +1,29 @@
 import React from 'react';
 
-const options = {
+const getList = (subject) => {
+  let list;
+
+  if (lists[subject]) {
+    list = lists[subject];
+  } else {
+    list = {
+      title: 'Tagnote',
+      options: [
+        {
+          text: 'Home',
+          action: () => console.log('here'),
+        },
+      ],
+    };
+  }
+
+  return list;
+};
+
+const lists = {
   logo: {
     title: 'browse Tagnote',
-    list: [
+    options: [
       {
         text: (
           <>
@@ -33,7 +53,7 @@ const options = {
   },
   note: {
     title: 'note options',
-    list: [
+    options: [
       {
         text: '⬆️ Open Note',
         action: 'openNote',
@@ -42,7 +62,7 @@ const options = {
   },
   selectedNotes: {
     title: 'notes',
-    list: [
+    options: [
       {
         text: (
           <>
@@ -68,4 +88,4 @@ const options = {
   },
 };
 
-export default options;
+export default getList;

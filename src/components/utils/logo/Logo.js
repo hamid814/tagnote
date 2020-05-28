@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { setAlert } from 'store/actions/alert';
-import { setModal } from 'store/actions/modal';
+import { openOptions } from 'store/actions/options';
 
-const Logo = ({ setAlert, setModal }) => {
+const Logo = ({ setAlert, openOptions }) => {
   const logoClicked = () => {
     setAlert('on', 'you successfully clicked on logo', 'success', 3000);
   };
@@ -15,7 +15,7 @@ const Logo = ({ setAlert, setModal }) => {
   const rightClick = (e) => {
     e.preventDefault();
 
-    setModal('on', 'options-modal', {
+    openOptions({
       subject: 'logo',
     });
   };
@@ -40,7 +40,7 @@ const Logo = ({ setAlert, setModal }) => {
 
 Logo.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  setModal: PropTypes.func.isRequired,
+  openOptions: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert, setModal })(Logo);
+export default connect(null, { setAlert, openOptions })(Logo);

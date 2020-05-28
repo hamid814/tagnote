@@ -13,6 +13,7 @@ import { deleteNote } from 'store/actions/note';
 import { selectNote } from 'store/actions/note';
 import { unSelectNote } from 'store/actions/note';
 import { setModal } from 'store/actions/modal';
+import { openOptions } from 'store/actions/options';
 
 // style
 import './style/note.scss';
@@ -20,6 +21,7 @@ import './style/note.scss';
 const Note = ({
   note: { _id, tag, otherTags, date, body },
   setModal,
+  openOptions,
   deleteNote,
   selected,
   selectNote,
@@ -33,7 +35,7 @@ const Note = ({
 
   setTimeout(() => {
     noteElem.current.style.setProperty('--c', tag.color);
-  }, 1);
+  }, 1000);
 
   const openNotePage = () => {
     history.push(noteLink);
@@ -55,7 +57,7 @@ const Note = ({
     e.preventDefault();
 
     if (!selecting) {
-      setModal('on', 'options-modal', {
+      openOptions({
         subject: 'note',
         setModal,
         deleteNote,
@@ -96,13 +98,17 @@ const Note = ({
 
 Note.propTypes = {
   setModal: PropTypes.func.isRequired,
+  openOptions: PropTypes.func.isRequired,
   deleteNote: PropTypes.func.isRequired,
   selectNote: PropTypes.func.isRequired,
   unSelectNote: PropTypes.func.isRequired,
 };
 
+console.log('is setModal needed here?');
+
 export default connect(null, {
   setModal,
+  openOptions,
   deleteNote,
   selectNote,
   unSelectNote,

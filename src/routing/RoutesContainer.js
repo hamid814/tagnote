@@ -15,6 +15,7 @@ import Statistics from 'components/pages/statistics/Statistics';
 import Rules from 'components/pages/rules/Rules';
 import CurrentTasks from 'components/pages/currenttasks/CurrentTasks';
 import LoginPage from 'components/pages/login/LoginPage';
+import RegisterPage from 'components/pages/register/RegisterPage';
 import SearchPage from 'components/pages/search/SearchPage';
 
 const RoutesContainer = ({ loadUser }) => {
@@ -40,6 +41,11 @@ const RoutesContainer = ({ loadUser }) => {
         component={CurrentTasks}
       />
       <Route exact path={`${publicUrl}/auth/login`} component={LoginPage} />
+      <Route
+        exact
+        path={`${publicUrl}/auth/register`}
+        component={RegisterPage}
+      />
     </Switch>
   );
 };

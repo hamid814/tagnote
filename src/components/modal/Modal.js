@@ -8,7 +8,6 @@ import { setModal } from 'store/actions/modal';
 import QuickInsert from './components/quickinsert/QuickInsert';
 import AskModal from './components/askModal/AskModal';
 import LoginModal from './components/loginModal/LoginModal';
-import OptionsModal from './components/optionsModal/OptionsModal';
 
 import './style/modal.scss';
 
@@ -59,9 +58,6 @@ const Modal = ({ modalStatus, modalType, modalData, setModal }) => {
       case 'quick-insert':
         size = 'width-wide';
         break;
-      case 'options-modal':
-        size = 'options-width';
-        break;
       default:
         size = 'width-normal';
     }
@@ -82,7 +78,6 @@ const Modal = ({ modalStatus, modalType, modalData, setModal }) => {
           </span>
         </div>
         {modalType === 'quick-insert' && <QuickInsert />}
-        {modalType === 'options-modal' && <OptionsModal data={modalData} />}
         {modalType === 'login-modal' && <LoginModal setModal={setModal} />}
         {modalType === 'ask-modal' && (
           <AskModal closeModal={closeModal} data={modalData} />
