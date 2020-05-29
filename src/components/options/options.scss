@@ -39,6 +39,7 @@
     width: 460px;
     padding-bottom: 10px;
     background-color: #555;
+    border-radius: 7px;
 
     .options-title {
       color: #aaa;
@@ -53,7 +54,7 @@
         padding: 15px;
         cursor: pointer;
 
-        &:hover {
+        &:active {
           background-color: #444;
         }
 
@@ -73,5 +74,25 @@
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 460px) {
+  .options-body {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw !important;
+    border-radius: 0 !important;
+  }
+
+  @keyframes optionsAnim {
+    0% {
+      transform: translateY(100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
   }
 }

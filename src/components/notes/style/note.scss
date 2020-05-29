@@ -1,4 +1,6 @@
 .note-wrapper {
+  position: relative;
+
   &.selected {
     position: relative;
 
@@ -20,6 +22,39 @@
         animation: noteSelectAnim 100ms ease-in-out;
         border: none;
       }
+    }
+  }
+
+  .personal-layer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: var(--blue-color);
+    opacity: 0.97;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    z-index: 2;
+
+    button {
+      background-color: transparent;
+      padding: 5px 15px;
+      color: var(--text-color);
+      margin-top: 10px;
+      border: 1px solid #eee;
+      border-radius: 7px;
+    }
+
+    &.show {
+      display: flex;
+    }
+    &.hide {
+      display: none;
     }
   }
 

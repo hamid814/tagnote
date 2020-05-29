@@ -5,8 +5,9 @@
   font-size: 20px;
   user-select: none;
   transition: 500ms;
+  color: var(--yellow-color);
 
   &.dark {
-    transform: rotate(360deg);
+    color: var(--blue-color);
   }
 }

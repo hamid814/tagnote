@@ -27,9 +27,11 @@ const ThemeButton = () => {
   return (
     <div className={`tagnote-theme-changer-btn ${theme}`}>
       <span onClick={onClick}>
-        <span role="img" aria-label={theme === 'dark' ? 'moon' : 'sun'}>
-          {theme === 'dark' ? '🌚' : '🌞'}
-        </span>
+        {theme === 'dark' ? (
+          <i className="icon icon-light-off"></i>
+        ) : (
+          <i className="icon icon-light-on"></i>
+        )}
       </span>
     </div>
   );

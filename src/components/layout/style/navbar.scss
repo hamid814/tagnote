@@ -11,6 +11,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  transform: translate3d(0, 0, 0);
 
   .navbar-seleting-panel {
     position: absolute;
@@ -70,7 +71,21 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     z-index: -1;
+
+    &:hover {
+      .logo {
+        opacity: 1;
+        margin-right: 0px;
+      }
+    }
+
+    .logo {
+      animation: logoAnim 3000ms ease-in;
+      opacity: 0;
+      margin-right: -40px;
+    }
   }
 
   .navbar-right {
@@ -101,5 +116,27 @@
   to {
     transform: scale(1);
     opacity: 1;
+  }
+}
+
+@keyframes logoAnim {
+  0% {
+    opacity: 0;
+    margin-right: -40px;
+  }
+
+  20% {
+    opacity: 1;
+    margin-right: 0px;
+  }
+
+  80% {
+    opacity: 1;
+    margin-right: 0px;
+  }
+
+  100% {
+    opacity: 0;
+    margin-right: -40px;
   }
 }

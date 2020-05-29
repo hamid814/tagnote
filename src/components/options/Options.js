@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 //redux
 import { closeOptions } from 'store/actions/options';
+import { setAlert } from 'store/actions/alert';
 
 // utilities
 import getList from './lists';
@@ -11,7 +12,7 @@ import functions from './functions';
 // style
 import './options.scss';
 
-const OptionsModal = ({ status, data, closeOptions }) => {
+const Options = ({ status, data, closeOptions, setAlert }) => {
   const [optionsClass, setOptionsClass] = useState('first-close');
 
   useEffect(() => {
@@ -38,50 +39,22 @@ const OptionsModal = ({ status, data, closeOptions }) => {
     }
   };
 
-  let note, setModal, deleteNote, selectNote, openNotePage;
-
-  const { subject } = data;
-
-  const onOpenNote = () => {
-    openNotePage();
-  };
-
-  const copyText = () => {};
-
-  const onDeleteClick = () => {
-    setModal('on', 'ask-modal', {
-      title: 'Delete Note?',
-      text: 'Are you sure you want to delete this note?',
-      buttons: [
-        {
-          text: 'Delete',
-          color: 'var(--red-color)',
-          action: async (id) => {
-            await deleteNote(id);
-            setModal('off');
-          },
-          actionArg: note._id,
-        },
-        {
-          text: 'No',
-          color: 'var(--blue-color)',
-          action: setModal,
-          actionArg: 'off',
-        },
-      ],
-    });
-  };
-
-  const onSelectNote = () => {
-    selectNote(note._id);
-    setModal('off');
-  };
+  const { subject, context } = data;
 
   const getFunction = (arg) => {
     if (typeof arg === 'function') {
       arg();
     } else if (typeof arg === 'string') {
-      functions[arg]();
+      if (typeof functions[arg] === 'function') {
+        functions[arg](context);
+      } else {
+        setAlert(
+          'on',
+          'some error accured \nthe error is sent to our server and will be addressed ASAP',
+          'warning',
+          4000
+        );
+      }
     } else {
       console.log('action not supprted');
     }
@@ -96,44 +69,13 @@ const OptionsModal = ({ status, data, closeOptions }) => {
         <ul className="options-list">
           {options.map((item) => (
             <li
-              key={item.text}
+              key={item.id}
               onClick={() => getFunction(item.action)}
-              className="option-item"
+              className={`option-item ${item.addedClassName}`}
             >
               {item.text}
             </li>
           ))}
-          {/* {subject === 'note' && (
-          <>
-            <li className="option-item" onClick={copyText}>
-              <span role="img" aria-label="copy">
-                ➿
-              </span>{' '}
-              Copy Text
-            </li>
-            <li className="option-item">
-              <span role="img" aria-label="copy">
-                📤
-              </span>{' '}
-              Get Share Link
-            </li>
-            <li className="option-item" onClick={onSelectNote}>
-              <i className="icon icon-options-select"></i> Select
-            </li>
-            <li className="option-item">
-              <span role="img" aria-label="pin">
-                📌
-              </span>{' '}
-              Pin to top
-            </li>
-            <li className="option-item red" onClick={onDeleteClick}>
-              <span role="img" aria-label="red-x-mark">
-                ❌
-              </span>{' '}
-              Delete Note
-            </li>
-          </>
-        )} */}
         </ul>
       </div>
     </div>
@@ -148,4 +90,4 @@ const mapStateToProps = (state) => ({
   data: state.options.data,
 });
 
-export default connect(mapStateToProps, { closeOptions })(OptionsModal);
+export default connect(mapStateToProps, { closeOptions, setAlert })(Options);

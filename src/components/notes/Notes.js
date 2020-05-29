@@ -38,35 +38,17 @@ const Notes = ({ notes, selected }) => {
     }
   };
 
-  // window.addEventListener('load', () => {
-  //   setTimeout(() => {
-  //     resizeAllItems(container.current.children);
-  //   }, 3000);
-  // });
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      resizeAllItems(container.current.children);
+    }, 3000);
+  });
 
-  // window.addEventListener('resize', () => {
-  //   resizeAllItems(container.current.children);
-  // });
+  window.addEventListener('resize', () => {
+    resizeAllItems(container.current.children);
+  });
 
-  const hardNote = {
-    _id: '001',
-    body: 'note body',
-    tag: {
-      name: 'local',
-      color: 'var(--blue-color)',
-      slug: 'local',
-    },
-    otherTags: [
-      {
-        name: 'test',
-        color: 'yellow',
-        slug: 'test',
-      },
-    ],
-    date: '2020/04/04T12:12:12',
-  };
-
-  if (notes.length !== 0) {
+  if (notes.length === 0) {
     return <NoNotes />;
   } else {
     return (
@@ -79,11 +61,6 @@ const Notes = ({ notes, selected }) => {
             selecting={selected.length > 0 ? true : false}
           />
         ))}
-        <Note
-          note={hardNote}
-          selected={selected.indexOf(hardNote._id) !== -1 && true}
-          selecting={selected.length > 0 ? true : false}
-        />
       </div>
     );
   }

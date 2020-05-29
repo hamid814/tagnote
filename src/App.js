@@ -1,9 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { Router } from 'react-router-dom';
 
 // redux
 import { Provider } from 'react-redux';
 import store from './store/store';
+
+// history
+import history from 'utils/history';
 
 // layout
 import Navbar from 'components/layout/Navbar';
@@ -15,6 +18,8 @@ import Options from 'components/options/Options';
 import RoutesContainer from 'routing/RoutesContainer';
 
 // web fonts (icon)
+// import './icon/css/tagnote-icon-set-embedded.css';
+// import './icon/css/tagnote-icon-set-codes.css';
 import './icon/css/tagnote-icon-set-embedded.css';
 
 const App = () => {
@@ -25,7 +30,7 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <Router>
+      <Router history={history}>
         <>
           <Modal />
           <Alert />

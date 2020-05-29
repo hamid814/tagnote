@@ -27,13 +27,6 @@ const Home = ({ notes, getNotes }) => {
     <div className="home-page">
       <HomeTags tags={tags} />
       <br />
-      <div style={{ color: '#888', fontSize: 24, marginBottom: 20 }}>
-        <i className="icon icon-options-select"></i>
-        <i className="icon icon-options-merge"></i>
-        <i className="icon icon-logo-square"></i>
-        <i className="icon icon-logo-radius"></i>
-        <i className="icon icon-logo-circle"></i>
-      </div>
       <Notes notes={notes} />
     </div>
   );

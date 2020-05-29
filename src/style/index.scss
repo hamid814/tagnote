@@ -8,6 +8,7 @@
   border: none;
   transition: 0.3s;
   outline: none;
+  user-select: none;
 }
 
 :root {
@@ -95,7 +96,8 @@ button {
   }
 }
 
-.icon {
-  color: #ddd;
-  font-size: 18px;
+@media (max-width: 480px) {
+  .mobile-display-none {
+    display: none;
+  }
 }

@@ -12,15 +12,14 @@ import NoteHeader from './NoteHeader';
 import { deleteNote } from 'store/actions/note';
 import { selectNote } from 'store/actions/note';
 import { unSelectNote } from 'store/actions/note';
-import { setModal } from 'store/actions/modal';
 import { openOptions } from 'store/actions/options';
 
 // style
 import './style/note.scss';
 
 const Note = ({
-  note: { _id, tag, otherTags, date, body },
-  setModal,
+  note: { _id, tag, otherTags, date, body, isPersonal },
+  note,
   openOptions,
   deleteNote,
   selected,
@@ -35,7 +34,7 @@ const Note = ({
 
   setTimeout(() => {
     noteElem.current.style.setProperty('--c', tag.color);
-  }, 1000);
+  }, 1);
 
   const openNotePage = () => {
     history.push(noteLink);
@@ -59,11 +58,7 @@ const Note = ({
     if (!selecting) {
       openOptions({
         subject: 'note',
-        setModal,
-        deleteNote,
-        selectNote,
-        openNotePage,
-        note: { _id, tag, otherTags, date, body },
+        context: note,
       });
     }
   };
@@ -77,6 +72,20 @@ const Note = ({
       onContextMenu={rightClick}
       className={`note-wrapper ${selected && 'selected'}`}
     >
+      {isPersonal ||
+        (tag.name === 'personal' && (
+          <div className="personal-layer">
+            Personal Note
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                e.target.parentElement.classList.add('hide');
+              }}
+            >
+              Show
+            </button>
+          </div>
+        ))}
       <div className="note">
         <div className="note-header">
           <NoteHeader tag={tag} _id={_id} selecting={selecting} />
@@ -97,7 +106,6 @@ const Note = ({
 };
 
 Note.propTypes = {
-  setModal: PropTypes.func.isRequired,
   openOptions: PropTypes.func.isRequired,
   deleteNote: PropTypes.func.isRequired,
   selectNote: PropTypes.func.isRequired,
@@ -105,9 +113,9 @@ Note.propTypes = {
 };
 
 console.log('is setModal needed here?');
+console.log('personal is checked by tag rn');
 
 export default connect(null, {
-  setModal,
   openOptions,
   deleteNote,
   selectNote,

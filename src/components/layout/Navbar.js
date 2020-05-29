@@ -6,6 +6,7 @@ import Logo from 'components/utils/logo/Logo';
 import ThemeButton from 'components/utils/themebutton/ThemeButton';
 
 import { setModal } from 'store/actions/modal';
+import { openOptions } from 'store/actions/options';
 import { logout } from 'store/actions/auth';
 import { unSelecteAll } from 'store/actions/note';
 import { deleteSelectedNotes } from 'store/actions/note';
@@ -20,6 +21,7 @@ const Navbar = ({
   selected,
   unSelecteAll,
   deleteSelectedNotes,
+  openOptions,
 }) => {
   const onLoginClick = () => {
     setModal('on', 'login-modal');
@@ -93,8 +95,7 @@ const Navbar = ({
   };
 
   const onSelectOptionsClicked = () => {
-    setModal('on', 'options-modal', {
-      title: 'what you want to do with selected notes?',
+    openOptions({
       subject: 'selectedNotes',
     });
   };
@@ -121,6 +122,7 @@ const Navbar = ({
       </div>
       <div className="navbar-logo">
         <Logo />
+        <span style={{ marginLeft: 5 }}>TagNote</span>
       </div>
       <div className="navbar-right">
         <ThemeButton />
@@ -128,7 +130,7 @@ const Navbar = ({
           <span role="img" aria-label="note">
             📝
           </span>
-          Insert
+          <span className="mobile-display-none">Insert</span>
         </button>
       </div>
     </div>
@@ -141,6 +143,7 @@ Navbar.propTypes = {
   selected: PropTypes.array,
   unSelecteAll: PropTypes.func.isRequired,
   deleteSelectedNotes: PropTypes.func.isRequired,
+  openOptions: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -154,4 +157,5 @@ export default connect(mapStateToProps, {
   logout,
   unSelecteAll,
   deleteSelectedNotes,
+  openOptions,
 })(Navbar);
