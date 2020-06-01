@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -18,10 +18,17 @@ const TagPage = ({
 }) => {
   const { slug } = match.params;
 
+  const [waiting, setWaiting] = useState(true);
+
   useEffect(() => {
-    getTagWithNotes(slug);
+    asyncEffect();
     // eslint-disable-next-line
   }, [slug]);
+
+  const asyncEffect = async () => {
+    await getTagWithNotes(slug);
+    setWaiting(false);
+  };
 
   const tagColor = {
     color: tag.color,
@@ -36,7 +43,7 @@ const TagPage = ({
         <h1 style={tagColor} className="tag-name">
           #{tag.name}
         </h1>
-        <Notes notes={notes} />
+        {!waiting && <Notes notes={notes} />}
         {otherNotes.length > 0 && (
           <>
             <div
@@ -44,7 +51,7 @@ const TagPage = ({
               style={{ background: tag.color }}
             ></div>
             <h3 className="other-tags-title">Related Notes</h3>
-            <Notes notes={otherNotes} />
+            {!waiting && <Notes notes={otherNotes} />}
           </>
         )}
       </div>

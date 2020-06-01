@@ -19,7 +19,7 @@
     display: flex;
 
     .options-body {
-      animation: optionsAnim 300ms ease;
+      animation: optionsAnim 200ms ease;
     }
   }
 
@@ -31,14 +31,14 @@
     display: flex;
 
     .options-body {
-      animation: optionsAnim 300ms ease reverse;
+      animation: optionsAnim 200ms ease reverse;
     }
   }
 
   .options-body {
     width: 460px;
     padding-bottom: 10px;
-    background-color: #555;
+    background-color: #444;
     border-radius: 7px;
 
     .options-title {
@@ -55,7 +55,7 @@
         cursor: pointer;
 
         &:active {
-          background-color: #444;
+          background-color: #333;
         }
 
         &.red {

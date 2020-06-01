@@ -18,7 +18,7 @@ import { openOptions } from 'store/actions/options';
 import './style/note.scss';
 
 const Note = ({
-  note: { _id, tag, otherTags, date, body, isPersonal },
+  note: { _id, tag, otherTags, createdAt, body, isPersonal },
   note,
   openOptions,
   deleteNote,
@@ -63,7 +63,9 @@ const Note = ({
     }
   };
 
-  const formattedDate = moment(date, 'YYYY-MM-DD/hh:mm:ss').format('YY/MM');
+  const formattedDate = moment(createdAt, 'YYYY-MM-DD/hh:mm:ss').format(
+    'YY/MM'
+  );
 
   return (
     <div

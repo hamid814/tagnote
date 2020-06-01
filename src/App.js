@@ -18,8 +18,6 @@ import Options from 'components/options/Options';
 import RoutesContainer from 'routing/RoutesContainer';
 
 // web fonts (icon)
-// import './icon/css/tagnote-icon-set-embedded.css';
-// import './icon/css/tagnote-icon-set-codes.css';
 import './icon/css/tagnote-icon-set-embedded.css';
 
 const App = () => {

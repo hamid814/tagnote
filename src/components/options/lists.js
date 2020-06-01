@@ -75,7 +75,7 @@ const lists = {
         id: genId.next().value,
         text: (
           <>
-            <i className="icon icon-arrow-1"></i> Open Note
+            <i className="icon icon-open"></i> Open Note
           </>
         ),
         action: 'openNote',
@@ -84,7 +84,7 @@ const lists = {
         id: genId.next().value,
         text: (
           <>
-            <i className="icon icon-arrow-1"></i> Copy Text
+            <i className="icon icon-copy"></i> Copy Text
           </>
         ),
         action: 'copyNoteText',
@@ -102,7 +102,7 @@ const lists = {
         id: genId.next().value,
         text: (
           <>
-            <i className="icon icon-arrow-1"></i> Get Share Link
+            <i className="icon icon-link"></i> Get Share Link
           </>
         ),
         action: 'getNoteShareLink',
@@ -111,7 +111,7 @@ const lists = {
         id: genId.next().value,
         text: (
           <>
-            <i className="icon icon-arrow-1"></i> Pin Note
+            <i className="icon icon-pin"></i> Pin Note
           </>
         ),
         action: 'getNoteShareLink',
@@ -120,7 +120,7 @@ const lists = {
         id: genId.next().value,
         text: (
           <>
-            <i className="icon icon-trash"></i> Make Personal
+            <i className="icon icon-lock"></i> Make Personal
           </>
         ),
         action: 'deleteNote',
@@ -129,7 +129,7 @@ const lists = {
         id: genId.next().value,
         text: (
           <>
-            <i className="icon icon-x-mark"></i> Delete Note
+            <i className="icon icon-trash-new"></i> Delete Note
           </>
         ),
         addedClassName: 'red',

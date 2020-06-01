@@ -10,10 +10,11 @@ import { getNotes } from 'store/actions/note';
 import './home.scss';
 
 const Home = ({ notes, getNotes }) => {
+  const [waiting, setWaiting] = useState(true);
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
-    getNotes();
+    asyncEffect();
 
     try {
       axios.get('/api/v1/tags').then((res) => setTags(res.data.data));
@@ -23,11 +24,16 @@ const Home = ({ notes, getNotes }) => {
     // eslint-disable-next-line
   }, []);
 
+  const asyncEffect = async () => {
+    await getNotes();
+    setWaiting(false);
+  };
+
   return (
     <div className="home-page">
       <HomeTags tags={tags} />
       <br />
-      <Notes notes={notes} />
+      {!waiting && <Notes notes={notes} />}
     </div>
   );
 };

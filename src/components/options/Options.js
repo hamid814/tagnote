@@ -21,13 +21,13 @@ const Options = ({ status, data, closeOptions, setAlert }) => {
 
       setTimeout(() => {
         setOptionsClass('open');
-      }, 280);
+      }, 180);
     } else if (status === 'close') {
       setOptionsClass('closing');
 
       setTimeout(() => {
         setOptionsClass('close');
-      }, 280);
+      }, 180);
     } else if (status === 'first-close') {
       setOptionsClass('close');
     }

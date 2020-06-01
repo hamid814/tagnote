@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 
-const BigNote = ({ note: { body, tag, date, otherTags }, goToEdit }) => {
-  const formattedDate = moment(date, 'YYYY-MM-DD/hh:mm:ss').format('YY/MM');
+const BigNote = ({ note: { body, tag, createdAt, otherTags }, goToEdit }) => {
+  const formattedDate = moment(createdAt, 'YYYY-MM-DD/hh:mm:ss').format(
+    'YY/MM'
+  );
 
   return (
     <div className="note-page-note">
