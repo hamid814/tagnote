@@ -11,6 +11,7 @@ import Home from 'components/pages/home/Home';
 import TagPage from 'components/pages/tag/TagPage';
 import Tags from 'components/pages/tags/Tags';
 import NotePage from 'components/pages/note/NotePage';
+import ViewNote from 'components/pages/viewNote/ViewNote';
 import Statistics from 'components/pages/statistics/Statistics';
 import Rules from 'components/pages/rules/Rules';
 import CurrentTasks from 'components/pages/currenttasks/CurrentTasks';
@@ -32,6 +33,11 @@ const RoutesContainer = ({ loadUser }) => {
       <Route exact path={`${publicUrl}/tagnote`} component={Home} />
       <Route exact path={`${publicUrl}/tags`} component={Tags} />
       <Route exact path={`${publicUrl}/tags/:slug`} component={TagPage} />
+      <Route
+        exact
+        path={`${publicUrl}/notes/view/:token`}
+        component={ViewNote}
+      />
       <Route exact path={`${publicUrl}/notes/:id`} component={NotePage} />
       <Route exact path={`${publicUrl}/statics`} component={Statistics} />
       <Route exact path={`${publicUrl}/rules`} component={Rules} />

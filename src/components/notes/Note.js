@@ -74,20 +74,19 @@ const Note = ({
       onContextMenu={rightClick}
       className={`note-wrapper ${selected && 'selected'}`}
     >
-      {isPersonal ||
-        (tag.name === 'personal' && (
-          <div className="personal-layer">
-            Personal Note
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                e.target.parentElement.classList.add('hide');
-              }}
-            >
-              Show
-            </button>
-          </div>
-        ))}
+      {isPersonal && (
+        <div className="personal-layer">
+          Personal Note
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              e.target.parentElement.classList.add('hide');
+            }}
+          >
+            Show
+          </button>
+        </div>
+      )}
       <div className="note">
         <div className="note-header">
           <NoteHeader tag={tag} _id={_id} selecting={selecting} />

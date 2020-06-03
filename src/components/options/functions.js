@@ -5,8 +5,7 @@ import history from 'utils/history';
 
 // redux actions
 import { closeOptions } from 'store/actions/options';
-import { selectNote } from 'store/actions/note';
-import { deleteNote } from 'store/actions/note';
+import * as noteActions from 'store/actions/note';
 import { setModal } from 'store/actions/modal';
 import { setAlert } from 'store/actions/alert';
 
@@ -19,19 +18,33 @@ const functions = {
   },
   copyNoteText: (note) => {
     dispatch(closeOptions());
-    const el = document.createElement('textarea');
-    el.value = note.body;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-    dispatch(setAlert('on', 'Copied to clipboard', 'success', 2500));
+    copyText(note.body);
   },
   selectNote: (note) => {
-    dispatch(selectNote(note._id));
+    dispatch(noteActions.selectNote(note._id));
     dispatch(closeOptions());
   },
-  getNoteShareLink: () => console.log('share link'),
+  getNoteShareLink: async (note) => {
+    const url = await noteActions.getNoteShareLink(note._id, dispatch);
+    dispatch(closeOptions());
+    dispatch(
+      setModal('on', 'ask-modal', {
+        title: 'Note Link',
+        text: url,
+        buttons: [
+          {
+            text: 'Copy',
+            color: 'var(--green-color)',
+            action: (text) => {
+              copyText(text, 'Url Copied!');
+              dispatch(setModal('off'));
+            },
+            actionArg: url,
+          },
+        ],
+      })
+    );
+  },
   deleteNote: async (note) => {
     dispatch(closeOptions());
     dispatch(
@@ -43,7 +56,7 @@ const functions = {
             text: 'Delete',
             color: 'var(--red-color)',
             action: async () => {
-              await dispatch(deleteNote(note._id));
+              await dispatch(noteActions.deleteNote(note._id));
               dispatch(setModal('off'));
             },
           },
@@ -56,8 +69,20 @@ const functions = {
       })
     );
   },
+  makePersonal: async (note) => {
+    await dispatch(noteActions.makePersonal(note._id));
+    dispatch(closeOptions());
+  },
 };
 
-console.log('%c getNoteshareLink is uncompelete', 'color: red');
+const copyText = (text, alert = 'Copied to clipboard!') => {
+  const el = document.createElement('textarea');
+  el.value = text;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+  store.dispatch(setAlert('on', alert, 'success', 3000));
+};
 
 export default functions;

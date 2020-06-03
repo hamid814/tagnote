@@ -88,6 +88,31 @@ export const updateNote = (id, formData) => async (dispatch) => {
   }
 };
 
+export const makePersonal = (id) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const res = await axios.put(
+      `/api/v1/notes/${id}`,
+      { isPersonal: true },
+      config
+    );
+
+    dispatch({
+      type: UPDATE_NOTE,
+      payload: res.data.data,
+    });
+
+    dispatch(setAlert('on', 'Note was updated', 'success', 3500));
+  } catch (err) {
+    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
+  }
+};
+
 export const deleteNote = (id) => async (dispatch) => {
   try {
     const res = await axios.delete(`/api/v1/notes/${id}`);
@@ -159,6 +184,35 @@ export const unSelecteAll = (id) => (dispatch) => {
   dispatch({
     type: UNSELECT_ALL,
   });
+};
+
+export const getNoteShareLink = async (id, dispatch) => {
+  try {
+    const res = await axios.get(`/api/v1/notes/${id}/token`);
+
+    const token = res.data.token;
+
+    console.log(process.env);
+
+    return process.env.PUBLIC_URL + '/notes/view/' + token;
+  } catch (err) {
+    dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
+
+    return err.response.data.error;
+  }
+};
+
+export const getNoteWithToken = (token) => async (dispatch) => {
+  try {
+    const res = await axios.get('/api/v1/notes/view?token=' + token);
+
+    dispatch({
+      type: GET_NOTE,
+      payload: res.data.data,
+    });
+  } catch (err) {
+    dispatch(setAlert('on', err.response.data.error), 'warning', 3500);
+  }
 };
 
 const setLoading = (dispatch) => {

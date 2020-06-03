@@ -1,0 +1,33 @@
+.view-note-page {
+  display: flex;
+  align-items: center;
+
+  .view-note-page-note {
+    width: 320px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #222228;
+    border-radius: var(--border-radius);
+
+    .view-note-header {
+      font-size: 22px;
+      font-weight: 100;
+    }
+
+    .view-note-body {
+      margin-top: 10px;
+    }
+
+    .view-note-footer {
+      margin-top: 10px;
+      font-size: 15px;
+    }
+
+    .view-note-credits {
+      margin-top: 7px;
+      color: #999;
+      font-size: 13px;
+      text-align: right;
+    }
+  }
+}

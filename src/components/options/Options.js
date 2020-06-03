@@ -60,7 +60,7 @@ const Options = ({ status, data, closeOptions, setAlert }) => {
     }
   };
 
-  const { title, options } = getList(subject);
+  const { title, options } = getList(subject, context);
 
   return (
     <div className={`options-container ${optionsClass}`} onClick={onClick}>
