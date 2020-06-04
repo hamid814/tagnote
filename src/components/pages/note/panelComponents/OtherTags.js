@@ -42,13 +42,15 @@ const OtherTags = ({ edit, tags, primaryTag }) => {
   };
 
   const onAddOtherTag = () => {
-    edit({
-      otherTags: [...tags, tag],
-    });
+    if (tag._id) {
+      edit({
+        otherTags: [...tags, tag],
+      });
 
-    setTag({});
+      setTag({});
 
-    setNewTagText('');
+      setNewTagText('');
+    }
   };
 
   const getColor = tag.color

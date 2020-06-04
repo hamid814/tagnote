@@ -39,8 +39,6 @@ export const addNote = (formData) => async (dispatch) => {
 
     const res = await axios.post('/api/v1/notes', formData, config);
 
-    console.log(res.data.data);
-
     dispatch({
       type: ADD_NOTE,
       payload: res.data.data,
@@ -88,7 +86,7 @@ export const updateNote = (id, formData) => async (dispatch) => {
   }
 };
 
-export const makePersonal = (id) => async (dispatch) => {
+export const makePersonal = (id) => async (dispatch, getState) => {
   try {
     const config = {
       headers: {
@@ -96,11 +94,13 @@ export const makePersonal = (id) => async (dispatch) => {
       },
     };
 
-    const res = await axios.put(
-      `/api/v1/notes/${id}`,
-      { isPersonal: true },
-      config
-    );
+    const isPersonal = !getState().note.notes.filter(
+      (note) => note._id === id
+    )[0].isPersonal;
+
+    console.log(isPersonal);
+
+    const res = await axios.put(`/api/v1/notes/${id}`, { isPersonal }, config);
 
     dispatch({
       type: UPDATE_NOTE,
@@ -193,14 +193,16 @@ export const getNoteShareLink = async (id, dispatch) => {
     const token = res.data.token;
 
     console.log(process.env);
+    console.log(window.location);
 
-    return process.env.PUBLIC_URL + '/notes/view/' + token;
+    return window.location.origin + '/notes/view/' + token;
   } catch (err) {
     dispatch(setAlert('on', err.response.data.error, 'warning', 3500));
 
     return err.response.data.error;
   }
 };
+console.log('up this line, share link is not compelete');
 
 export const getNoteWithToken = (token) => async (dispatch) => {
   try {

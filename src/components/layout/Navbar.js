@@ -122,7 +122,7 @@ const Navbar = ({
       </div>
       <div className="navbar-logo">
         <Logo />
-        <span style={{ marginLeft: 5 }}>TagNote</span>
+        {/* <span style={{ marginLeft: 5 }}>TagNote</span> */}
       </div>
       <div className="navbar-right">
         <ThemeButton />

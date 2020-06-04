@@ -1,17 +1,15 @@
 .logo {
   // border-radius: 14px;
-  border-radius: 20px;
+  // border-radius: 20px;
   overflow: hidden;
   width: 40px;
   height: 40px;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  // border: 2px solid #ccc;
 
   &:hover {
-    border-radius: 14px;
-    border-radius: 0;
-
     .col-1 {
       .row-1 {
         height: 27%;
@@ -19,6 +17,7 @@
 
       .row-2 {
         height: 37%;
+        border-width: 2px;
       }
 
       .row-3 {
@@ -49,6 +48,9 @@
     width: 100%;
     border-radius: 3px;
     transition-timing-function: cubic-bezier(1, 1, 1, 1);
+    background-color: transparent !important;
+    border-width: 2px;
+    border-style: solid;
 
     &:hover {
       filter: brightness(110%);
@@ -59,16 +61,20 @@
     .row-1 {
       height: 57%;
       background: rgb(238, 184, 44);
+      border-color: rgb(238, 184, 44);
     }
 
     .row-2 {
       height: 0%;
       background: rgb(255, 124, 84);
+      border-color: rgb(255, 124, 84);
+      border-width: 0;
     }
 
     .row-3 {
       height: 37%;
       background: rgb(4, 188, 164);
+      border-color: rgb(4, 188, 164);
     }
   }
 
@@ -76,16 +82,19 @@
     .row-1 {
       height: 17%;
       background: rgb(236, 132, 252);
+      border-color: rgb(236, 132, 252);
     }
 
     .row-2 {
       height: 17%;
       background: rgb(144, 145, 145);
+      border-color: rgb(144, 145, 145);
     }
 
     .row-3 {
       height: 57%;
       background: rgb(208, 175, 142);
+      border-color: rgb(208, 175, 142);
     }
   }
 }

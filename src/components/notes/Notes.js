@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 
 import Note from './Note';
@@ -6,61 +6,50 @@ import NoNotes from './NoNotes';
 
 import './style/notes.scss';
 
+import createLayout from './layout';
+
 const Notes = ({ notes, selected }) => {
+  const [noteElems, setNoteElems] = useState(null);
   const container = useRef(document.querySelector('.notes-container'));
 
-  const resizeMasonryItem = (item) => {
-    const rowGap = parseInt(
-      window
-        .getComputedStyle(container.current)
-        .getPropertyValue('grid-row-gap')
-    );
+  useEffect(() => {
+    populateDom();
+    // eslint-disable-next-line
+  }, [notes]);
 
-    const rowHeight = parseInt(
-      window
-        .getComputedStyle(container.current)
-        .getPropertyValue('grid-auto-rows')
-    );
-
-    var rowSpan = Math.ceil(
-      (item.querySelector('.note').getBoundingClientRect().height + rowGap) /
-        (rowHeight + rowGap)
-    );
-
-    item.style.gridRowEnd = 'span ' + rowSpan;
-
-    item.querySelector('.note').style.height = rowSpan * 1 + 'px';
+  const populateDom = async () => {
+    await putNotes();
+    createLayout(container.current);
   };
 
-  const resizeAllItems = (items) => {
-    for (let i = 0; i < items.length; i++) {
-      resizeMasonryItem(items[i]);
-    }
+  // this funciton runs in order to wait a little for ref to load current
+  const putNotes = () => {
+    setNoteElems(
+      notes.map((note) => (
+        <Note
+          key={note._id}
+          note={note}
+          selected={selected.indexOf(note._id) !== -1 && true}
+          selecting={selected.length > 0 ? true : false}
+        />
+      ))
+    );
   };
-
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      resizeAllItems(container.current.children);
-    }, 3000);
-  });
-
-  window.addEventListener('resize', () => {
-    resizeAllItems(container.current.children);
-  });
 
   if (notes.length === 0) {
     return <NoNotes />;
   } else {
     return (
       <div ref={container} className="notes-container">
-        {notes.map((note) => (
+        {noteElems}
+        {/* {notes.map((note) => (
           <Note
             key={note._id}
             note={note}
             selected={selected.indexOf(note._id) !== -1 && true}
             selecting={selected.length > 0 ? true : false}
           />
-        ))}
+        ))} */}
       </div>
     );
   }

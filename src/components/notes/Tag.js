@@ -6,12 +6,14 @@ const Tag = ({ tag, selecting }) => {
     color: tag.color,
   };
 
-  const onClick = (e) => selecting && e.preventDefault();
+  const onClick = (e) => {
+    selecting ? e.preventDefault() : e.stopPropagation();
+  };
 
   return (
     <Link
       onClick={onClick}
-      to={`${process.env.PUBLIC_URL}/tags/${tag._id}`}
+      to={`${process.env.PUBLIC_URL}/tags/${tag.slug}`}
       className="tag"
       style={background}
     >

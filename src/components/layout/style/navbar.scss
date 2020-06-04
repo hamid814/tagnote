@@ -74,17 +74,17 @@
     align-items: center;
     z-index: -1;
 
-    &:hover {
-      .logo {
-        opacity: 1;
-        margin-right: 0px;
-      }
-    }
+    // &:hover {
+    //   .logo {
+    //     opacity: 1;
+    //     margin-right: 0px;
+    //   }
+    // }
 
     .logo {
-      animation: logoAnim 3000ms ease-in;
-      opacity: 0;
-      margin-right: -40px;
+      // animation: logoAnim 3000ms ease-in;
+      // opacity: 0;
+      // margin-right: -40px;
     }
   }
 

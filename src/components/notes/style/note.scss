@@ -1,5 +1,9 @@
 .note-wrapper {
-  position: relative;
+  // position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px;
 
   &.selected {
     position: relative;
@@ -68,7 +72,6 @@
     width: 100%;
     font-weight: 100;
     padding: 12px;
-    padding-bottom: 3px;
     overflow: hidden;
     border-radius: 7px;
 
