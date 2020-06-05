@@ -18,7 +18,7 @@ import Options from 'components/options/Options';
 import RoutesContainer from 'routing/RoutesContainer';
 
 // web fonts (icon)
-import './icon/css/tagnote-icon-set-embedded.css';
+// import './icon/css/tagnote-icon-set-embedded.css';
 
 const App = () => {
   console.log('how to relate tags to each other???');

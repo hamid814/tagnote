@@ -22,7 +22,10 @@
       padding: 7px 10px;
       border-radius: 7px;
       background: var(--blue-color);
+      background: transparent;
+      border: 2px dashed var(--blue-color);
       color: var(--text-color);
+      color: var(--blue-color);
       margin-right: 7px;
       cursor: pointer;
     }
@@ -49,9 +52,12 @@
 
     .insert-button {
       background: var(--blue-color);
+      background: transparent;
+      border: 2px dashed var(--blue-color);
       border-radius: 7px;
       padding: 8px 12px;
       color: #f4f4f4;
+      color: var(--blue-color);
     }
   }
 }

@@ -40,16 +40,19 @@ class ColStak {
   }
 }
 
-const createLayout = (container, itemWidth = 250) => {
-  if (window.innerWidth < 480) {
-    itemWidth = (window.innerWidth - 22) / 2;
+const createLayout = (container, childWidth = 250) => {
+  let itemWidth;
+
+  if (container.parentElement.getBoundingClientRect().width < 530) {
+    itemWidth = container.parentElement.getBoundingClientRect().width / 2;
+  } else {
+    itemWidth = childWidth;
   }
 
-  const windowWidth = window.innerWidth - 20;
+  const containerParentWidth = container.parentElement.getBoundingClientRect()
+    .width;
 
-  const containerWidth = container.getBoundingClientRect().width;
-
-  const colCount = Math.floor(containerWidth / itemWidth);
+  const colCount = Math.floor(containerParentWidth / itemWidth);
 
   const columns = new ColStak();
 
@@ -62,7 +65,7 @@ const createLayout = (container, itemWidth = 250) => {
 
   for (var j = 0; j < container.children.length; j++) {
     container.children[j].style.width = itemWidth + 'px';
-    container.children[j].style.transitionDelay = 30 * j + 'ms';
+    container.children[j].style.transitionDelay = `${30 * j}ms`;
     container.children[j].style.transform = 'translateY(0)';
 
     const itemLeft = columns.getShort().left + 'px';

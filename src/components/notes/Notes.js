@@ -36,20 +36,20 @@ const Notes = ({ notes, selected }) => {
     );
   };
 
+  if (document.readyState === 'complete') {
+    window.addEventListener('resize', () => {
+      container.current && createLayout(container.current);
+    });
+  }
+
   if (notes.length === 0) {
     return <NoNotes />;
   } else {
     return (
-      <div ref={container} className="notes-container">
-        {noteElems}
-        {/* {notes.map((note) => (
-          <Note
-            key={note._id}
-            note={note}
-            selected={selected.indexOf(note._id) !== -1 && true}
-            selecting={selected.length > 0 ? true : false}
-          />
-        ))} */}
+      <div className="notes-wrapper">
+        <div ref={container} className="notes-container">
+          {noteElems}
+        </div>
       </div>
     );
   }

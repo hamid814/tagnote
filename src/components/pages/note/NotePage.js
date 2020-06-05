@@ -17,7 +17,7 @@ import NotePanel from './NotePanel';
 import './style/notePage.scss';
 
 const NotePage = ({ match, getNote, note, loading }) => {
-  const [pageState, setPageState] = useState('edit'); // val: display, edit
+  const [pageState, setPageState] = useState('display'); // val: display, edit
 
   useEffect(() => {
     getNote(match.params.id);

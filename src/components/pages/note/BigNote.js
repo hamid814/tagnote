@@ -22,7 +22,7 @@ const BigNote = ({ note: { body, tag, createdAt, otherTags }, goToEdit }) => {
         <div className="note-other-notes">
           {otherTags.map((tag) => (
             <Link
-              to={process.env.PUBLIC_URL + '/tags/' + tag._id}
+              to={process.env.PUBLIC_URL + '/tags/' + tag.slug}
               key={tag._id}
               style={{ color: tag.color }}
             >
