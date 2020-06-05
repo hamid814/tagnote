@@ -49,7 +49,7 @@ const createLayout = (container, itemWidth = 250) => {
 
   const containerWidth = container.getBoundingClientRect().width;
 
-  const colCount = Math.floor(windowWidth / itemWidth);
+  const colCount = Math.floor(containerWidth / itemWidth);
 
   const columns = new ColStak();
 
@@ -62,14 +62,14 @@ const createLayout = (container, itemWidth = 250) => {
 
   for (var j = 0; j < container.children.length; j++) {
     container.children[j].style.width = itemWidth + 'px';
-    container.children[j].style.transitionDelay = 50 * j + 'ms';
+    container.children[j].style.transitionDelay = 30 * j + 'ms';
+    container.children[j].style.transform = 'translateY(0)';
 
     const itemLeft = columns.getShort().left + 'px';
     const itemTop = columns.getShort().height + 'px';
 
-    container.children[
-      j
-    ].style.transform = `translateX(${itemLeft}) translateY(${itemTop})`;
+    container.children[j].style.top = itemTop;
+    container.children[j].style.left = itemLeft;
 
     container.children[j].style.opacity = 1;
 

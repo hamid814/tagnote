@@ -2,27 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import SelectingPanel from './SelectingPanle';
 import Logo from 'components/utils/logo/Logo';
 import ThemeButton from 'components/utils/themebutton/ThemeButton';
 
 import { setModal } from 'store/actions/modal';
-import { openOptions } from 'store/actions/options';
 import { logout } from 'store/actions/auth';
-import { unSelecteAll } from 'store/actions/note';
-import { deleteSelectedNotes } from 'store/actions/note';
 
 import './style/navbar.scss';
 
-const Navbar = ({
-  setModal,
-  isAuthenticated,
-  logout,
-  user,
-  selected,
-  unSelecteAll,
-  deleteSelectedNotes,
-  openOptions,
-}) => {
+const Navbar = ({ setModal, isAuthenticated, logout, user }) => {
   const onLoginClick = () => {
     setModal('on', 'login-modal');
   };
@@ -70,59 +59,15 @@ const Navbar = ({
     setModal('on', 'quick-insert');
   };
 
-  const onDeleteSelectedClicked = () => {
-    setModal('on', 'ask-modal', {
-      title: 'Delete notes?',
-      text: 'Are you sure you want to Delete All selected Notes?',
-      buttons: [
-        {
-          text: 'Delete',
-          color: 'var(--red-color)',
-          action: async () => {
-            await deleteSelectedNotes();
-            setModal('off');
-          },
-        },
-        {
-          text: 'No',
-          color: 'var(--blue-color)',
-          action: () => {
-            setModal('off');
-          },
-        },
-      ],
-    });
-  };
-
-  const onSelectOptionsClicked = () => {
-    openOptions({
-      subject: 'selectedNotes',
-    });
-  };
-
   return (
     <div className="navbar">
-      {selected.length > 0 && (
-        <div className="navbar-seleting-panel">
-          <div>
-            <button className="cancel-select-btn" onClick={unSelecteAll}>
-              &times;
-            </button>
-            <span className="navbar-selected-count">{selected.length}</span>
-          </div>
-          <div>
-            <button onClick={onDeleteSelectedClicked}>delete</button>
-            <button onClick={onSelectOptionsClicked}>...</button>
-          </div>
-        </div>
-      )}
+      <SelectingPanel />
       <div className="navbar-left">
         {authButton}
         <div className="search">search</div>
       </div>
       <div className="navbar-logo">
         <Logo />
-        {/* <span style={{ marginLeft: 5 }}>TagNote</span> */}
       </div>
       <div className="navbar-right">
         <ThemeButton />
@@ -140,22 +85,14 @@ const Navbar = ({
 Navbar.propTypes = {
   setModal: PropTypes.func.isRequired,
   user: PropTypes.object,
-  selected: PropTypes.array,
-  unSelecteAll: PropTypes.func.isRequired,
-  deleteSelectedNotes: PropTypes.func.isRequired,
-  openOptions: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
   user: state.auth.user,
-  selected: state.note.selected,
 });
 
 export default connect(mapStateToProps, {
   setModal,
   logout,
-  unSelecteAll,
-  deleteSelectedNotes,
-  openOptions,
 })(Navbar);

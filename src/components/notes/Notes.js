@@ -15,7 +15,7 @@ const Notes = ({ notes, selected }) => {
   useEffect(() => {
     populateDom();
     // eslint-disable-next-line
-  }, [notes]);
+  }, [notes, selected]);
 
   const populateDom = async () => {
     await putNotes();

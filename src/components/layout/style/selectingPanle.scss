@@ -1,0 +1,60 @@
+.navbar-seleting-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #555;
+  z-index: 2;
+
+  &.go {
+    animation: selectingPanelAnim 300ms ease-in reverse;
+    display: flex;
+  }
+
+  &.close {
+    display: none;
+  }
+
+  &.come {
+    animation: selectingPanelAnim 300ms ease-in;
+    display: flex;
+  }
+
+  &.open {
+    display: flex;
+  }
+
+  .navbar-selected-count {
+    margin-left: 10px;
+  }
+
+  .cancel-select-btn {
+    font-size: 24px;
+    padding: 6px 13px;
+  }
+
+  button {
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 7px;
+    background: var(--blue-color);
+    color: var(--text-color);
+  }
+}
+
+@keyframes selectingPanelAnim {
+  from {
+    transform: scale(1.05);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

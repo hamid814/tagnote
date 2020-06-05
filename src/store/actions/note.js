@@ -98,8 +98,6 @@ export const makePersonal = (id) => async (dispatch, getState) => {
       (note) => note._id === id
     )[0].isPersonal;
 
-    console.log(isPersonal);
-
     const res = await axios.put(`/api/v1/notes/${id}`, { isPersonal }, config);
 
     dispatch({
