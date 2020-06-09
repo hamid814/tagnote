@@ -3,59 +3,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import SelectingPanel from './SelectingPanle';
+import Logo from 'components/utils/logo/Logo';
 import ThemeButton from 'components/utils/themebutton/ThemeButton';
 
 import { setModal } from 'store/actions/modal';
-import { logout } from 'store/actions/auth';
 
 import { openMenu } from 'components/menu/Menu';
 
 import './style/navbar.scss';
 
-const Navbar = ({ setModal, isAuthenticated, logout, user }) => {
-  const onLoginClick = () => {
-    setModal('on', 'login-modal');
-  };
-
-  const onLogoutClick = () => {
-    setModal('on', 'ask-modal', {
-      title: 'Log Out?',
-      text: 'log out from your account?',
-      buttons: [
-        {
-          text: 'Logout',
-          color: 'var(--yellow-color)',
-          action: () => {
-            logout();
-            setModal('off');
-          },
-        },
-        {
-          text: 'No',
-          color: 'var(--blue-color)',
-          action: setModal,
-          actionArg: 'off',
-        },
-      ],
-    });
-  };
-
-  const authButton = !isAuthenticated ? (
-    <div className="login-btn" onClick={onLoginClick}>
-      <span role="img" aria-label="orb">
-        🔮
-      </span>{' '}
-      login
-    </div>
-  ) : (
-    <div className="login-btn" onClick={onLogoutClick}>
-      <span role="img" aria-label="orb">
-        🚧
-      </span>{' '}
-      {user.name}
-    </div>
-  );
-
+const Navbar = ({ setModal }) => {
   const onInsert = () => {
     setModal('on', 'quick-insert');
   };
@@ -64,19 +21,33 @@ const Navbar = ({ setModal, isAuthenticated, logout, user }) => {
     <div className="navbar">
       <SelectingPanel />
       <div className="navbar-left">
-        {/* {authButton} */}
         <div
           onClick={openMenu}
-          style={{ transform: 'rotate(90deg)' }}
-          className="login-btn"
+          style={{
+            transform: 'rotate(90deg)',
+            fonstSize: 18,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontWeight: '100',
+            border: '1px solid red',
+            padding: 7,
+            color: 'var(--blue-color)',
+            marginRight: 10,
+            paddingTop: 5,
+            letterSpacing: '1px',
+          }}
         >
           |||
         </div>
         <span>TagNote</span>
       </div>
-      <div className="navbar-logo">{/* <Logo /> */}</div>
+      <div className="navbar-logo mobile-display-none">
+        {' '}
+        <Logo />
+      </div>
       <div className="navbar-right">
-        <i className="icon icon-arrow-1"></i>
+        <i className="icon icon-saerch"></i>
         <ThemeButton />
         <button className="insert-button" onClick={onInsert}>
           <span role="img" aria-label="note">
@@ -91,15 +62,8 @@ const Navbar = ({ setModal, isAuthenticated, logout, user }) => {
 
 Navbar.propTypes = {
   setModal: PropTypes.func.isRequired,
-  user: PropTypes.object,
 };
 
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-  user: state.auth.user,
-});
-
-export default connect(mapStateToProps, {
+export default connect(null, {
   setModal,
-  logout,
 })(Navbar);

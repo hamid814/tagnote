@@ -8,7 +8,7 @@ import './style/notes.scss';
 
 import createLayout from './layout';
 
-var updateLayout;
+var updateComp;
 
 const Notes = ({ notes, selected }) => {
   // eslint-disable-next-line
@@ -16,13 +16,21 @@ const Notes = ({ notes, selected }) => {
   const [noteElems, setNoteElems] = useState(null);
   const container = useRef(document.querySelector('.notes-container'));
 
+  const forceComponentToUpdate = () => {
+    setForceUpdate(forceUpdate + 1);
+  };
+
+  updateComp = forceComponentToUpdate;
+
   useEffect(() => {
     populateDom();
     // eslint-disable-next-line
   }, [notes, selected]);
 
   useEffect(() => {
-    // createLayout(container.current);
+    setTimeout(() => {
+      createLayout(container.current);
+    }, 200);
     // eslint-disable-next-line
   }, [forceUpdate]);
 
@@ -72,11 +80,12 @@ const Notes = ({ notes, selected }) => {
   }
 };
 
+export const updateLayout = () => {
+  typeof updateComp === 'function' && updateComp();
+};
+
 const mapStateToProps = (state) => ({
   selected: state.note.selected,
 });
-
-// export updateLayout;
-console.log(updateLayout);
 
 export default connect(mapStateToProps)(Notes);

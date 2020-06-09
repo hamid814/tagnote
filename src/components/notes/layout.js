@@ -65,7 +65,7 @@ const createLayout = (container, childWidth = 250) => {
 
   for (var j = 0; j < container.children.length; j++) {
     container.children[j].style.width = itemWidth + 'px';
-    container.children[j].style.transitionDelay = `${30 * j}ms`;
+    // container.children[j].style.transitionDelay = `${30 * j}ms`;
 
     const itemLeft = columns.getShort().left + 'px';
     const itemTop = columns.getShort().height + 'px';
