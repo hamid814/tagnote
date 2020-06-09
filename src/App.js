@@ -10,6 +10,7 @@ import history from 'utils/history';
 
 // layout
 import Navbar from 'components/layout/Navbar';
+import Menu from 'components/menu/Menu';
 import Modal from 'components/modal/Modal';
 import Alert from 'components/layout/Alert';
 import Options from 'components/options/Options';
@@ -34,6 +35,7 @@ const App = () => {
           <Alert />
           <Navbar />
           <Options />
+          <Menu />
           <div className="container">
             <RoutesContainer />
           </div>

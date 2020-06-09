@@ -7,6 +7,8 @@ export const getTags = () => async (dispatch) => {
   try {
     const res = await axios.get(`/api/v1/tags`);
 
+    console.log('getting tags');
+
     dispatch({
       type: GET_TAGS,
       payload: res.data.data,

@@ -3,15 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import SelectingPanel from './SelectingPanle';
-import Logo from 'components/utils/logo/Logo';
 import ThemeButton from 'components/utils/themebutton/ThemeButton';
 
 import { setModal } from 'store/actions/modal';
 import { logout } from 'store/actions/auth';
 
-import './style/navbar.scss';
+import { openMenu } from 'components/menu/Menu';
 
-console.log('navbar buttons border => none');
+import './style/navbar.scss';
 
 const Navbar = ({ setModal, isAuthenticated, logout, user }) => {
   const onLoginClick = () => {
@@ -66,7 +65,11 @@ const Navbar = ({ setModal, isAuthenticated, logout, user }) => {
       <SelectingPanel />
       <div className="navbar-left">
         {/* {authButton} */}
-        <div style={{ transform: 'rotate(90deg)' }} className="login-btn">
+        <div
+          onClick={openMenu}
+          style={{ transform: 'rotate(90deg)' }}
+          className="login-btn"
+        >
           |||
         </div>
         <span>TagNote</span>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { getTagWithNotes } from 'store/actions/tag';
 
@@ -58,7 +59,13 @@ const TagPage = ({
     );
 };
 
-console.log('proptypes');
+TagPage.propTypes = {
+  tag: PropTypes.object.isRequired,
+  notes: PropTypes.array,
+  otherNotes: PropTypes.array,
+  getTagWithNotes: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+};
 
 const mapStateToProps = (state) => ({
   tag: state.tag.tag,

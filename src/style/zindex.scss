@@ -3,13 +3,17 @@
 }
 
 .alert {
-  z-index: 13;
+  z-index: 14;
 }
 
 .options-container {
   z-index: 11;
 }
 
-.modal-container {
+.menu-container {
   z-index: 12;
+}
+
+.modal-container {
+  z-index: 13;
 }

@@ -53,6 +53,16 @@ button {
   }
 }
 
+#root {
+  display: flex;
+  // align-items: ;
+}
+
+.menu-container {
+  // border: 1px solid red;
+  // width: 550px;
+}
+
 .container {
   width: 85%;
   margin: 0 auto;

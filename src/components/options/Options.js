@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 //redux
 import { closeOptions } from 'store/actions/options';
@@ -83,7 +84,12 @@ const Options = ({ status, data, closeOptions, setAlert }) => {
 };
 
 console.log('resort acitons');
-console.log('proptypes');
+Options.propTypes = {
+  status: PropTypes.string.isRequired,
+  data: PropTypes.object,
+  closeOptions: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = (state) => ({
   status: state.options.status,

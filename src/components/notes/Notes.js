@@ -8,7 +8,11 @@ import './style/notes.scss';
 
 import createLayout from './layout';
 
+var updateLayout;
+
 const Notes = ({ notes, selected }) => {
+  // eslint-disable-next-line
+  const [forceUpdate, setForceUpdate] = useState(0);
   const [noteElems, setNoteElems] = useState(null);
   const container = useRef(document.querySelector('.notes-container'));
 
@@ -16,6 +20,11 @@ const Notes = ({ notes, selected }) => {
     populateDom();
     // eslint-disable-next-line
   }, [notes, selected]);
+
+  useEffect(() => {
+    // createLayout(container.current);
+    // eslint-disable-next-line
+  }, [forceUpdate]);
 
   const populateDom = async () => {
     await putNotes();
@@ -36,11 +45,19 @@ const Notes = ({ notes, selected }) => {
     );
   };
 
-  if (document.readyState === 'complete') {
-    window.addEventListener('resize', () => {
-      container.current && createLayout(container.current);
-    });
-  }
+  const addResizeToWindow = () => {
+    if (document.readyState === 'complete') {
+      window.addEventListener('resize', () => {
+        container.current && createLayout(container.current);
+      });
+
+      // stop running function
+      clearInterval(setEvent);
+    }
+  };
+
+  // run function to add resize event when the document is loaded
+  const setEvent = setInterval(addResizeToWindow, 500);
 
   if (notes.length === 0) {
     return <NoNotes />;
@@ -58,5 +75,8 @@ const Notes = ({ notes, selected }) => {
 const mapStateToProps = (state) => ({
   selected: state.note.selected,
 });
+
+// export updateLayout;
+console.log(updateLayout);
 
 export default connect(mapStateToProps)(Notes);
