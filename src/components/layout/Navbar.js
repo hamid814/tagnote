@@ -11,6 +11,8 @@ import { logout } from 'store/actions/auth';
 
 import './style/navbar.scss';
 
+console.log('navbar buttons border => none');
+
 const Navbar = ({ setModal, isAuthenticated, logout, user }) => {
   const onLoginClick = () => {
     setModal('on', 'login-modal');
@@ -63,13 +65,15 @@ const Navbar = ({ setModal, isAuthenticated, logout, user }) => {
     <div className="navbar">
       <SelectingPanel />
       <div className="navbar-left">
-        {authButton}
-        <div className="search">search</div>
+        {/* {authButton} */}
+        <div style={{ transform: 'rotate(90deg)' }} className="login-btn">
+          |||
+        </div>
+        <span>TagNote</span>
       </div>
-      <div className="navbar-logo">
-        <Logo />
-      </div>
+      <div className="navbar-logo">{/* <Logo /> */}</div>
       <div className="navbar-right">
+        <i className="icon icon-arrow-1"></i>
         <ThemeButton />
         <button className="insert-button" onClick={onInsert}>
           <span role="img" aria-label="note">

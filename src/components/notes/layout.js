@@ -66,7 +66,6 @@ const createLayout = (container, childWidth = 250) => {
   for (var j = 0; j < container.children.length; j++) {
     container.children[j].style.width = itemWidth + 'px';
     container.children[j].style.transitionDelay = `${30 * j}ms`;
-    container.children[j].style.transform = 'translateY(0)';
 
     const itemLeft = columns.getShort().left + 'px';
     const itemTop = columns.getShort().height + 'px';
@@ -75,6 +74,7 @@ const createLayout = (container, childWidth = 250) => {
     container.children[j].style.left = itemLeft;
 
     container.children[j].style.opacity = 1;
+    container.children[j].style.transform = 'translateY(0)';
 
     const itemheight = Math.floor(
       container.children[j].getBoundingClientRect().height
@@ -85,24 +85,6 @@ const createLayout = (container, childWidth = 250) => {
 
   container.style.height = columns.getLong().height + 'px';
   container.style.width = columns.count * itemWidth + 'px';
-
-  // container.children.forEach((item) => {
-  //   item.style.width = itemWidth + 'px';
-
-  //   const itemLeft = columns.getShort().left + 'px';
-  //   const itemTop = columns.getShort().height + 'px';
-
-  //   item.style.transform = `translateX(${itemLeft}) translateY(${itemTop})`;
-
-  //   item.style.opacity = 1;
-
-  //   const itemheight = Math.floor(item.getBoundingClientRect().height);
-
-  //   columns.updateShort(itemheight);
-
-  //   container.style.height = columns.getLong().height + 'px';
-  //   container.style.width = columns.count * itemWidth + 'px';
-  // });
 };
 
 export default createLayout;

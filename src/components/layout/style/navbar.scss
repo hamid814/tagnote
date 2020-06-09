@@ -5,7 +5,6 @@
   right: 0;
   width: 100%;
   background: #555c;
-  border-bottom: 1px solid #aaa;
   height: 55px;
   display: flex;
   align-items: center;
@@ -23,11 +22,14 @@
       border-radius: 7px;
       background: var(--blue-color);
       background: transparent;
-      border: 2px dashed var(--blue-color);
       color: var(--text-color);
       color: var(--blue-color);
       margin-right: 7px;
       cursor: pointer;
+
+      &:hover {
+        background-color: #333;
+      }
     }
 
     .search {
@@ -53,11 +55,14 @@
     .insert-button {
       background: var(--blue-color);
       background: transparent;
-      border: 2px dashed var(--blue-color);
       border-radius: 7px;
       padding: 8px 12px;
       color: #f4f4f4;
       color: var(--blue-color);
+
+      &:hover {
+        background-color: #333;
+      }
     }
   }
 }

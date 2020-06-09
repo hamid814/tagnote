@@ -8,6 +8,7 @@ import { loadUser } from 'store/actions/auth';
 
 // pages
 import Home from 'components/pages/home/Home';
+import About from 'components/pages/about/About';
 import TagPage from 'components/pages/tag/TagPage';
 import Tags from 'components/pages/tags/Tags';
 import NotePage from 'components/pages/note/NotePage';
@@ -30,6 +31,7 @@ const RoutesContainer = ({ loadUser }) => {
   return (
     <Switch>
       <Route exact path={`${publicUrl}/`} component={Home} />
+      <Route exact path={`${publicUrl}/about`} component={About} />
       <Route exact path={`${publicUrl}/tagnote`} component={Home} />
       <Route exact path={`${publicUrl}/tags`} component={Tags} />
       <Route exact path={`${publicUrl}/tags/:slug`} component={TagPage} />
