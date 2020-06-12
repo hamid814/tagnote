@@ -71,21 +71,49 @@ const Menu = ({ getTags, tags, isAuthenticated, user, setModal, logout }) => {
     updateLayout();
   };
 
+  const onContainerClick = (e) => {
+    if (e.target.classList.contains('menu-container')) {
+      setMenu();
+    }
+  };
+
   toggleMenu = setMenu;
 
   return (
-    <div className={`menu-container ${state}`}>
-      <button onClick={() => setMenu()}>click</button>
-      {tags.map((tag) => (
-        <Link
-          to={process.env.PUBLIC_URL + '/tags/' + tag.slug}
-          key={tag._id}
-          style={{ color: tag.color, padding: 7, display: 'block' }}
+    <div className={`menu-container ${state}`} onClick={onContainerClick}>
+      <div className="menu-body">
+        <h3
+          style={{
+            marginLeft: 10,
+            marginBottom: 10,
+            borderBottom: '1px solid #ccc',
+            padding: '10px 5px',
+            width: '70%',
+          }}
         >
-          #{tag.name}
-        </Link>
-      ))}
-      {authButton}
+          Tags
+        </h3>
+        {tags.map((tag) => (
+          <Link
+            to={process.env.PUBLIC_URL + '/tags/' + tag.slug}
+            key={tag._id}
+            style={{
+              color: tag.color,
+              background: tag.color + '22',
+              padding: 7,
+              paddingLeft: 10,
+              margin: 5,
+              marginLeft: 10,
+              width: '70%',
+              borderRadius: 555,
+              display: 'block',
+            }}
+          >
+            #{tag.name}
+          </Link>
+        ))}
+        {authButton}
+      </div>
     </div>
   );
 };

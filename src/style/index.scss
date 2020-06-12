@@ -55,19 +55,13 @@ button {
 
 #root {
   display: flex;
-  // align-items: ;
-}
-
-.menu-container {
-  // border: 1px solid red;
-  // width: 550px;
 }
 
 .container {
   width: 85%;
   margin: 0 auto;
   margin-top: 75px;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 75px);
   overflow: auto;
   padding-bottom: 30px;
 }

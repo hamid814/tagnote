@@ -1,9 +1,7 @@
 .menu-container {
-  margin-top: 55px;
-  background-color: #666;
-  width: 200px;
-  padding: 0;
   overflow: hidden;
+  margin-top: 55px;
+  background-color: transparent;
 
   &.close {
     width: 0;
@@ -11,6 +9,15 @@
 
   &.open {
     width: 250px;
+  }
+
+  .menu-body {
+    min-width: 250px;
+    max-width: 100%;
+    min-height: 100%;
+    background-color: transparent;
+    width: 200px;
+    padding: 0;
   }
 }
 
@@ -20,6 +27,20 @@
     top: 0;
     bottom: 0;
     left: 0;
+    right: 0;
+    height: 100%;
     margin-top: 0;
+
+    &.close {
+      width: 0;
+    }
+
+    &.open {
+      width: 100vw;
+    }
+
+    .menu-body {
+      background-color: #333e;
+    }
   }
 }
