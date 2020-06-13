@@ -82,6 +82,9 @@ const Menu = ({ getTags, tags, isAuthenticated, user, setModal, logout }) => {
   return (
     <div className={`menu-container ${state}`} onClick={onContainerClick}>
       <div className="menu-body">
+        <h3>Home</h3>
+        <h3>Tags</h3>
+
         <h3
           style={{
             marginLeft: 10,
@@ -89,6 +92,7 @@ const Menu = ({ getTags, tags, isAuthenticated, user, setModal, logout }) => {
             borderBottom: '1px solid #ccc',
             padding: '10px 5px',
             width: '70%',
+            fontWeight: 100,
           }}
         >
           Tags
