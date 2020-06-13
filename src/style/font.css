@@ -1,0 +1,10 @@
+@font-face {
+  font-family: CodeBold;
+  font-style: normal;
+  font-weight: bold;
+  src: url('../font/CODEBold.otf');
+  src: url('../font/CODEBold.otf') format('otf'),
+    url('../fonts/IRANSans-Bold-web.woff2') format('woff2'),
+    url('../fonts/IRANSans-Bold-web.woff') format('woff'),
+    url('../fonts/IRANSans-Bold-web.ttf') format('truetype');
+}

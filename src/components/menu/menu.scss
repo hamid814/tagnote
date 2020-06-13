@@ -1,23 +1,89 @@
 .menu-container {
   overflow: hidden;
-  margin-top: 55px;
-  background-color: transparent;
+  // margin-top: 55px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fff;
+  // padding: 20px;
 
   &.close {
-    width: 0;
+    height: 0;
+    padding: 0;
   }
 
   &.open {
-    width: 250px;
+    height: 100%;
   }
 
   .menu-body {
-    min-width: 250px;
-    max-width: 100%;
+    position: relative;
+    background-color: #555;
+    min-width: 100%;
     min-height: 100%;
-    background-color: transparent;
     width: 200px;
     padding: 0;
+    font-family: Futura, 'Trebuchet MS', Arial, serif;
+    font-weight: 100;
+    background-color: #080808;
+
+    .menu-close-btn {
+      position: absolute;
+      top: 0px;
+      right: 20px;
+      font-size: 80px;
+      cursor: pointer;
+      color: #555;
+
+      &:hover {
+        color: #888;
+      }
+    }
+
+    .menu-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 35px 0;
+
+      span {
+        margin-left: 15px;
+      }
+    }
+
+    .menu-user-area {
+      padding: 10px 0;
+    }
+
+    .menu-group {
+      margin-top: 10px;
+      border: 1px solid #333;
+      width: 20%;
+      height: 40px;
+      overflow: hidden;
+
+      &:focus-within {
+        height: initial;
+      }
+
+      .menu-group-title {
+        padding: 7px;
+        font-size: 20px;
+        font-weight: 100;
+        color: var(--text-color);
+
+        a {
+          color: #ccc;
+        }
+      }
+
+      .menu-group-item {
+        padding: 5px;
+        padding-left: 20px;
+      }
+    }
   }
 }
 
@@ -40,7 +106,6 @@
     }
 
     .menu-body {
-      background-color: #333e;
     }
   }
 }

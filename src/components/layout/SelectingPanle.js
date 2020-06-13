@@ -97,14 +97,16 @@ const SelectingPanle = ({
   );
 };
 
-console.log('proptypes');
-
-const mapStateToProps = (state) => ({
-  selected: state.note.selected,
+SelectingPanle.propTypes = {
+  selected: PropTypes.array,
   setModal: PropTypes.func.isRequired,
   openOptions: PropTypes.func.isRequired,
   unSelecteAll: PropTypes.func.isRequired,
   deleteSelectedNotes: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  selected: state.note.selected,
 });
 
 export default connect(mapStateToProps, {

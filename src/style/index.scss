@@ -27,9 +27,16 @@ body {
   background: var(--bg-color);
   color: var(--text-color);
   font-family: 'Muli', sans-serif;
+  // font-family: 'CodeBold', sans-serif;
+  // font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+  font-weight: 100;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  background-color: #080808;
+  // background-image: url('https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&dl=jeremy-perkins-uhjiu8FjnsQ-unsplash.jpg');
+  background-size: 100% 100%;
+  background-position: 0 0;
 }
 
 a {

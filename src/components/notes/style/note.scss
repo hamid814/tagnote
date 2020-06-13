@@ -1,7 +1,7 @@
 .note-wrapper {
   position: absolute;
   transform: translateY(-30px);
-  padding: 5px;
+  padding: 3.5px;
   opacity: 0;
 
   &.selected {
@@ -62,19 +62,18 @@
 
   .note {
     position: relative;
-    min-height: 100%;
-    background-color: #4449;
-    background-color: #111120;
+    background-color: #080808;
+    border: 0.5px solid #333;
     display: inline-block;
     color: var(--text-color);
     width: 100%;
     font-weight: 100;
     padding: 12px;
     overflow: hidden;
-    border-radius: 7px;
+    border-radius: 10px;
 
     &::after {
-      content: '';
+      // content: '';
       position: absolute;
       top: 20px;
       left: 0px;
@@ -113,7 +112,6 @@
     .note-footer {
       margin-top: 15px;
       padding-top: 5px;
-      // border-top: 1px solid #666;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;

@@ -42,9 +42,11 @@ const Navbar = ({ setModal }) => {
         </div>
         <span>TagNote</span>
       </div>
-      <div className="navbar-logo mobile-display-none">
-        {' '}
-        <Logo />
+      <div className="navbar-logo">
+        <div className="mobile-display-none">
+          {' '}
+          <Logo />
+        </div>
       </div>
       <div className="navbar-right">
         <i className="icon icon-saerch"></i>

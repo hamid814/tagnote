@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+// components
+import Logo from 'components/utils/logo/Logo';
+
 // redux
 import { getTags } from 'store/actions/tag';
 import { setModal } from 'store/actions/modal';
@@ -16,7 +19,7 @@ import { updateLayout } from 'components/notes/Notes';
 var toggleMenu;
 
 const Menu = ({ getTags, tags, isAuthenticated, user, setModal, logout }) => {
-  const [state, setState] = useState('open'); // values: open, close, view
+  const [state, setState] = useState('close'); // values: open, close, view
 
   useEffect(() => {
     getTags();
@@ -51,14 +54,14 @@ const Menu = ({ getTags, tags, isAuthenticated, user, setModal, logout }) => {
   };
 
   const authButton = !isAuthenticated ? (
-    <div className="login-btn" onClick={onLoginClick}>
+    <div onClick={onLoginClick}>
       <span role="img" aria-label="orb">
         🔮
       </span>{' '}
       login
     </div>
   ) : (
-    <div className="login-btn" onClick={onLogoutClick}>
+    <div onClick={onLogoutClick}>
       <span role="img" aria-label="orb">
         🚧
       </span>{' '}
@@ -82,41 +85,43 @@ const Menu = ({ getTags, tags, isAuthenticated, user, setModal, logout }) => {
   return (
     <div className={`menu-container ${state}`} onClick={onContainerClick}>
       <div className="menu-body">
-        <h3>Home</h3>
-        <h3>Tags</h3>
-
-        <h3
-          style={{
-            marginLeft: 10,
-            marginBottom: 10,
-            borderBottom: '1px solid #ccc',
-            padding: '10px 5px',
-            width: '70%',
-            fontWeight: 100,
-          }}
-        >
-          Tags
-        </h3>
-        {tags.map((tag) => (
-          <Link
-            to={process.env.PUBLIC_URL + '/tags/' + tag.slug}
-            key={tag._id}
-            style={{
-              color: tag.color,
-              background: tag.color + '22',
-              padding: 7,
-              paddingLeft: 10,
-              margin: 5,
-              marginLeft: 10,
-              width: '70%',
-              borderRadius: 555,
-              display: 'block',
-            }}
-          >
-            #{tag.name}
-          </Link>
-        ))}
-        {authButton}
+        <div className="menu-close-btn" onClick={setMenu}>
+          &times;
+        </div>
+        <div className="menu-logo">
+          <Logo /> <span>TagNote</span>
+        </div>
+        <div className="menu-user-area">{authButton}</div>
+        <div className="menu-group">
+          <div className="menu-group-title">
+            <Link to={process.env.PUBLIC_URL}>
+              <i className="icon icon-logo-square"></i>
+              Home
+            </Link>
+          </div>
+        </div>
+        <div className="menu-group">
+          <h3 className="menu-group-title">
+            <i className="icon icon-logo-radius"></i>
+            Notes
+          </h3>
+        </div>
+        <div className="menu-group" tabIndex="1">
+          <h3 className="menu-group-title">
+            <i className="icon icon-logo-circle"></i>
+            Tags
+          </h3>
+          {tags.map((tag) => (
+            <div key={tag._id} className="menu-group-item">
+              <Link
+                to={process.env.PUBLIC_URL + '/tags/' + tag.slug}
+                style={{ color: tag.color }}
+              >
+                {tag.name}
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
