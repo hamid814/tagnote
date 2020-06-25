@@ -19,7 +19,7 @@ import { updateLayout } from 'components/notes/Notes';
 var toggleMenu;
 
 const Menu = ({ getTags, tags, isAuthenticated, user, setModal, logout }) => {
-  const [state, setState] = useState('close'); // values: open, close, view
+  const [state, setState] = useState('open'); // values: open, close, view
 
   useEffect(() => {
     getTags();
@@ -89,7 +89,8 @@ const Menu = ({ getTags, tags, isAuthenticated, user, setModal, logout }) => {
           &times;
         </div>
         <div className="menu-logo">
-          <Logo /> <span>TagNote</span>
+          <Logo />
+          <span>TagNote</span>
         </div>
         <div className="menu-user-area">{authButton}</div>
         <div className="menu-group">
