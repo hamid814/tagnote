@@ -26,6 +26,9 @@ const App = () => {
   console.log('tags to be pinned in homepage or made starred');
   console.log('add flag in tag page if tag has no color or desc');
   console.log('add headers: content-type in axios interceptors');
+  console.log(
+    'login form: checking if inputs are empty must be done on the client side'
+  );
 
   return (
     <Provider store={store}>

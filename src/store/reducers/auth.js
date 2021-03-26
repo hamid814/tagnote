@@ -54,7 +54,7 @@ export default function (state = initialState, action) {
       localStorage.removeItem('tagnote-auth-token');
       return {
         ...state,
-        loading: true,
+        loading: false,
         token: null,
         isAuthenticated: false,
         error: payload,

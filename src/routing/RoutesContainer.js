@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
@@ -20,15 +20,23 @@ import LoginPage from 'components/pages/login/LoginPage';
 import RegisterPage from 'components/pages/register/RegisterPage';
 import SearchPage from 'components/pages/search/SearchPage';
 
+// routing
+import ProtectedRoute from './ProtectedRoute';
+
 const RoutesContainer = ({ loadUser }) => {
+  const [loadingUser, setLoadingUser] = useState(true);
+
   const publicUrl = process.env.PUBLIC_URL;
 
   useEffect(() => {
     loadUser();
+    setLoadingUser(false);
     // eslint-disable-next-line
   }, []);
 
-  return (
+  return loadingUser ? (
+    'loading the user'
+  ) : (
     <Switch>
       <Route exact path={`${publicUrl}/`} component={Home} />
       <Route exact path={`${publicUrl}/about`} component={About} />

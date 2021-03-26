@@ -29,14 +29,14 @@ const Notes = ({ notes, selected }) => {
 
   useEffect(() => {
     setTimeout(() => {
-      createLayout(container.current);
+      container.current && createLayout(container.current);
     }, 200);
     // eslint-disable-next-line
   }, [forceUpdate]);
 
   const populateDom = async () => {
     await putNotes();
-    createLayout(container.current);
+    container.current && createLayout(container.current);
   };
 
   // this funciton runs in order to wait a little for ref to load current
